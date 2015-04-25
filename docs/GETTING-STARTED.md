@@ -1,5 +1,5 @@
 ### Code repo
-* [fixed-assert](https://github.com/wenhao/fixed-asset)
+* [fixed-asset](https://github.com/wenhao/fixed-asset)
 
 ### Trello
 * [Board](https://trello.com/b/TfyOqNfw/thoughtworks-assets-management-team2)
