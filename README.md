@@ -3,6 +3,6 @@
 # fixed-asset
 ThoughtWorks Fixed Asset Management System
 
-##[Environment](./docs/ENVIRONMENT.md)
+##[Getting-started](./docs/GETTING-STARTED.md)
 
 ##[Techs](./docs/TECHs.md)
