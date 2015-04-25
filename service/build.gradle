@@ -1,4 +1,9 @@
+apply plugin: 'java'
 apply plugin: 'spring-boot'
+
+repositories {
+    mavenCentral()
+}
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
@@ -8,3 +13,4 @@ dependencies {
     testCompile("org.assertj:assertj-core:$assertJVersion")
     testCompile("com.jayway:jsonpath:json-path-assert:$jsonPathVersion")
 }
+

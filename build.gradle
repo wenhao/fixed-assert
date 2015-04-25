@@ -8,20 +8,11 @@ buildscript {
     }
 }
 
+group = "com.thoughtworks"
+version = "1.0.0-SNAPSHOT"
+
 allprojects {
     apply plugin: 'idea'
-}
-
-configure(subprojects - project(':api')) {
-    apply plugin: 'java'
-    apply plugin: 'maven'
-
-    repositories {
-        mavenCentral()
-    }
-
-    group = "com.thoughtworks"
-    version = "1.0.0-SNAPSHOT"
 }
 
 idea {
