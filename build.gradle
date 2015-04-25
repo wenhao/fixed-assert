@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+allprojects {
+    apply plugin: 'idea'
+}
+
+configure(subprojects - project(':api')) {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    repositories {
+        mavenCentral()
+    }
+
+    group = "com.thoughtworks"
+    version = "1.0.0-SNAPSHOT"
+}
+
+idea {
+    project {
+        jdkName = JavaVersion.VERSION_1_7
+        languageLevel = JavaVersion.VERSION_1_7
+
+        vcs = "Git"
+    }
+}
+
+defaultTasks 'clean', 'build'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}

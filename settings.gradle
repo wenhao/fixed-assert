@@ -1,0 +1,5 @@
+rootProject.name = 'fixed-assert'
+
+include 'service', 'api'
+
+project(':service').name = 'fixed-assert'
