@@ -10,6 +10,7 @@ describe("Helloworld API tests", function() {
         request.get(config.host + "/helloworld", {json: true})
             .then(function(res) {
                 expect(res.statusCode).toBe(httpStatus.OK);
+                expect(res.body).toEqual({ message : 'Hello World' });
                 done();
             }).catch(utils.printErr);
     });
