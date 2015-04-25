@@ -34,7 +34,7 @@ if (gutil.env.watch) {
 
 gulp.task('dev', () => {
   watcher.setWatcher();
-  runSequence.run(['build', 'server'])
+  runSequence('build', 'server');
 });
 
 gulp.task('default', ['build']);
