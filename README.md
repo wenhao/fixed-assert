@@ -1,5 +1,5 @@
-# fixed-assert
-ThoughtWorks Fixed Assert Management System
+# fixed-asset
+ThoughtWorks Fixed Asset Management System
 
 ##[Environment](./docs/ENVIRONMENT.md)
 
