@@ -1,4 +1,4 @@
-[![Build Status](http://ci.viff.io:8080/job/fixed-asset-build/badge/icon)](http://ci.viff.io:8080/job/fixed-asset-build/)
+[![Build Status](http://ci.viff.io:10086/job/fixed-asset-build/badge/icon)](http://ci.viff.io:10086/job/fixed-asset-build/)
 
 # fixed-asset
 ThoughtWorks Fixed Asset Management System
