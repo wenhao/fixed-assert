@@ -10,3 +10,5 @@ ThoughtWorks Fixed Asset Management System
 ##[Homework](./docs/HOMEWORK.md)
 
 ##[Sessions preview](./docs/SESSIONS.md)
+
+##[Retro action](./docs/RETRO.md)
