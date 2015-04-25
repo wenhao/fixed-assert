@@ -11,6 +11,6 @@ dependencies {
 
     testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testCompile("org.assertj:assertj-core:$assertJVersion")
-    testCompile("com.jayway:jsonpath:json-path-assert:$jsonPathVersion")
+    testCompile("com.jayway.jsonpath:json-path-assert:$jsonPathVersion")
 }
 
