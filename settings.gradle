@@ -1,5 +1,5 @@
-rootProject.name = 'fixed-assert'
+rootProject.name = 'fixed-asset'
 
 include 'service', 'api'
 
-project(':service').name = 'fixed-assert'
+project(':service').name = 'fixed-asset'
