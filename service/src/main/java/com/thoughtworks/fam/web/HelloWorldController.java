@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/helloworld")
-public class HelloWorldController {
+public class HelloWorldController
+{
 
     @RequestMapping(method = RequestMethod.GET)
-    public HelloWorldDTO say() {
+    public HelloWorldDTO say()
+    {
         HelloWorldDTO dto = new HelloWorldDTO();
         dto.setMessage("Hello World");
         return dto;
