@@ -4,24 +4,15 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootGradlePluginVersion")
     }
 }
+
+group = "com.thoughtworks"
+version = "1.0.0-SNAPSHOT"
 
 allprojects {
     apply plugin: 'idea'
-}
-
-configure(subprojects - project(':api')) {
-    apply plugin: 'java'
-    apply plugin: 'maven'
-
-    repositories {
-        mavenCentral()
-    }
-
-    group = "com.thoughtworks"
-    version = "1.0.0-SNAPSHOT"
 }
 
 idea {
