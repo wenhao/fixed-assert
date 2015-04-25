@@ -8,3 +8,5 @@ ThoughtWorks Fixed Asset Management System
 ##[Techs](./docs/TECHs.md)
 
 ##[Homework](./docs/HOMEWORK.md)
+
+##[Sessions preview](./docs/SESSIONS.md)
