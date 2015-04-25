@@ -6,3 +6,5 @@ ThoughtWorks Fixed Asset Management System
 ##[Getting-started](./docs/GETTING-STARTED.md)
 
 ##[Techs](./docs/TECHs.md)
+
+##[Homework](./docs/HOMEWORK.md)
