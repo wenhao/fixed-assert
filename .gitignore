@@ -2,6 +2,7 @@
 *.class
 *.jar
 *.war
+out
 
 # Mac #
 .DS_Store
