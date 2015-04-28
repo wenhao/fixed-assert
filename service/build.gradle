@@ -8,6 +8,8 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    compile 'com.google.code.gson:gson:1.7.2'
+    compile 'org.apache.commons:commons-lang3:3.0'
 
     testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testCompile("org.assertj:assertj-core:$assertJVersion")
