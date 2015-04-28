@@ -22,7 +22,7 @@ public class UserAssetServiceTest {
     @Test
     public void should_get_user_assets_when_given_user_id() throws Exception {
 
-        List<UserAssetDTO> userAssets = userAssetService.getUserAssets("123");
+        List<UserAssetDTO> userAssets = userAssetService.getUserAssets("sqlin@thoughtworks.com");
 
         assertThat(userAssets.size(), is(1));
         assertThat(userAssets.get(0).getAssetName(), is("Mac Book 15 inch"));
@@ -30,10 +30,5 @@ public class UserAssetServiceTest {
         assertThat(userAssets.get(0).getAssetType(), is("MAC"));
         assertThat(userAssets.get(0).getOwnerName(), is("Waterstrong"));
 
-    }
-
-    @Test (expected = RuntimeException.class)
-    public void shoud_get_runtime_exception() throws Exception {
-        List<UserAssetDTO> userAssets = userAssetService.getUserAssets("");
     }
 }

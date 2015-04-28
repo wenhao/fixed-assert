@@ -1,11 +1,14 @@
 package com.thoughtworks.fam.web;
 
+import com.thoughtworks.fam.web.dto.UserAssetDTO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,8 +31,12 @@ public class UserAssetControllerTest {
     @Test
     public void should_access_to_get_user_assets() throws Exception {
         // when
-        this.mockMvc.perform(get("/user/assets"))
+        this.mockMvc.perform(get("/user/sqlin@thoughtworks.com/assets"))
                 .andExpect(status().isOk());
+    }
 
+    @Test //(expected = RuntimeException.class)
+    public void should_get_runtime_exception() throws Exception {
+        // this.mockMvc.perform(get("/user//assets"));
     }
 }
