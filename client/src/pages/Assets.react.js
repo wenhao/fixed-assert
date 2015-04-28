@@ -32,7 +32,7 @@ var Assets = React.createClass({
           <li className="asset__attribute">Assign Date</li>
           <li className="asset__attribute">Type</li>
         </ul>
-        <ul>
+        <ul className="asset__list">
           {this._renderAssets()}
         </ul>
         <RaisedButton secondary={true} onClick={this._getAssets}>
@@ -56,14 +56,26 @@ var Assets = React.createClass({
     //console.log("assets load failed");
   },
   _renderAssets() {
-    return this.state.assets.map(function(asset) {
+    return this.state.assets.sort(function(asset1, asset2) {
+		var a = asset1.name.toLocaleLowerCase();
+		var b = asset2.name.toLocaleLowerCase();
+		if (a > b) {
+			return 1;
+		} else if (a < b) {
+			return -1;
+		} else {
+			return 0;
+		}
+	}).map(function(asset) {
       return (
-          <li className="asset__item"><ul>
-            <li className="asset__attribute"><a href="/#" >{asset.name}</a></li>
-             <li className="asset__attribute">{asset.number}</li>
-            <li className="asset__attribute">{asset.date}</li>
-            <li className="asset__attribute">{asset.type}</li>
-        </ul></li>
+          <li className="asset__item">
+		  <ul>
+		  	<li className="asset__attribute"><a href="/#" >{asset.name}</a></li>
+		  	<li className="asset__attribute">{asset.number}</li>
+		  	<li className="asset__attribute">{asset.date}</li>
+		  	<li className="asset__attribute">{asset.type}</li>
+		  </ul>
+		  </li>
       )
     })
   }
