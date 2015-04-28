@@ -21,22 +21,72 @@ export default [
       return {
         data: [
           {
-            name: 'Mac Book',
+            name: 'Zac Book',
             number: '1',
             date: '2015-4-25',
             type: 'laptop'
           },{
-            name: 'Mac Book',
+            name: '1ac Book',
             number: '1',
             date: '2015-4-25',
             type: 'laptop'
           },{
-            name: 'Mac Book',
+            name: 'Aac Book',
+            number: '1',
+            date: '2015-4-25',
+            type: 'laptop'
+          },{
+            name: 'Bac Book',
+            number: '1',
+            date: '2015-4-25',
+            type: 'laptop'
+          },{
+            name: 'Dac Book',
+            number: '1',
+            date: '2015-4-25',
+            type: 'laptop'
+          },{
+            name: 'cac Book',
+            number: '1',
+            date: '2015-4-25',
+            type: 'laptop'
+          },{
+            name: 'Eac Book',
+            number: '1',
+            date: '2015-4-25',
+            type: 'laptop'
+          },{
+            name: 'Fac Book',
+            number: '1',
+            date: '2015-4-25',
+            type: 'laptop'
+          },{
+            name: 'Gac Book',
+            number: '1',
+            date: '2015-4-25',
+            type: 'laptop'
+          },{
+            name: 'Hac Book',
+            number: '1',
+            date: '2015-4-25',
+            type: 'laptop'
+          },{
+            name: 'Iac Book',
+            number: '1',
+            date: '2015-4-25',
+            type: 'laptop'
+          },{
+            name: 'Jac Book',
+            number: '1',
+            date: '2015-4-25',
+            type: 'laptop'
+          },{
+            name: 'Kac Book',
             number: '1',
             date: '2015-4-25',
             type: 'laptop'
           }
-        ]
+		]
       }
     },
     // `match`: result of the resolution of the regular expression
