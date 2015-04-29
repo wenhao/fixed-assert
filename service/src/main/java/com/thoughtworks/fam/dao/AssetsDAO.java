@@ -1,6 +1,6 @@
 package com.thoughtworks.fam.dao;
 
-import com.thoughtworks.fam.web.dto.Asset;
+import com.thoughtworks.fam.web.dto.AssetDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -9,16 +9,16 @@ import java.util.List;
 
 @Component
 public class AssetsDAO {
-    public List<Asset> getAllAssets() {
+    public List<AssetDTO> getAllAssets() {
         return mockAssets();
     }
 
-    private List<Asset> mockAssets() {
-        List<Asset> assets = new ArrayList<Asset>();
+    private List<AssetDTO> mockAssets() {
+        List<AssetDTO> assetDTOs = new ArrayList<AssetDTO>();
 
-        assets.add(new Asset("mac book pro",1,new Date(),"Laptop"));
-        assets.add(new Asset("mac book air",1,new Date(),"Laptop"));
+        assetDTOs.add(new AssetDTO("mac book pro",1,new Date(),"Laptop"));
+        assetDTOs.add(new AssetDTO("mac book air",1,new Date(),"Laptop"));
 
-        return assets;
+        return assetDTOs;
     }
 }

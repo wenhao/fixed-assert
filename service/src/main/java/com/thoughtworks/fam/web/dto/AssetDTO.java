@@ -2,17 +2,17 @@ package com.thoughtworks.fam.web.dto;
 
 import java.util.Date;
 
-public class Asset {
+public class AssetDTO {
     private String name;
     private int number;
     private Date assignedDate;
     private String type;
 
-    public Asset() {
+    public AssetDTO() {
 
     }
 
-    public Asset(String name, int number, Date assignedDate, String type) {
+    public AssetDTO(String name, int number, Date assignedDate, String type) {
         this.name = name;
         this.number = number;
         this.assignedDate = assignedDate;

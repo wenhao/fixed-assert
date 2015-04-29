@@ -42,7 +42,7 @@ var Assets = React.createClass({
   },
   onAssetsLoad(assets) {
     this.setState({
-      assets: assets.data
+      assets: assets.body
     })
   },
   onAssetsLoadFailed(err) {
@@ -53,7 +53,7 @@ var Assets = React.createClass({
       return (
         <li className="asset__item"><ul>
           <li className="asset__attribute">name: {asset.name}</li>
-          <li className="asset__attribute">date: {asset.date}</li>
+          <li className="asset__attribute">date: {asset.assignedDate}</li>
           <li className="asset__attribute">number: {asset.number}</li>
           <li className="asset__attribute">type: {asset.type}</li>
         </ul></li>
