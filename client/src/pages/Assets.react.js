@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react'
 import {
   RaisedButton,
@@ -49,13 +51,13 @@ var Assets = React.createClass({
     //
   },
   _renderAssets() {
-    return this.state.assets.map(function(asset) {
+    return this.state.assets.map(function(result) {
       return (
         <li className="asset__item"><ul>
-          <li className="asset__attribute">name: {asset.name}</li>
-          <li className="asset__attribute">date: {asset.date}</li>
-          <li className="asset__attribute">number: {asset.number}</li>
-          <li className="asset__attribute">type: {asset.type}</li>
+          <li className="asset__attribute">Name: {result.assetName}</li>
+          <li className="asset__attribute">Number: {result.assetNumber}</li>
+          <li className="asset__attribute">Assigned Date: {result.assignDate}</li>
+          <li className="asset__attribute">Type: {result.assetType}</li>
         </ul></li>
       )
     })

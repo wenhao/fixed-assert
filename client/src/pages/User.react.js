@@ -1,9 +1,11 @@
-import React from 'react'
+'use strict';
+
+import React from 'react';
 
 const User = React.createClass({
   render() {
-    return <h1>User</h1>
+    return <h1>User</h1>;
   }
-})
+});
 
-export default User
+export default User;

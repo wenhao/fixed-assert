@@ -1,52 +1,50 @@
+'use strict';
+
 export default [
-  {
-    pattern: 'http://localhost:8080/user/(login|logout)',
-    // callback that returns the data
-    fixtures: function () {
-      return 'success'
-    },
-    // `match`: result of the resolution of the regular expression
-    // `data`: data returns by `fixtures` attribute
-    callback: function (match, data) {
-      if (match[1]) {
-        return data
-      } else {
-        return new Error('Do not match any urls!')
-      }
+    {
+        pattern: 'http://localhost:8080/user/(login|logout)',
+        // callback that returns the data
+        fixtures: function () {
+            return 'success'
+        },
+        // `match`: result of the resolution of the regular expression
+        // `data`: data returns by `fixtures` attribute
+        callback: function (match, data) {
+            if (match[1]) {
+                return data
+            } else {
+                return new Error('Do not match any urls!')
+            }
+        }
+    }, {
+        pattern: 'http://localhost:8080/user/sqlin/(assets)',
+        // callback that returns the data
+        fixtures: function () {
+            return {
+                data: [{
+                    "assetName": "Mac Book 15 inch",
+                    "assetNumber": "201400356",
+                    "assetType": "MAC",
+                    "assignDate": 1429891200000,
+                    "ownerName": "Waterstrong"
+                }, {
+                    "assetName": "Mac Book 13.5 inch",
+                    "assetNumber": "201500356",
+                    "assetType": "MAC",
+                    "assignDate": 1429891200000,
+                    "ownerName": "Shuiqiang Lin"
+                }
+                ]
+            }
+        },
+        // `match`: result of the resolution of the regular expression
+        // `data`: data returns by `fixtures` attribute
+        callback: function (match, data) {
+            if (match[1]) {
+                return data
+            } else {
+                return new Error('Do not match any urls!')
+            }
+        }
     }
-  },{
-    pattern: 'http://localhost:8080/user/(assets)',
-    // callback that returns the data
-    fixtures: function () {
-      return {
-        data: [
-          {
-            name: 'Mac Book',
-            number: '1',
-            date: '2015-4-25',
-            type: 'laptop'
-          },{
-            name: 'Mac Book',
-            number: '1',
-            date: '2015-4-25',
-            type: 'laptop'
-          },{
-            name: 'Mac Book',
-            number: '1',
-            date: '2015-4-25',
-            type: 'laptop'
-          }
-        ]
-      }
-    },
-    // `match`: result of the resolution of the regular expression
-    // `data`: data returns by `fixtures` attribute
-    callback: function (match, data) {
-      if (match[1]) {
-        return data
-      } else {
-        return new Error('Do not match any urls!')
-      }
-    }
-  }
 ];

@@ -7,27 +7,19 @@ let mock;
 
 const endpoint = 'http://localhost:8080';
 
-const userApis = {
-    login: {
-        method: 'post',
-        url: '/user/login'
-    },
-    logout: {
-        method: 'post',
-        url: '/user/logout'
-    },
-    assets: { // TODO: how to give a user id
-        method: 'post',
+const userAssetApis = {
+    getUserAssets: {
+        method: 'get',
         url: '/user/sqlin/assets'
     }
 };
 
 // mock the http request if not production
 if (process.env.NODE_ENV == 'development' || process.env.NODE_ENV == 'test') {
-    mock = require('./mock-user')
+    mock = require('./mock-user-assets')
 }
 
 /**
  * build apis from the config or add mock apis
  */
-export default apisBuilder(userApis, endpoint, mock)
+export default apisBuilder(userAssetApis, endpoint, mock);
