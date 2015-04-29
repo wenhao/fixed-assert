@@ -11,17 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.websocket.server.PathParam;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class UserAssetController {
 
+    @Autowired
     private UserAssetService userAssetService;
-
-    public UserAssetController() {
-        userAssetService = new UserAssetService();
-    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/user/{user_id}/assets")
     public List<UserAssetDTO> getAssets(@PathVariable("user_id") String userId) {
