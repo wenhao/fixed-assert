@@ -17,7 +17,7 @@ const userApis = {
         url: '/user/logout'
     },
     assets: { // TODO: how to give a user id
-        method: 'post',
+        method: 'get',
         url: '/user/sqlin/assets'
     }
 };

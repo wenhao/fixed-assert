@@ -39,18 +39,20 @@ var Assets = React.createClass({
     );
   },
   _getAssets(userData) {
-    userApi.assets(userData)
-      .then(this.onAssetsLoad, this.onAssetsLoadFailed)
+    console.log("get assets");
+    userApi.assets(userData).then(this.onAssetsLoad, this.onAssetsLoadFailed)
   },
-  onAssetsLoad(assets) {
+  onAssetsLoad(result) {
+    console.log(result);
     this.setState({
-      assets: assets.data
+      assets: result.body
     })
   },
-  onAssetsLoadFailed(err) {
+  onAssetsLoadFailed(error) {
     //
   },
   _renderAssets() {
+    console.log(this.state.assets);
     return this.state.assets.map(function(result) {
       return (
         <li className="asset__item"><ul>
@@ -62,6 +64,6 @@ var Assets = React.createClass({
       )
     })
   }
-});
+})
 
 export default Assets
