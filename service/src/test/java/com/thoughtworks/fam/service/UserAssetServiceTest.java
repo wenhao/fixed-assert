@@ -32,7 +32,7 @@ public class UserAssetServiceTest {
         ReflectionTestUtils.setField(userAssetService, "userAssetDAO", userAssetDAO);
 
         userId = "sqlin@thoughtworks.com";
-        userAssetDTOs = new LinkedList<>();
+        userAssetDTOs = new LinkedList<UserAssetDTO>();
 
         UserAssetDTO userAsset1 = new UserAssetDTO();
         userAsset1.setAssetName("Mac Book 15 inch");

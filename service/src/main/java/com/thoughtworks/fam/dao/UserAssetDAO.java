@@ -20,7 +20,7 @@ public class UserAssetDAO {
 
         // TODO: mock some data
 
-        List<UserAssetDTO> userAssetDTOs = new ArrayList<>();
+        List<UserAssetDTO> userAssetDTOs = new ArrayList<UserAssetDTO>();
 
         UserAssetDTO userAsset1 = new UserAssetDTO();
         userAsset1.setAssetName("Mac Book 15 inch");
