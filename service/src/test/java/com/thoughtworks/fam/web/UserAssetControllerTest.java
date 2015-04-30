@@ -36,7 +36,7 @@ public class UserAssetControllerTest {
     @Test
     public void should_access_to_get_user_assets() throws Exception {
         // when
-        this.mockMvc.perform(get("/user/sqlin@thoughtworks.com/assets"))
+        this.mockMvc.perform(get("/asset/sqlin@thoughtworks.com/list"))
                 .andExpect(status().isOk());
     }
 

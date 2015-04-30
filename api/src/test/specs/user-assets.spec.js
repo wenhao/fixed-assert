@@ -7,7 +7,7 @@ var request = require('request-promised'),
 
 describe("User Asset API tests", function() {
     it("should get user assets", function(done) {
-        request.get(config.host + "/user/sqlin/assets", {json: true})
+        request.get(config.host + "/asset/sqlin/list", {json: true})
             .then(function(res) {
                 expect(res.statusCode).toBe(httpStatus.OK);
 

@@ -10,9 +10,9 @@ import {
   State
 } from 'react-router'
 
-import userApi from '../services/user'
+import assetApi from '../services/asset'
 
-var Assets = React.createClass({
+var Asset = React.createClass({
 
   mixins: [State],
 
@@ -39,11 +39,10 @@ var Assets = React.createClass({
     );
   },
   _getAssets(userData) {
-    console.log("get assets");
-    userApi.assets(userData).then(this.onAssetsLoad, this.onAssetsLoadFailed)
+     assetApi.getUserAssets(userData).then(this.onAssetsLoad, this.onAssetsLoadFailed)
   },
   onAssetsLoad(result) {
-    console.log(result);
+  console.log(result);
     this.setState({
       assets: result.body
     })
@@ -52,7 +51,6 @@ var Assets = React.createClass({
     //
   },
   _renderAssets() {
-    console.log(this.state.assets);
     return this.state.assets.map(function(result) {
       return (
         <li className="asset__item"><ul>
@@ -66,4 +64,4 @@ var Assets = React.createClass({
   }
 })
 
-export default Assets
+export default Asset

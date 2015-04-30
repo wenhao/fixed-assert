@@ -7,19 +7,19 @@ let mock;
 
 const endpoint = 'http://localhost:8080';
 
-const userAssetApis = {
+const assetApis = {
     getUserAssets: {
         method: 'get',
-        url: '/user/sqlin/assets'
+        url: '/asset/sqlin/list'
     }
 };
 
 // mock the http request if not production
 if (process.env.NODE_ENV == 'development' || process.env.NODE_ENV == 'test') {
-    mock = require('./mock-user-assets')
+    mock = require('./mock-asset')
 }
 
 /**
  * build apis from the config or add mock apis
  */
-export default apisBuilder(userAssetApis, endpoint, mock);
+export default apisBuilder(assetApis, endpoint, mock);

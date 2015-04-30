@@ -2,11 +2,11 @@
 
 export default [
     {
-        pattern: 'http://localhost:8080/user/sqlin/assets',
+        pattern: 'http://localhost:8080/asset/(sqlin)/list',
         // callback that returns the data
         fixtures: function () {
             return {
-                data: [{
+                body: [{
                     "assetName":"Mac Book 15 inch",
                     "assetNumber":"201400357",
                     "assetType":"MAC",

@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.websocket.server.PathParam;
-import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,8 +18,8 @@ public class UserAssetController {
     @Autowired
     private UserAssetService userAssetService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/user/{user_id}/assets")
-    public List<UserAssetDTO> getAssets(@PathVariable("user_id") String userId) {
+    @RequestMapping(method = RequestMethod.GET, value = "/asset/{user_id}/list")
+    public List<UserAssetDTO> getUserAssets(@PathVariable("user_id") String userId) {
         if (Strings.isNullOrEmpty(userId)) {
             throw new RuntimeException("user id is null or empty");
         }
