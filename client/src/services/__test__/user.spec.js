@@ -21,7 +21,7 @@ describe('User Services', function() {
       assets.should.be.an.Object
       assets.data.should.be.an.Array
       assets.data.length.should.be.above(1)
-      assets.data[0].name.should.be.equal('Mac Book')
+      assets.data[0].name.should.be.equal('Zac Book')
       assets.data[0].type.should.be.equal('laptop')
       done()
     })

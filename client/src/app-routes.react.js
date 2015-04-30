@@ -9,7 +9,7 @@ import {
 import {
   Home,
   User,
-  Assets,
+  Asset,
   NotFound
 } from './pages'
 
@@ -19,7 +19,7 @@ const appRoutes = (
   <Route name='root' path="/" handler={App}>
     <DefaultRoute name='home' handler={Home}/>
     <Route name='user' handler={User}/>
-    <Route name='assets' handler={Assets}/>
+    <Route name='asset' handler={Asset}/>
     <NotFoundRoute handler={NotFound}/>
   </Route>
 )
