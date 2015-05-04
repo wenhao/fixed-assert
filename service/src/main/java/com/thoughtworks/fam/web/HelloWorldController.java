@@ -13,12 +13,10 @@ public class HelloWorldController
 {
 
     @RequestMapping(method = RequestMethod.GET)
-    public HelloWorldDTO say(HttpServletResponse response)
+    public HelloWorldDTO say()
     {
         HelloWorldDTO dto = new HelloWorldDTO();
         dto.setMessage("Hello World");
-
-        response.setStatus(200);
 
         return dto;
     }
