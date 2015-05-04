@@ -40,8 +40,8 @@ public class UserAssetControllerTest {
                 .andExpect(status().isOk());
     }
 
-    @Test //(expected = RuntimeException.class)
+    @Test(expected = RuntimeException.class)
     public void should_get_runtime_exception() throws Exception {
-        // this.mockMvc.perform(get("/user//assets"));
+        this.mockMvc.perform(get("/user//assets", null));
     }
 }
