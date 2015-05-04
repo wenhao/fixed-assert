@@ -28,6 +28,13 @@ public class UserCreationControllerTest {
     public void should_return_please_enter_an_username_when_given_an_empty_username() throws Exception {
         this.mockMvc.perform(post("/admin", ""))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("please enter an username"));
+                .andExpect(MockMvcResultMatchers.content().string("Please enter an username"));
+    }
+
+    @Test
+    public void should_return_invalid_username_when_given_one() throws Exception {
+        this.mockMvc.perform(post("/admin").param("username", "hello"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Invalid username in ThoughtWorks system."));
     }
 }
