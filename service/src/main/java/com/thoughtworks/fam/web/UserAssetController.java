@@ -1,7 +1,7 @@
 package com.thoughtworks.fam.web;
 
 
-import com.thoughtworks.fam.service.UserAssetService;
+import com.thoughtworks.fam.service.UserAssetServiceImpl;
 import com.thoughtworks.fam.web.dto.UserAssetDTO;
 import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.List;
 public class UserAssetController {
 
     @Autowired
-    private UserAssetService userAssetService;
+    private UserAssetServiceImpl userAssetService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/asset/{user_id}/list")
     public List<UserAssetDTO> getUserAssets(@PathVariable("user_id") String userId) {

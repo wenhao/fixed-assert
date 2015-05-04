@@ -13,9 +13,9 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class UserAssetServiceTest {
+public class UserAssetServiceImplTest {
 
-    private UserAssetService userAssetService;
+    private UserAssetServiceImpl userAssetService;
 
     private UserAssetDAO userAssetDAO;
 
@@ -26,7 +26,7 @@ public class UserAssetServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        userAssetService = new UserAssetService();
+        userAssetService = new UserAssetServiceImpl();
 
         userAssetDAO = mock(UserAssetDAO.class);
         ReflectionTestUtils.setField(userAssetService, "userAssetDAO", userAssetDAO);
