@@ -18,8 +18,6 @@ public class UserAssetServiceImpl implements UserAssetService {
     @Override
     public List<UserAssetDTO> getUserAssets(String userId) {
         // TODO: check if there is a user in db
-        List<UserAssetDTO> userAssets = userAssetDAO.getUserAssets(userId);
-
-        return userAssets;
+        return userAssetDAO.getUserAssets(userId);
     }
 }
