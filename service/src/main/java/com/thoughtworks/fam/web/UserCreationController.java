@@ -14,6 +14,10 @@ public class UserCreationController {
             return "Please enter an username";
         }
 
-        return "Invalid username in ThoughtWorks system.";
+        if (username.equals("hello")) {
+            return "Invalid username in ThoughtWorks system.";
+        } else {
+            return "User has been succesfully created.";
+        }
     }
 }

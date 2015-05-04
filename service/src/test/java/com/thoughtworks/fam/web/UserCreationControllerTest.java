@@ -37,4 +37,11 @@ public class UserCreationControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("Invalid username in ThoughtWorks system."));
     }
+
+    @Test
+    public void should_return_create_successful_message_when_given_a_valid_username() throws Exception {
+        this.mockMvc.perform(post("/admin").param("username", "jtao"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("User has been succesfully created."));
+    }
 }
