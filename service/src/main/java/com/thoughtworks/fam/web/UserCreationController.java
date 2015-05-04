@@ -1,6 +1,5 @@
 package com.thoughtworks.fam.web;
 
-import com.thoughtworks.fam.service.UserCreationService;
 import com.thoughtworks.fam.service.UserCreationServiceImpl;
 import com.thoughtworks.fam.web.dto.UserCreationMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/admin")
 public class UserCreationController {
 
-    @Autowired
-    private UserCreationServiceImpl userCreationService;
+    private UserCreationServiceImpl userCreationService = new UserCreationServiceImpl();
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public UserCreationMessage createAnUser(String username) {
@@ -21,7 +19,7 @@ public class UserCreationController {
             return new UserCreationMessage("failed", "Please enter an username");
         }
 
-        if (username.equals("hello")) {
+        if (!userCreationService.isValidUsername(username)) {
             return new UserCreationMessage("failed", "Invalid username in ThoughtWorks system.");
         }
 

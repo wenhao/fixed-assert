@@ -17,6 +17,9 @@ const menuItems =  [{
 },{
   text: 'User Assets',
   route: 'asset'
+}, {
+  text: 'Create User',
+  route: 'userCreation'
 }];
 
 const AppLeftNav = React.createClass({

@@ -5,16 +5,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @RequestMapping(value = "/helloworld")
 public class HelloWorldController
 {
 
     @RequestMapping(method = RequestMethod.GET)
-    public HelloWorldDTO say()
+    public HelloWorldDTO say(HttpServletResponse response)
     {
         HelloWorldDTO dto = new HelloWorldDTO();
         dto.setMessage("Hello World");
+
+        response.setStatus(200);
+
         return dto;
     }
 }
