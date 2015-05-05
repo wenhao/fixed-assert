@@ -10,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -22,17 +21,15 @@ public class AuthControllerTest {
     private Gson gson;
 
     @Before
-    public void setUp() throws Exception
-    {
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(authController).build();
         gson = new Gson();
     }
 
     @Test
-    public void should_be_able_to_run_test() throws Exception
-    {
-        String userJson = gson.toJson(new UserDTO("test","123456"));
+    public void should_be_able_to_login() throws Exception {
+        String userJson = gson.toJson(new UserDTO("test", "123456"));
         // when
         this.mockMvc.perform(post("/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
