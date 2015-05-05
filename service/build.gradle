@@ -9,6 +9,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     compile("com.google.guava:guava:$guavaVersion")
+    compile("com.google.code.gson:gson:$gsonVersion")
 
     testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testCompile("org.assertj:assertj-core:$assertJVersion")
