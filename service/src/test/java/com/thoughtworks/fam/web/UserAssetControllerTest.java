@@ -4,6 +4,7 @@ import com.thoughtworks.fam.service.UserAssetService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -21,16 +22,13 @@ public class UserAssetControllerTest {
     @InjectMocks
     private UserAssetController userAssetController;
 
+    @Mock
     private UserAssetService userAssetService;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(userAssetController).build();
-
-        userAssetService = mock(UserAssetService.class);
-        ReflectionTestUtils.setField(userAssetController, "userAssetService", userAssetService);
-
     }
 
     @Test

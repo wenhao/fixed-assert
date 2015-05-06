@@ -7,14 +7,12 @@ var request = require('request-promised'),
 
 describe("User Login API tests", function () {
     it("should login successfully when given correct account and password", function (done) {
-        //request({
-        //    uri: config.host + "/auth/login",
-        //    method: 'POST',
-        //    json: {"name": "test", "password": "123456"}
-        //}).then(function (res) {
-        //    expect(res.statusCode).toBe(httpStatus.OK);
-        //    //expect(res.body).toEqual({"name": "test","password":"123456"});
+        request.post(config.host + "/auth/login",{
+            json: {"name": "test", "password": "123456"}
+        }).then(function (res) {
+            expect(res.statusCode).toBe(httpStatus.OK);
+            expect(res.body).toEqual({"name": "test","password":"123456"});
             done();
-        //}).catch(utils.printErr);
+        }).catch(utils.printErr);
     });
 });
