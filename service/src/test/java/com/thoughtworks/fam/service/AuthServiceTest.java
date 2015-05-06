@@ -1,6 +1,7 @@
 package com.thoughtworks.fam.service;
 
 import com.thoughtworks.fam.dao.AuthDAO;
+import com.thoughtworks.fam.exception.AuthException;
 import com.thoughtworks.fam.web.dto.UserDTO;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,15 +37,15 @@ public class AuthServiceTest {
         assertThat(loginUser.getPassword(), is("123456"));
     }
 
-    @Test (expected = RuntimeException.class)
-    public void should_expect_runtime_exception_when_no_user_found() throws Exception {
+    @Test (expected = AuthException.class)
+    public void should_expect_auth_exception_when_no_user_found() throws Exception {
         when(authDAO.getUser(userDTO.getName())).thenReturn(null);
 
         authService.login(userDTO);
     }
 
-    @Test (expected = RuntimeException.class)
-    public void should_expect_runtime_exception_when_password_incrrect() throws Exception {
+    @Test (expected = AuthException.class)
+    public void should_expect_auth_exception_when_password_incrrect() throws Exception {
         when(authDAO.getUser(userDTO.getName())).thenReturn(new UserDTO("test", "22345"));
 
         authService.login(userDTO);

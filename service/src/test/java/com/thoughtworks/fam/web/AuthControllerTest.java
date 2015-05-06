@@ -46,5 +46,4 @@ public class AuthControllerTest {
                 .content(userJson))
                 .andExpect(status().isOk());
     }
-
 }
