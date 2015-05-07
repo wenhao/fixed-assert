@@ -4,7 +4,6 @@ import com.thoughtworks.fam.web.dto.UserDTO;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by zy on 2015/5/7.
