@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -23,6 +24,12 @@ public class UserDAOTest {
 
         assertThat(actualUser.getPassword() ,is(givenUser.getPassword()));
         assertThat(actualUser.getName(),is(givenUser.getName()));
+    }
+
+    @Test
+    public void should_get_null_when_given_unexisted_user_name(){
+        UserDTO actualUser = UserDAO.getByUserName("UnexistedUserName");
+        assertNull(actualUser);
     }
 
 
