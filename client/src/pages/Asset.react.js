@@ -27,20 +27,22 @@ var Asset = React.createClass({
   },
   render() {
     return (
-      <Paper zDepth={1}>
+      <Paper zDepth={1} className="page-asset-list">
         <RaisedButton secondary={true} onClick={this._getAssets}>
           <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
           <span className="mui-raised-button-label example-icon-button-label">Get Assets</span>
         </RaisedButton>
-        <ul>
-          <li className="asset__attribute">Name</li>
-          <li className="asset__attribute">Number</li>
-          <li className="asset__attribute">Assigned Date</li>
-          <li className="asset__attribute">Type</li>
-        </ul>
-        <ul className="asset__list">
-          {this._renderAssets()}
-        </ul>
+        <div className="asset-group">
+          <ul className="asset-header">
+            <li className="asset-attribute">Asset Name</li>
+            <li className="asset-attribute">Asset Number</li>
+            <li className="asset-attribute">Assigned Date</li>
+            <li className="asset-attribute">Asset Type</li>
+          </ul>
+          <ul className="asset-list">
+            {this._renderAssets()}
+          </ul>
+        </div>
       </Paper>
     );
   },
@@ -58,13 +60,14 @@ var Asset = React.createClass({
   },
   _renderAssets() {
     return this.state.assets.map(function(result) {
+      result.assignDate = (new Date(result.assignDate)).toLocaleDateString();
       return (
-        <li className="asset__item">
+        <li className="asset-item">
           <ul>
-            <li className="asset__attribute"><a href="/#/asset" >{result.assetName}</a></li>
-            <li className="asset__attribute">{result.assetNumber}</li>
-            <li className="asset__attribute">{result.assignDate}</li>
-            <li className="asset__attribute">{result.assetType}</li>
+            <li className="asset-attribute"><a href="/#/asset" >{result.assetName}</a></li>
+            <li className="asset-attribute">{result.assetNumber}</li>
+            <li className="asset-attribute">{result.assignDate}</li>
+            <li className="asset-attribute">{result.assetType}</li>
           </ul>
         </li>
       )

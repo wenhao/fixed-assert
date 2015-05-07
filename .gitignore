@@ -16,3 +16,7 @@ out
 # Gradle #
 .gradle
 build
+
+# Npm build node_modules #
+api/node_modules
+client/node_modules

@@ -1,5 +1,12 @@
 apply plugin: 'java'
 apply plugin: 'spring-boot'
+apply plugin: 'jacoco'
+
+ext {
+    expectedLineCoverage = 31
+    expectedBranchCoverage = 58
+}
+
 
 repositories {
     mavenCentral()
@@ -10,10 +17,37 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     compile("org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion")
     compile("com.google.guava:guava:$guavaVersion")
+    compile("com.google.code.gson:gson:$gsonVersion")
     runtime("com.h2database:h2:$h2Version")
-
     testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testCompile("org.assertj:assertj-core:$assertJVersion")
     testCompile("com.jayway.jsonpath:json-path-assert:$jsonPathVersion")
 }
 
+
+task checkTestCoverage << {
+    def coverageReportPath = "service/build/reports/jacoco/test/html/index.html"
+    def checkReportPath = "http://localhost:63342/fixed-asset/fixed-asset-fixed-asset/build/reports/jacoco/test/html/index.html"
+    def coverageFile = new File(coverageReportPath)
+    def matcher = ( coverageFile.text =~ /<tfoot>(.*)<\/tfoot>/ )
+    def coverageString = new XmlParser().parseText(matcher[0][0])
+
+    def lineCoverageString = coverageString.tr.td[2].text()
+    def branchCoverageString = coverageString.tr.td[4].text()
+    def actualLineCoverage=  lineCoverageString.substring(0,lineCoverageString.length() - 1).toInteger()
+    def actualBranchCoverage=  branchCoverageString.substring(0,branchCoverageString.length() - 1).toInteger()
+
+    if(actualLineCoverage < expectedLineCoverage )
+    {
+        throw new RuntimeException("Code line coverage is "+actualLineCoverage+"%, but expected is "+expectedLineCoverage+"%.\n"+"Please check "+checkReportPath +" for more detail.")
+    }
+
+    if(actualBranchCoverage < expectedBranchCoverage )
+    {
+        throw new RuntimeException("Code branch coverage is "+actualBranchCoverage+"%, but expected is "+expectedBranchCoverage+"%.\n"+"Please check "+checkReportPath +" for more detail.")
+    }
+}
+
+checkTestCoverage.dependsOn jacocoTestReport
+
+test.finalizedBy checkTestCoverage
