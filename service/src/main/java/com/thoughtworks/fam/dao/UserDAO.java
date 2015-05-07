@@ -1,11 +1,10 @@
 package com.thoughtworks.fam.dao;
 
-import com.thoughtworks.fam.web.dto.UserAssetDTO;
 import com.thoughtworks.fam.web.dto.UserDTO;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by zy on 2015/5/7.
@@ -22,7 +21,11 @@ public class UserDAO {
     }
 
     public static UserDTO getByUserName(String userName) {
-        List<UserDTO> userDTOs = userCollections.stream().filter(t -> t.getName() == userName).collect(Collectors.toList());
-        return userDTOs.get(0);
+        for (UserDTO user :userCollections){
+            if (user.getName()==userName){
+                return user;
+            }
+        }
+        return null;
     }
 }
