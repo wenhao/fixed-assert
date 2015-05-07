@@ -31,6 +31,4 @@ public class UserDAOTest {
         UserDTO actualUser = UserDAO.getByUserName("UnexistedUserName");
         assertNull(actualUser);
     }
-
-
 }
