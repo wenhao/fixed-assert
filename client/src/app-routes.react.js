@@ -21,7 +21,7 @@ const appRoutes = (
     <DefaultRoute name='home' handler={Home}/>
     <Route name='user' handler={User}/>
     <Route name='asset' handler={Asset}/>
-    <Route name='userCreation' handle={UserCreation}/>
+    <Route name='userCreation' handler={UserCreation}/>
     <NotFoundRoute handler={NotFound}/>
   </Route>
 )
