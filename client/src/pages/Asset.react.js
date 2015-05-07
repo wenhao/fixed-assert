@@ -60,6 +60,7 @@ var Asset = React.createClass({
   },
   _renderAssets() {
     return this.state.assets.map(function(result) {
+      result.assignDate = (new Date(result.assignDate)).toLocaleDateString();
       return (
         <li className="asset-item">
           <ul>
