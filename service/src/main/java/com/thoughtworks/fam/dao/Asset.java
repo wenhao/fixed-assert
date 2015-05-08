@@ -6,13 +6,15 @@ import java.util.Date;
 @Entity
 @Table(name = "TABLE_ASSETS")
 public class Asset {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ASSET_ID")
     private long id;
 
-    @Column(name = "USER_NAME")
-    private String userName;
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
     @Column(name = "ASSET_NAME")
     private String assetName;
@@ -41,6 +43,10 @@ public class Asset {
         return id;
     }
 
+    public User getUser() {
+        return user;
+    }
+
     public String getAssetName() {
         return assetName;
     }
@@ -57,15 +63,11 @@ public class Asset {
         return assetType;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
     @Override
     public String toString() {
         return "Asset{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
+                ", user=" + user +
                 ", assetName='" + assetName + '\'' +
                 ", assetNumber='" + assetNumber + '\'' +
                 ", assignedDate=" + assignedDate +

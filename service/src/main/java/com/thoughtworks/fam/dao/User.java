@@ -18,6 +18,9 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Asset> asserts;
+
     protected User() {
     }
 
@@ -30,14 +33,16 @@ public class User {
         return userName;
     }
 
-
     public String getPassword() {
         return password;
     }
 
-
     public long getId() {
         return id;
+    }
+
+    public List<Asset> getAsserts() {
+        return asserts;
     }
 
     @Override
