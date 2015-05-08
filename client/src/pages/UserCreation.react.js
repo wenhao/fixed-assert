@@ -1,31 +1,48 @@
+
 import React from 'react'
 import {
     RaisedButton,
-    TextField,
     FontIcon,
+    TextField,
     Paper
     } from 'material-ui'
 import {
     State
     } from 'react-router'
 
+import assetApi from '../services/asset'
 
-const UserCreation = React.createClass({
+var UserCreation = React.createClass({
+    _doClear(){
+        this.refs.userName.clearValue();
+        this.refs.password.clearValue();
+
+    },
     render() {
         return (
-            <Paper zDepth={1}>
-               // <TextField hintText="hint">Please display.</TextField>
 
-                <ul>
-                    <li className="asset__attribute">Name</li>
-                    <li className="asset__attribute">Number</li>
-                    <li className="asset__attribute">Assigned Date</li>
-                    <li className="asset__attribute">Type</li>
-                </ul>
+            <Paper zDepth={1} >
+                <div>
+                    <h1>Creat a new user!</h1>
+                </div>
+                <div>
+                    <TextField ref="userName"
+                        hintText="Your Name:Sun"
+                        floatingLabelText="User Name"
+                    />
+                </div>
+                <div>
+                    <TextField ref="password"
+                        hintText="Password:123@de"
+                        floatingLabelText="Password"
+                    />
+                </div>
+                <RaisedButton label="Clear" secondary={true} onClick={this._doClear}/>
+                <RaisedButton label="Create" secondary={true} />
+
             </Paper>
-        )
+        );
     }
-
 })
 
 export default UserCreation

@@ -27,6 +27,7 @@ var Asset = React.createClass({
   },
   render() {
     return (
+
       <Paper zDepth={1}>
         <RaisedButton secondary={true} onClick={this._getAssets}>
           <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
