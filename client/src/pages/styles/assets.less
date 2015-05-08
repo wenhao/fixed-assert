@@ -1,10 +1,27 @@
-.asset__attribute {
-  display: inline-block;
-  padding: 10px;
-  font-size: 15px;
-}
+.page-asset-list {
+  .asset-group {
+    margin: 5px auto;
+  }
 
-.asset__list {
-  overflow-y: scroll;
-  height:(10+1)*35px;
+  .asset-header {
+    background-color: lightblue;
+    font-weight: bold;
+  }
+
+  .asset-list {
+    overflow-y: scroll;
+    height: (10+1)*35px;
+  }
+
+  .asset-item {
+    border-bottom: 1px solid lightgray;
+  }
+
+  .asset-attribute {
+    display: inline-block;
+    padding: 10px;
+    font-size: 15px;
+    width: 20%;
+    text-align: center;
+  }
 }

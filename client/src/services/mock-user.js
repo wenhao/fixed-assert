@@ -1,6 +1,6 @@
 export default [
   {
-    pattern: 'http://localhost:8080/user/(login|logout)',
+    pattern: 'http://localhost:8080/auth/(login|logout)',
     // callback that returns the data
     fixtures: function () {
       return 'success'

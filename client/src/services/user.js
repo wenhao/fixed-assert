@@ -8,11 +8,11 @@ const endpoint = 'http://localhost:8080'
 const userApis = {
   login: {
     method: 'post',
-    url: '/user/login'
+    url: '/auth/login'
   },
   logout: {
     method: 'post',
-    url: '/user/logout'
+    url: '/auth/logout'
   },
   assets: {
     method: 'post',

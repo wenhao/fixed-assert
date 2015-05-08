@@ -1,9 +1,9 @@
 package com.thoughtworks.fam.web;
 
 
+import com.google.common.base.Strings;
 import com.thoughtworks.fam.service.UserAssetService;
 import com.thoughtworks.fam.web.dto.UserAssetDTO;
-import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,4 +25,5 @@ public class UserAssetController {
         }
         return userAssetService.getUserAssets(userId);
     }
+
 }
