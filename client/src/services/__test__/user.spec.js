@@ -12,21 +12,17 @@ describe('User Services', function() {
       .catch(function(err) {
         done(err)
       })
-  })
-  it('should be able to get his assets', function(done) {
-    user.assets({
-      name: 'Sam',
-      token: 'xxxx'
-    }).then(function(assets) {
-      assets.should.be.an.Object
-      assets.data.should.be.an.Array
-      assets.data.length.should.be.above(1)
-      assets.data[0].name.should.be.equal('Zac Book')
-      assets.data[0].type.should.be.equal('laptop')
-      done()
-    })
-    .catch(function(err) {
-      done(err)
-    })
-  })
-})
+  });
+  it('should be able to create user', function(done) {
+    user.create({
+      name: 'LSQ',
+      password: '123456'
+    }).then(function(result){
+      result.should.be.equal('create user successfully');
+      done();
+    }).catch(function(error) {
+      done(error);
+    });
+  });
+
+});

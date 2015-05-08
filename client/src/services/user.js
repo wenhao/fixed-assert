@@ -1,9 +1,10 @@
+'use strict';
 import request from 'superagent'
 import apisBuilder from '../../utils/apisBuilder'
 
-let mock
+let mock;
 
-const endpoint = 'http://localhost:8080'
+const endpoint = 'http://localhost:8080';
 
 const userApis = {
   login: {
@@ -14,11 +15,11 @@ const userApis = {
     method: 'post',
     url: '/auth/logout'
   },
-  assets: {
+  create: {
     method: 'post',
-    url: '/user/assets'
+    url: '/user'
   }
-}
+};
 
 // mock the http request if not production
 if (process.env.NODE_ENV == 'development' || process.env.NODE_ENV == 'test') {
