@@ -26,9 +26,9 @@ var Home = React.createClass({
       <Paper zDepth={1} className="page-auth">
         <div className="login-group">
           <h3>User Login</h3>
-          <div><TextField hintText="User Name" floatingLabelText="User Name"/></div>
-          <div><TextField hintText="Password" floatingLabelText="Password"/></div>
-          <h5 className="error-label">{this.state.title}</h5>
+          <div><TextField ref="username" hintText="User Name" floatingLabelText="User Name"/></div>
+          <div><TextField ref="password" type="password" hintText="Password" floatingLabelText="Password"/></div>
+          <h5 className="error-label">{this.state.errorMsg}</h5>
           <RaisedButton secondary={true} onClick={this._login}>
             <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
             <span className="mui-raised-button-label example-icon-button-label">Login</span>
@@ -39,14 +39,19 @@ var Home = React.createClass({
   },
 
   _login() {
-    userApi.login({"name": "test", "password": "123452"})
-      .then(this.onLogin, this.onLoginFail)
+    var username = this.refs.username.getValue();
+    var password = this.refs.password.getValue();
+    if(!username || !password) {
+      this.setState({errorMsg: 'Username or Password cannot be empty'});
+    } else {
+      userApi.login({"name": username, "password": password}).then(this.onLogin, this.onLoginFail);
+    }
   },
   onLogin(msg) {
-    this.setState({title: msg})
+    this.context.router.transitionTo('asset');
   },
   onLoginFail(err) {
-    this.setState({title: err.response.body.errorMessage})
+    this.setState({errorMsg: err.response.body.errorMessage})
   }
 });
 
