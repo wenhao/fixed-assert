@@ -43,7 +43,7 @@ var Home = React.createClass({
     var username = this.refs.username.getValue();
     var password = this.refs.password.getValue();
     if(!username || !password) {
-      this.setState({errorMsg: 'User name or password cannot be empty'});
+      this.setState({errorMsg: 'User name or password cannot be empty.'});
     } else {
       userApi.login({"name": username, "password": password}).then(this.onLogin, this.onLoginFail);
     }

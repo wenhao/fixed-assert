@@ -17,11 +17,11 @@ public class AuthService {
     public UserDTO login(UserDTO loginUser) {
         UserDTO user = authDAO.getUser(loginUser.getName());
         if(user == null) {
-            throw new AuthException(ErrorCode.USER_NOT_EXIST,"loginUser not exist");
+            throw new AuthException(ErrorCode.USER_NOT_EXIST,"The user is not exist.");
         }
 
         if(!user.getPassword().equals(loginUser.getPassword())){
-            throw new AuthException(ErrorCode.PASSWORD_NOT_MATCHED,"loginUser password not matched");
+            throw new AuthException(ErrorCode.PASSWORD_NOT_MATCHED,"The password is not correct, please input again.");
         }
 
         return user;
