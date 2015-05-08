@@ -1,7 +1,6 @@
 package com.thoughtworks.fam.dao;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "TABLE_USERS")

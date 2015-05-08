@@ -18,7 +18,8 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public @ResponseBody
+
+    @ResponseBody
     UserDTO create(@RequestBody UserDTO userDTO) {
         if (isUserExisted(userDTO)){
             throw new UserException(ErrorCode.USER_NAME_CONFLICT,"user has existed");

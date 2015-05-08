@@ -17,7 +17,6 @@ public class UserAssetDAO {
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     public List<UserAssetDTO> getUserAssets(String userId) {
-
         // TODO: mock some data
 
         List<UserAssetDTO> userAssetDTOs = new ArrayList<UserAssetDTO>();
@@ -156,7 +155,6 @@ public class UserAssetDAO {
         }
         userAssetDTOs.add(userAsset11);
 
-
         // TODO: the sort is from the database
         Collections.sort(userAssetDTOs, new Comparator<UserAssetDTO>() {
             @Override
@@ -164,7 +162,6 @@ public class UserAssetDAO {
                 return o1.getAssetName().compareTo(o2.getAssetName());
             }
         });
-
         return userAssetDTOs;
     }
 }

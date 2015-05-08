@@ -7,7 +7,7 @@ public class UserAssetDTO {
     private String assetNumber;
     private String assetType;
     private Date assignDate;
-    private String OwnerName;
+    private String ownerName;
 
     public String getAssetName() {
         return assetName;
@@ -42,10 +42,10 @@ public class UserAssetDTO {
     }
 
     public String getOwnerName() {
-        return OwnerName;
+        return ownerName;
     }
 
     public void setOwnerName(String ownerName) {
-        OwnerName = ownerName;
+        this.ownerName = ownerName;
     }
 }

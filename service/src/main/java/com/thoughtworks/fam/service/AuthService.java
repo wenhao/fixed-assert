@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     @Autowired
-    AuthDAO authDAO;
+    private AuthDAO authDAO;
 
     public UserDTO login(UserDTO loginUser) {
         UserDTO user = authDAO.getUser(loginUser.getName());
