@@ -9,7 +9,7 @@ ThoughtWorks Fixed Asset Management System
 
 ### Jenkins
 * [Pipeline](http://54.223.177.169:10086/view/fixed-asset-build/)
-* [Monitor](http://ci.viff.io:10086/view/FIXED-ASSER-MONITOR/)
+* [Monitor](http://54.223.177.169:10086/view/fixed-asset-monitor/)
 
 ## Techs
 ## Front End
