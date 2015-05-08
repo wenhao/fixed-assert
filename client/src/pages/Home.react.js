@@ -29,7 +29,8 @@ var Home = React.createClass({
           <div><TextField ref="username" hintText="User name" floatingLabelText="User name"/></div>
           <div><TextField ref="password" type="password" hintText="Password" floatingLabelText="Password"/></div>
           <h5 className="error-label">{this.state.errorMsg}</h5>
-          <RaisedButton secondary={true} onClick={this._login}>
+          <div><a href="https://www.google.com">Forgot your password?</a></div>
+          <RaisedButton className="login-button" secondary={true} onClick={this._login}>
             <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
             <span className="mui-raised-button-label example-icon-button-label">Log in</span>
           </RaisedButton>
