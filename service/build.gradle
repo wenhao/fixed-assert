@@ -33,17 +33,16 @@ checkstyleTest.exclude '**/*.*'
 
 cobertura {
     coverageFormats = ['html']
-    coverageIncludes = []
+    coverageEncoding = 'UTF-8'
     coverageExcludes = []
+    coverageIgnoreMethodAnnotations = []
     coverageCheckBranchRate = 80
     coverageCheckLineRate = 80
     coverageCheckPackageBranchRate = 80
     coverageCheckPackageLineRate = 80
     coverageCheckTotalBranchRate = 80
     coverageCheckTotalLineRate = 80
+    coverageIgnoreTrivial = true
     //TODO temp disable test coverage
     coverageCheckHaltOnFailure = false
-    coverageReportDir = new File("$buildDir/reports/cobertura")
 }
-
-test.finalizedBy(project.tasks.coberturaCheck)

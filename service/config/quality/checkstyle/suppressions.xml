@@ -5,6 +5,7 @@
         "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
+    <!-- TODO delete them in near future -->
     <suppress files="R.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="BuildConfig.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="Test" checks="[a-zA-Z0-9]*"/>

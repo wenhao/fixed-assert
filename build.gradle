@@ -28,7 +28,7 @@ idea {
     }
 }
 
-defaultTasks 'clean', 'build'
+defaultTasks 'clean', 'cobertura', 'coberturaCheck', 'build'
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
