@@ -73,7 +73,7 @@ const User = React.createClass({
         self.refs.password.setValue('');
         self.setState({userlist: self.state.userlist + result.body.name + ', '});
       }, function(error) {
-        self.setState({errorMsg: 'user has already existed'})
+        self.setState({errorMsg: 'The user name already exist, please use another one.'})
       });
     }
   }
