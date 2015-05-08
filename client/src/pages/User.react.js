@@ -39,7 +39,7 @@ const User = React.createClass({
           dismissOnClickAway={this.state.dismissOnClickAway}>
           <div className="create-group">
             <div><TextField ref="username" hintText="User name" floatingLabelText="User name"/></div>
-            <div><TextField ref="password" type="password" hintText="Password" floatingLabelText="Password"/></div>
+            <div><TextField ref="password" hintText="Password" floatingLabelText="Password"/></div>
             <h5 className="error-label">{this.state.errorMsg}</h5>
           </div>
         </Dialog>
@@ -73,7 +73,7 @@ const User = React.createClass({
         self.refs.password.setValue('');
         self.setState({userlist: self.state.userlist + result.body.name + ', '});
       }, function(error) {
-        self.setState({errorMsg: error.response.body.errorMessage})
+        self.setState({errorMsg: 'user has already existed'})
       });
     }
   }
