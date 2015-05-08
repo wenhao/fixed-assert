@@ -3,7 +3,8 @@ import {
     RaisedButton,
     FontIcon,
     Paper,
-    TextField
+    TextField,
+    Dialog
     } from 'material-ui'
 import {
     State
@@ -17,40 +18,62 @@ const User = React.createClass({
 
   getInitialState() {
     return {
-      title: ''
+      errorMsg: '',
+      userlist: '用户列表：yzhou, '
     }
   },
 
   render() {
     return (
-      <Paper zDepth={1} className="page-user">
-        <div className="create-group">
-          <h3>Create a new user</h3>
-          <div><TextField ref="username" hintText="User name" floatingLabelText="User name"/></div>
-          <div><TextField ref="password" type="password" hintText="Password" floatingLabelText="Password"/></div>
-          <h5 className="error-label">{this.state.errorMsg}</h5>
-          <RaisedButton secondary={true} onClick={this._createUser}>
-            <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
-            <span className="mui-raised-button-label example-icon-button-label">Create</span>
-          </RaisedButton>
-        </div>
+
+      <Paper zDepth={1}>
+        <Dialog className="page-user"
+          ref="dialog"
+          title="Create a new user"
+          actions={[
+            { text: 'Cancel' },
+            { text: 'Create', onClick: this._createUser, ref: 'ok' }
+          ]}
+          actionFocus="ok"
+          modal={this.state.modal}
+          dismissOnClickAway={this.state.dismissOnClickAway}>
+          <div className="create-group">
+            <div><TextField ref="username" hintText="User name" floatingLabelText="User name"/></div>
+            <div><TextField ref="password" type="password" hintText="Password" floatingLabelText="Password"/></div>
+            <h5 className="error-label">{this.state.errorMsg}</h5>
+          </div>
+        </Dialog>
+        <h2>{this.state.userlist}</h2>
+        <RaisedButton secondary={true} onClick={this._popupCreateUser}>
+          <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
+          <span className="mui-raised-button-label example-icon-button-label">New User</span>
+        </RaisedButton>
+
       </Paper>
     )
   },
 
+  _popupCreateUser() {
+    this.refs.dialog.show();
+  },
+
   _createUser() {
+    var self = this;
     var username = this.refs.username.getValue();
     var password = this.refs.password.getValue();
     if(!username || !password) {
-      this.setState({errorMsg: 'User name or password cannot be empty'});
+      self.setState({errorMsg: 'User name or password cannot be empty'});
     } else {
       userApi.create({'name': username, 'password': password}).then(function(result){
         console.log(result);
         // TODO: create user successfully
-        alert("create user successfully");
-        this.setState({errorMsg: ''});
+        self.refs.dialog.dismiss();
+        self.setState({errorMsg: ''});
+        self.refs.username.setValue('');
+        self.refs.password.setValue('');
+        self.setState({userlist: self.state.userlist + result.body.name + ', '});
       }, function(error) {
-        this.setState({errorMsg: error.response.body.errorMessage})
+        self.setState({errorMsg: error.response.body.errorMessage})
       });
     }
   }
