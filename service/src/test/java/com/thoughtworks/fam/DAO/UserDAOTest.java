@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
  * Created by zy on 2015/5/7.
  */
 public class UserDAOTest {
-    private UserDAO userDAO = new UserDAO();
+    private UserDAO userDAO;
 
     @Test
     public void should_save_user_and_get_the_user_by_name(){

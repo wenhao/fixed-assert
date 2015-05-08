@@ -10,7 +10,10 @@ import java.util.List;
  */
 public class UserDAO {
 
-    private static List<UserDTO>  userCollections = new ArrayList<>();
+    private static List<UserDTO>  userCollections = new ArrayList<UserDTO>();
+    static {
+        userCollections.add(new UserDTO("yzhou","P@ss123456"));
+    }
 
     public UserDAO() {
     }
