@@ -1,10 +1,14 @@
 buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
     }
 
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootGradlePluginVersion")
+        classpath(
+                "org.springframework.boot:spring-boot-gradle-plugin:$springBootGradlePluginVersion",
+                "net.saliman:gradle-cobertura-plugin:$coberturaPluginVersion"
+        )
     }
 }
 
