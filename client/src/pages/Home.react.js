@@ -2,7 +2,8 @@ import React from 'react'
 import {
   RaisedButton,
   FontIcon,
-  Paper
+  Paper,
+  TextField
 } from 'material-ui'
 import {
   State
@@ -16,31 +17,36 @@ var Home = React.createClass({
 
   getInitialState() {
     return {
-      title: 'Hello World!'
+      title: ''
     }
   },
 
   render() {
     return (
-      <Paper zDepth={1}>
-        <h2>{this.state.title}</h2>
-        <RaisedButton secondary={true} onClick={this._login}>
-          <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
-          <span className="mui-raised-button-label example-icon-button-label">Login</span>
-        </RaisedButton>
+      <Paper zDepth={1} className="page-auth">
+        <div className="login-group">
+          <h3>User Login</h3>
+          <div><TextField hintText="User Name" floatingLabelText="User Name"/></div>
+          <div><TextField hintText="Password" floatingLabelText="Password"/></div>
+          <h5 className="error-label">{this.state.title}</h5>
+          <RaisedButton secondary={true} onClick={this._login}>
+            <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
+            <span className="mui-raised-button-label example-icon-button-label">Login</span>
+          </RaisedButton>
+        </div>
       </Paper>
     );
   },
 
   _login() {
-    userApi.login()
+    userApi.login({"name": "test", "password": "123452"})
       .then(this.onLogin, this.onLoginFail)
   },
   onLogin(msg) {
     this.setState({title: msg})
   },
   onLoginFail(err) {
-    this.setState({title: err.message})
+    this.setState({title: err.response.body.errorMessage})
   }
 });
 
