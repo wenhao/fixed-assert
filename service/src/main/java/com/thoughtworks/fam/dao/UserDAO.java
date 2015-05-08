@@ -24,7 +24,7 @@ public class UserDAO {
 
     public static UserDTO getByUserName(String userName) {
         for (UserDTO user :userCollections){
-            if (user.getName()==userName){
+            if (user.getName().equals(userName)){
                 return user;
             }
         }
