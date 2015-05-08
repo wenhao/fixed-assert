@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'spring-boot'
 apply plugin: 'jacoco'
-apply from: '../config/quality.gradle'
+apply plugin: 'checkstyle'
 
 ext {
     expectedLineCoverage = 31
@@ -50,5 +50,12 @@ task checkTestCoverage << {
 }
 
 checkTestCoverage.dependsOn jacocoTestReport
+
+checkstyle {
+    configFile = file('config/quality/checkstyle/checkstyle.xml')
+    configProperties.checkstyleSuppressionsPath = file("config/quality/checkstyle/suppressions.xml")
+}
+
+checkstyleTest.exclude '**/*.*'
 
 test.finalizedBy checkTestCoverage
