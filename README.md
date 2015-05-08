@@ -1,4 +1,4 @@
-[![Build Status](http://ci.viff.io:10086/job/fixed-asset-build/badge/icon)](http://ci.viff.io:10086/job/fixed-asset-build/)
+[![Build Status](http://54.223.177.169:10086/job/fixed-asset-build/badge/icon)](http://54.223.177.169:10086/job/fixed-asset-build)
 
 # fixed-asset
 ThoughtWorks Fixed Asset Management System
@@ -8,7 +8,7 @@ ThoughtWorks Fixed Asset Management System
 * [Board](https://trello.com/b/TfyOqNfw/thoughtworks-assets-management-team2)
 
 ### Jenkins
-* [Pipeline](http://ci.viff.io:10086/view/FIXED-ASSET-PIPELINE/)
+* [Pipeline](http://54.223.177.169:10086/view/fixed-asset-build/)
 * [Monitor](http://ci.viff.io:10086/view/FIXED-ASSER-MONITOR/)
 
 ## Techs
