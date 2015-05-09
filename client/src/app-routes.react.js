@@ -10,7 +10,8 @@ import {
   Home,
   User,
   Asset,
-  NotFound
+  NotFound,
+  Login
 } from './pages'
 
 import App from './app.react'
@@ -20,6 +21,7 @@ const appRoutes = (
     <DefaultRoute name='home' handler={Home}/>
     <Route name='user' handler={User}/>
     <Route name='asset' handler={Asset}/>
+    <Route name='login' handler={Login}/>
     <NotFoundRoute handler={NotFound}/>
   </Route>
 )
