@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'spring-boot'
 apply plugin: 'checkstyle'
 apply plugin: 'cobertura'
-
+apply plugin: 'docker'
 
 repositories {
     mavenLocal()
@@ -21,7 +21,16 @@ dependencies {
     testCompile("com.jayway.jsonpath:json-path-assert:$jsonPathVersion")
 }
 
-
+task buildDocker(type: Docker, dependsOn: build) {
+    applicationName = jar.baseName
+    dockerfile = file('src/main/docker/Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
+}
 
 checkstyle {
     configFile = file('config/quality/checkstyle/checkstyle.xml')

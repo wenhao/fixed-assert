@@ -5,8 +5,32 @@
         "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
-    <!-- TODO delete them in near future -->
-    <suppress files="R.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="BuildConfig.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="Test" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ApplicationRunner.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="Asset.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="AuthDAO.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="User.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserAssetDAO.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserDAO.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="AuthException.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="BaseResponseException.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="ErrorCode.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="GlobalExceptionHandler.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserException.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="CORSFilter.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="AssetRepository.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="AssetService.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="AssetServiceImpl.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="AuthService.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserAssetService.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserRepository.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserService.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserServiceImpl.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="ErrorInfoDTO.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="HelloWorldDTO.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserAssetDTO.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserDTO.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="AuthController.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="HelloWorldController.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserAssetController.java" checks="[a-zA-Z0-9]*" />
+    <suppress files="UserController.java" checks="[a-zA-Z0-9]*" />
 </suppressions>
