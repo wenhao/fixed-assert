@@ -1,5 +1,5 @@
-2015-05-09:
-Learn:
+## 2015-05-09:
+#### Learn:
 1. 更深入理解TDD(比如如何驱动Service测试)，熟悉Agile流程。
 2. 如何写前端测试。
 3. Story完成不错。
@@ -7,25 +7,24 @@ Learn:
 5. TDD的实践加强，编码的过程。
 6. 对Agile和TDD感触比较深。
 
-Improve:
+#### Improve:
 1. 端到端的测试，更好的写好UT。
 2. 学前端的UT测试。
 3. 加强refactor, 熟悉intellij快捷键。
 4. 看spring文档，学会如何配置spring。
 
-
-Puzzle:
-1. 翻墙会不会。
+#### Puzzle:
+1. 翻墙不会。
 2. API测试的作用和好处。
 3. 动手太慢，不会划分tasks。
 4. 很多名词不懂，markdown不会用。
 
-Action:
+#### Action:
 1. 练习Unit Test。
-2. 加强重构，熟悉快捷键。
-3. 熟悉Spring Boot架构。
-4. type.io & type.com。
+2. 练习重构，熟悉快捷键。
+3. 熟悉Spring Boot框架。
+4. type.io & type.com，练习打字速度。
 5. 完成story。
 
-Feedback:
-1. 尽量Pair
+#### Feedback:
+1. 现场pair的效果很好，希望每次都能和有经验的Dev pair。
