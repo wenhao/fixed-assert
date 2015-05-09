@@ -55,7 +55,7 @@ var Login = React.createClass({
     }
   },
   onLogin(msg) {
-    this.context.router.transitionTo('asset');
+    this.context.router.transitionTo('user');
   },
   onLoginFail(err) {
     this.setState({errorMsg: err.response.body.errorMessage})
