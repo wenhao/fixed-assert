@@ -24,9 +24,10 @@ export default [
             this.errorMessage = 'The user is not exist.'
             this.httpStatus = 401
           };
+          return
         }
       }
-      throw new Error('Request not found!')
+      //throw new Error('Request not found!')
     },
     // `match`: result of the resolution of the regular expression
     // `data`: data returns by `fixtures` attribute

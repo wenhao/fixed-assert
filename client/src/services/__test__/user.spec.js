@@ -12,7 +12,10 @@ describe('User Services', function() {
       data.username.should.be.equal('admin')
       done()
     })
-    .catch(done)
+    .catch(function(err) {
+        console.log(err)
+        done()
+      })
   });
   it('should not be able to login when password is incorrect', function(done) {
     user.login({
@@ -24,8 +27,7 @@ describe('User Services', function() {
       err.httpStatus.should.be.equal(401)
       done()
     })
-    .catch(done)
-  })
+  });
   it('should not be able to login when is not exist', function(done) {
     user.login({
       username: "123",
@@ -34,10 +36,9 @@ describe('User Services', function() {
     .then(null, function(err) {
       err.errorMessage.should.be.equal('The user is not exist.')
       err.httpStatus.should.be.equal(401)
-        done()
+      done()
     })
-    .catch(done)
-  })
+  });
   it('should be able to create user', function(done) {
     user.create({
       name: 'LSQ',
