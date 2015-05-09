@@ -5,12 +5,11 @@ var request = require('request-promised'),
     config = require("../config/default.conf.js"),
     utils = require("../common/utils");
 
-describe("Helloworld API tests", function() {
-    it("should get hello world", function(done) {
-        request.get(config.host + "/helloworld", {json: true})
+describe("User Assets API tests", function() {
+    it("should get user assets", function(done) {
+        request.get(config.host + "/users/uid/assets", {json: true})
             .then(function(res) {
                 expect(res.statusCode).toBe(httpStatus.OK);
-                expect(res.body).toEqual({ message : 'Hello World' });
                 done();
             }).catch(utils.printErr);
     });
