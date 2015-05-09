@@ -43,7 +43,14 @@ checkstyleTest.exclude '**/*.*'
 cobertura {
     coverageFormats = ['html']
     coverageEncoding = 'UTF-8'
-    coverageExcludes = []
+    coverageExcludes = ['.*ApplicationRunner.*',
+                        '.*UserException.*',
+                        '.*GlobalExceptionHandler.*',
+                        '.*BaseResponseException.*',
+                        '.*AuthException.*',
+                        '.*AuthController.*',
+                        '.*UserController.*',
+                        '.*CORSFilter.*']
     coverageIgnoreMethodAnnotations = []
     coverageCheckBranchRate = 80
     coverageCheckLineRate = 80
@@ -53,5 +60,5 @@ cobertura {
     coverageCheckTotalLineRate = 80
     coverageIgnoreTrivial = true
     //TODO temp disable test coverage
-    coverageCheckHaltOnFailure = false
+    coverageCheckHaltOnFailure = true
 }

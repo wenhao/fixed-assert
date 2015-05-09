@@ -1,7 +1,7 @@
 package com.thoughtworks.fam.resource;
 
-import com.google.common.collect.Lists;
 import com.thoughtworks.fam.resource.domain.TempAsset;
+import com.thoughtworks.fam.service.TempUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,13 +28,3 @@ public class TempUserController
 
 }
 
-class TempUserService
-{
-    public List<TempAsset> getAssets()
-    {
-        List<TempAsset> assets = Lists.newArrayList();
-        assets.add(new TempAsset("Macbook", "123456", "2015-05-08", "Laptop"));
-        return assets;
-    }
-
-}
