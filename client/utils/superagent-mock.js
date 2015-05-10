@@ -2,6 +2,9 @@
 
 var qs = require('qs');
 
+var parsers = {};
+var matchList = [];
+
 /**
  * Module exports.
  */
@@ -12,7 +15,6 @@ module.exports = mock;
  */
 function mock (superagent, config) {
   var Request = superagent.Request;
-  var parsers = [];
 
   /**
    * Keep the default methods
@@ -60,14 +62,16 @@ function mock (superagent, config) {
     }
   };
 
-  // generate HTTP verb methods
+  // save matches
+  matchList = matchList.concat(config)
 
+  // generate HTTP verb methods
   require('methods').forEach(function(method){
     var name = 'delete' == method ? 'del' : method;
 
     method = method.toUpperCase();
     superagent[name] = function(url, data, fn){
-      var match = config.filter(function (parser) {
+      var match = matchList.filter(function (parser) {
         return new RegExp(parser.pattern, 'g').test(url);
       })[0] || null;
       var req;
