@@ -2,23 +2,21 @@
 
 export default [
     {
-        pattern: 'http://localhost:8080/asset/(sqlin)/list',
+        pattern: 'http://localhost:8080/users/(uid)/assets',
         // callback that returns the data
         fixtures: function () {
             return {
                 body: [{
-                    "assetName":"Mac Book 15 inch",
-                    "assetNumber":"201400357",
-                    "assetType":"MAC",
-                    "assignDate":1429891200000,
-                    "ownerName":"Waterstrong"
+                    "assetName":"MacBook1",
+                    "assetNumber":"200100357",
+                    "assignedDate":"2015-05-07",
+                    "assetType":"MAC"
                 }, {
-                    "assetName":"Mac Book 13.5 inch",
-                    "assetNumber":"201500356",
-                    "assetType":"MAC",
-                    "assignDate":1429891200000,
-                    "ownerName":"Shuiqiang Lin"}
-                ]
+                    "assetName": "MacBook2",
+                    "assetNumber": "200100356",
+                    "assignedDate": "2015-3-4",
+                    "assetType": "MAC"
+                }]
             };
         },
         // `match`: result of the resolution of the regular expression

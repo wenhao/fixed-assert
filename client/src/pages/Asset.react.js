@@ -39,6 +39,7 @@ var Asset = React.createClass({
             <li className="asset-attribute">Asset Number</li>
             <li className="asset-attribute">Assigned Date</li>
             <li className="asset-attribute">Asset Type</li>
+            <li className="asset-attribute"></li>
           </ul>
           <ul className="asset-list">
             {this._renderAssets()}
@@ -62,14 +63,14 @@ var Asset = React.createClass({
   },
   _renderAssets() {
     return this.state.assets.map(function(result) {
-      result.assignedDate = (new Date(result.assignedDate)).toLocaleDateString();
       return (
         <li className="asset-item">
           <ul>
-            <li className="asset-attribute"><a href="/#/asset" >{result.assetName}</a></li>
+            <li className="asset-attribute">{result.assetName}</li>
             <li className="asset-attribute">{result.assetNumber}</li>
             <li className="asset-attribute">{result.assignedDate}</li>
             <li className="asset-attribute">{result.assetType}</li>
+            <li className="asset-attribute"><RaisedButton label="view" secondary={true} /></li>
           </ul>
         </li>
       )
