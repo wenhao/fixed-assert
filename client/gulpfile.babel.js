@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import gutil from 'gulp-util';
+import shell from 'gulp-shell';
 import runSequence from 'run-sequence';
 
 import watcher from './tasks/libs/watcher';
@@ -9,7 +10,6 @@ import copy from './tasks/copy'
 import less from './tasks/less'
 import server from './tasks/server'
 import mocha from './tasks/mocha'
-import buildDocker from './tasks/buildDocker'
 import build from './tasks/build'
 
 build.setOptions({
@@ -40,7 +40,4 @@ gulp.task('dev', () => {
 
 gulp.task('default', ['build']);
 
-gulp.task('docker', () => {
-  watcher.setWatcher();
-  runSequence('build', 'buildDocker');
-});
+gulp.task('docker', ['build'], shell.task('docker build -t fixed-asset-client .'));
