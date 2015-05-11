@@ -5,7 +5,7 @@ import apisBuilder from '../../utils/apisBuilder';
 
 let mock;
 
-const endpoint = 'http://localhost:8080';
+let endpoint = 'http://localhost:8080';
 
 const tempAssetApis = {
     getUserAssets: {
@@ -19,6 +19,9 @@ if (process.env.NODE_ENV == 'development' || process.env.NODE_ENV == 'test') {
     mock = require('./mock-asset')
 }
 
+if(process.env.NODE_ENV === 'production') {
+    endpoint = 'http://54.223.177.169:8081';
+}
 /**
  * build apis from the config or add mock apis
  */
