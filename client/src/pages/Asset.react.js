@@ -4,7 +4,8 @@ import React from 'react'
 import {
   RaisedButton,
   FontIcon,
-  Paper
+  Paper,
+  Tabs,Tab
 } from 'material-ui'
 import {
   State
@@ -29,22 +30,29 @@ var Asset = React.createClass({
   render() {
     return (
       <Paper zDepth={1} className="page-asset-list">
-        <RaisedButton secondary={true} onClick={this._getAssets}>
+        <RaisedButton secondary={true} >
           <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
           <span className="mui-raised-button-label example-icon-button-label">Get Assets</span>
         </RaisedButton>
-        <div className="asset-group">
-          <ul className="asset-header">
-            <li className="asset-attribute">Asset Name</li>
-            <li className="asset-attribute">Asset Number</li>
-            <li className="asset-attribute">Assigned Date</li>
-            <li className="asset-attribute">Asset Type</li>
-            <li className="asset-attribute"></li>
-          </ul>
-          <ul className="asset-list">
-            {this._renderAssets()}
-          </ul>
-        </div>
+        <Tabs>
+          <Tab label="My Assets" onActive={this._getAssets}>
+            <div className="tab-template-container asset-group">
+              <ul className="asset-header">
+                <li className="asset-attribute">Asset Name</li>
+                <li className="asset-attribute">Asset Number</li>
+                <li className="asset-attribute">Assigned Date</li>
+                <li className="asset-attribute">Asset Type</li>
+                <li className="asset-attribute"></li>
+              </ul>
+              <ul className="asset-list">
+                {this._renderAssets()}
+              </ul>
+            </div>
+          </Tab>
+          <Tab label="Others Assets">
+            <div className="tab-template-container"></div>
+          </Tab>
+        </Tabs>
       </Paper>
     );
   },
