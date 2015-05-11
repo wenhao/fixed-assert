@@ -14,6 +14,10 @@ describe("User Assets API tests", function () {
                 expect(res.body[0].assetNumber).toBe("123456");
                 expect(res.body[0].assignedDate).toBe("2015-05-08");
                 expect(res.body[0].assetType).toBe("Laptop");
+                expect(res.body[1].assetName).toBe("iPhone");
+                expect(res.body[1].assetNumber).toBe("123457");
+                expect(res.body[1].assignedDate).toBe("2015-05-09");
+                expect(res.body[1].assetType).toBe("Mobile");
                 done();
             }).catch(utils.printErr);
     });

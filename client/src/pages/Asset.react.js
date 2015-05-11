@@ -10,7 +10,8 @@ import {
   State
 } from 'react-router'
 
-import assetApi from '../services/asset'
+//import assetApi from '../services/asset'
+import tempAssetApis from '../services/temp-asset.js'
 
 var Asset = React.createClass({
 
@@ -47,7 +48,8 @@ var Asset = React.createClass({
     );
   },
   _getAssets(userId) {
-     assetApi.getUserAssets(userId).then(this.onAssetsLoad, this.onAssetsLoadFailed)
+     //assetApi.getUserAssets(userId).then(this.onAssetsLoad, this.onAssetsLoadFailed)
+    tempAssetApis.getUserAssets(userId).then(this.onAssetsLoad, this.onAssetsLoadFailed)
   },
   onAssetsLoad(result) {
   console.log(result);
@@ -60,13 +62,13 @@ var Asset = React.createClass({
   },
   _renderAssets() {
     return this.state.assets.map(function(result) {
-      result.assignDate = (new Date(result.assignDate)).toLocaleDateString();
+      result.assignedDate = (new Date(result.assignedDate)).toLocaleDateString();
       return (
         <li className="asset-item">
           <ul>
             <li className="asset-attribute"><a href="/#/asset" >{result.assetName}</a></li>
             <li className="asset-attribute">{result.assetNumber}</li>
-            <li className="asset-attribute">{result.assignDate}</li>
+            <li className="asset-attribute">{result.assignedDate}</li>
             <li className="asset-attribute">{result.assetType}</li>
           </ul>
         </li>
