@@ -23,4 +23,5 @@ public class User {
     public String getAccount() {
         return account;
     }
+    public String getPassword() {return password; }
 }
