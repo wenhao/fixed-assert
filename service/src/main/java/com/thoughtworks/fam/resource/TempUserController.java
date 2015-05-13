@@ -12,36 +12,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/users")
-public class TempUserController
-{
+public class TempUserController {
     @Autowired
     private TempUserService userService;
 
     @RequestMapping(value = "/uid/assets", method = RequestMethod.GET)
-    public ResponseEntity<List<TempAsset>> getUserAssets() throws ParseException
-    {
+    public ResponseEntity<List<TempAsset>> getUserAssets() throws ParseException {
         List<TempAsset> assets = userService.getAssets();
         return new ResponseEntity<List<TempAsset>>(assets, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity createUser(@RequestBody User user)
-    {
-        Map<String, User> users = new HashMap<String, User>(){
-            {
-                put("twer", new User("twer", "123456"));
-            }
-        };
-        if(users.containsKey(user.getAccount())) {
+    public ResponseEntity createUser(@RequestBody User user) {
+        if(!userService.createUser(user)){
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
         return new ResponseEntity(HttpStatus.CREATED);
     }
+
 }
 
