@@ -69,10 +69,10 @@ var Asset = React.createClass({
     _renderAssetHeader() {
         return (
             <ul className="asset-header">
-                <li className="asset-attribute">Asset Name</li>
-                <li className="asset-attribute">Asset Number</li>
+                <li className="asset-attribute">Name</li>
+                <li className="asset-attribute">Number</li>
                 <li className="asset-attribute">Assigned Date</li>
-                <li className="asset-attribute">Asset Type</li>
+                <li className="asset-attribute">Type</li>
                 <li className="asset-attribute"></li>
             </ul>
         )
@@ -83,11 +83,11 @@ var Asset = React.createClass({
                 <li className="asset-item">
                     <ul>
                         <li className="asset-attribute">{result.assetName}</li>
-                        <li className="asset-attribute">{result.assetNumber}</li>
+                        <li className="asset-attribute"><a href="https://github.com/wenhao/fixed-asset">{result.assetNumber}</a></li>
                         <li className="asset-attribute">{result.assignedDate}</li>
                         <li className="asset-attribute">{result.assetType}</li>
                         <li className="asset-attribute">
-                            <RaisedButton label="view" secondary={true} />
+                            <RaisedButton label="Button" secondary={true} linkButton={true} />
                         </li>
                     </ul>
                 </li>
