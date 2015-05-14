@@ -41,14 +41,24 @@ describe('User Services', function() {
   });
   it('should be able to create user', function(done) {
     user.create({
-      name: 'LSQ',
+      account: 'LSQ',
       password: '123456'
     }).then(function(result){
-      result.should.be.equal('create user successfully');
+      console.log(result);
+      result.statusCode.should.be.equal(201);
       done();
     }).catch(function(error) {
       done(error);
     });
   });
 
+  it('should be create user failed when user exist', function (done) {
+    user.create({
+      account:'twer',
+      password: '123456'
+    }).then(null, function (err) {
+      err.statusCode.should.be.equal(409);
+      done();
+    });
+  })
 });

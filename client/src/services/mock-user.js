@@ -39,9 +39,14 @@ export default [
       }
     }
   }, {
-    pattern: 'http://localhost:8080/(user)',
-    fixtures: function() {
-      return 'create user successfully'
+    pattern: 'http://localhost:8080/(users)',
+    fixtures: function(data) {
+      if(data.account === 'twer') {
+        throw new function() {
+          this.statusCode = 409
+        };
+      }
+      return {statusCode: 201};
     },
     callback: function(match, data) {
       if(match[1]) {

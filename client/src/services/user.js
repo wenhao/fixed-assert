@@ -17,7 +17,7 @@ const userApis = {
   },
   create: {
     method: 'post',
-    url: '/user'
+    url: '/users'
   }
 };
 
