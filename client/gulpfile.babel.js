@@ -10,6 +10,7 @@ import copy from './tasks/copy'
 import less from './tasks/less'
 import server from './tasks/server'
 import mocha from './tasks/mocha'
+import checkCoverage from './tasks/check-coverage'
 import build from './tasks/build'
 
 build.setOptions({

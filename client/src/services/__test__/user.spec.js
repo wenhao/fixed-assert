@@ -13,7 +13,6 @@ describe('User Services', function() {
       done()
     })
     .catch(function(err) {
-        console.log(err)
         done()
       })
   });
