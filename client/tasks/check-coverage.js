@@ -6,7 +6,6 @@ import path from 'path'
 import mergeSteam from 'merge-stream'
 import istanbul from 'gulp-istanbul'
 import babel from 'gulp-babel'
-import isparta from 'isparta'
 import watcher from './libs/watcher'
 import './libs/jsdom'
 
@@ -37,7 +36,6 @@ const task = gulp.task(TASK_NAME, ()=> {
 		.pipe(babel())
 		.pipe(istanbul({
 			includeUntested: true,
-			instrumenter: isparta.Instrumenter,
 		}))
 		.pipe(istanbul.hookRequire())
 		.on('finish', ()=> {
