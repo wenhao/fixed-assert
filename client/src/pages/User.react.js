@@ -19,7 +19,7 @@ const User = React.createClass({
   getInitialState() {
     return {
       errorMsg: '',
-      userlist: '用户列表：yzhou, '
+      userlist: '用户列表：twer'
     }
   },
 
@@ -38,8 +38,8 @@ const User = React.createClass({
           modal={this.state.modal}
           dismissOnClickAway={this.state.dismissOnClickAway}>
           <div className="create-group">
-            <div><TextField ref="username" hintText="User name" floatingLabelText="User name"/></div>
-            <div><TextField ref="password" hintText="Password" floatingLabelText="Password"/></div>
+            <div><TextField ref="account" hintText="User name" floatingLabelText="User name"/></div>
+            <div><TextField ref="password" hintText="Initial password" floatingLabelText="Initial password" defaultValue="P@ss123456" disabled={true}/></div>
             <h5 className="error-label">{this.state.errorMsg}</h5>
           </div>
         </Dialog>
@@ -59,19 +59,18 @@ const User = React.createClass({
 
   _createUser() {
     var self = this;
-    var username = this.refs.username.getValue();
-    var password = this.refs.password.getValue();
-    if(!username || !password) {
+    var account = self.refs.account.getValue();
+    var password = self.refs.password.getValue();
+    if(!account || !password) {
       self.setState({errorMsg: 'User name or password cannot be empty'});
     } else {
-      userApi.create({'name': username, 'password': password}).then(function(result){
+      userApi.create({'account': account, 'password': password}).then(function(result){
         console.log(result);
         // TODO: create user successfully
         self.refs.dialog.dismiss();
         self.setState({errorMsg: ''});
-        self.refs.username.setValue('');
-        self.refs.password.setValue('');
-        self.setState({userlist: self.state.userlist + result.body.name + ', '});
+        self.setState({userlist: self.state.userlist + ', '+ account });
+        self.refs.account.setValue('');
       }, function(error) {
         self.setState({errorMsg: 'The user name already exist, please use another one.'})
       });
