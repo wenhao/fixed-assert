@@ -13,7 +13,7 @@ describe('Login Component', function() {
     TestUtils.isCompositeComponent(login).should.be.equal(true)
     TestUtils.isCompositeComponentWithType(login, Login)
   })
-  it('should be able to throw error when username or password is empty',function() {
+  it.skip('should be able to throw error when username or password is empty',function() {
     var loginButton = TestUtils.findRenderedDOMComponentWithType(login, RaisedButton)
     var username = login.refs.username
     var password = login.refs.password
