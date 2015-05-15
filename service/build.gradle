@@ -48,7 +48,6 @@ cobertura {
                         '.*GlobalExceptionHandler.*',
                         '.*BaseResponseException.*',
                         '.*AuthException.*',
-                        '.*AuthController.*',
                         '.*CORSFilter.*']
     coverageIgnoreMethodAnnotations = []
     coverageCheckBranchRate = 80

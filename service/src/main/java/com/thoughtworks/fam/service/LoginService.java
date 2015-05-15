@@ -3,12 +3,13 @@ package com.thoughtworks.fam.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
 import com.thoughtworks.fam.exception.AuthException;
 import com.thoughtworks.fam.exception.ErrorCode;
 import com.thoughtworks.fam.resource.domain.User;
 
 
-
+@Service
 public class LoginService
 {
     public User login(String userName, String password)
