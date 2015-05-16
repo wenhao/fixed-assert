@@ -37,7 +37,7 @@ var Login = React.createClass({
           <div>
             <a href="https://www.google.com">Forgot your password?</a>
           </div>
-          <RaisedButton className="login-button" secondary={true} onClick={this._login} disabled={this.state.isDisable}>
+          <RaisedButton ref="loginButton" className="login-button" secondary={true} onClick={this._login} disabled={this.state.isDisable}>
             <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
             <span className="mui-raised-button-label example-icon-button-label">Log in</span>
           </RaisedButton>
