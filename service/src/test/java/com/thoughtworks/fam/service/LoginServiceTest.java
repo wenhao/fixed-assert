@@ -2,7 +2,7 @@ package com.thoughtworks.fam.service;
 
 
 import com.thoughtworks.fam.exception.AuthException;
-import com.thoughtworks.fam.resource.domain.User;
+import com.thoughtworks.fam.domain.User;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

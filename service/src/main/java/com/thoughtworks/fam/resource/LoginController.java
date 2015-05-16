@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.thoughtworks.fam.resource.domain.User;
+import com.thoughtworks.fam.domain.User;
 import com.thoughtworks.fam.service.LoginService;
 
 @RestController

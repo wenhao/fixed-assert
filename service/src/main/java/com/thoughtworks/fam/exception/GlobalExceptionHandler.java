@@ -1,6 +1,5 @@
 package com.thoughtworks.fam.exception;
 
-import com.thoughtworks.fam.resource.domain.ErrorInfo;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

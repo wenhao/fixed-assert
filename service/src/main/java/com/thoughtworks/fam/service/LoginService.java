@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
+import com.thoughtworks.fam.domain.User;
 import com.thoughtworks.fam.exception.AuthException;
 import com.thoughtworks.fam.exception.ErrorCode;
-import com.thoughtworks.fam.resource.domain.User;
 
 
 @Service

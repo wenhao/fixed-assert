@@ -1,6 +1,4 @@
-package com.thoughtworks.fam.resource.domain;
-
-import com.thoughtworks.fam.exception.ErrorCode;
+package com.thoughtworks.fam.exception;
 
 public class ErrorInfo
 {

@@ -1,7 +1,7 @@
 package com.thoughtworks.fam.resource;
 
 import com.google.gson.Gson;
-import com.thoughtworks.fam.resource.domain.User;
+import com.thoughtworks.fam.domain.User;
 import com.thoughtworks.fam.service.LoginService;
 import org.junit.Before;
 import org.junit.Test;

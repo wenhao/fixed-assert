@@ -1,7 +1,7 @@
 package com.thoughtworks.fam.service;
 
-import com.thoughtworks.fam.resource.domain.TempAsset;
-import com.thoughtworks.fam.resource.domain.User;
+import com.thoughtworks.fam.domain.TempAsset;
+import com.thoughtworks.fam.domain.User;
 import org.junit.Before;
 import org.junit.Test;
 

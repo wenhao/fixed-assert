@@ -1,4 +1,4 @@
-package com.thoughtworks.fam.resource.domain;
+package com.thoughtworks.fam.domain;
 
 public class TempAsset
 {
