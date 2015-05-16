@@ -1,6 +1,7 @@
 package com.thoughtworks.fam.exception;
 
-public enum ErrorCode {
+public enum ErrorCode
+{
     //system level error
     UNKNOWN(0),
 
@@ -15,11 +16,13 @@ public enum ErrorCode {
 
     private final int code;
 
-    private ErrorCode(int code) {
+    private ErrorCode(int code)
+    {
         this.code = code;
     }
 
-    public int getCode() {
+    public int getCode()
+    {
         return code;
     }
 }
