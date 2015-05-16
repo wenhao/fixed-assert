@@ -1,10 +1,10 @@
 ## 2015-05-09:
 Coach:
-Wen Hao
-Yan Qian
+文浩
+鄢倩
 MERSON James
-Leng Lei
-Zhang liang
+曾磊
+Zhang Liang
 Li Jiang
 
 Attender:
@@ -19,14 +19,14 @@ Absentee:
 
 ## 2015-05-16
 Coach:
-Wen Hao
-Yan Qian
+文浩
+鄢倩
 Kang Kang
-Zeng Lei
+曾磊
 Yang Chen 
-Yang Song
+杨松
 Li Wen
-Guan Yuan
+关远
 Zhang Liang
 
 Attender:
