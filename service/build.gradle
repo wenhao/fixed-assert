@@ -44,11 +44,8 @@ cobertura {
     coverageFormats = ['html']
     coverageEncoding = 'UTF-8'
     coverageExcludes = ['.*ApplicationRunner.*',
-                        '.*UserException.*',
-                        '.*GlobalExceptionHandler.*',
-                        '.*BaseResponseException.*',
-                        '.*AuthException.*',
-                        '.*CORSFilter.*']
+                        '.*exception.*',
+                        '.*filter.*']
     coverageIgnoreMethodAnnotations = []
     coverageCheckBranchRate = 80
     coverageCheckLineRate = 80

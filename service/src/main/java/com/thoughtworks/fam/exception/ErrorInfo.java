@@ -1,5 +1,7 @@
 package com.thoughtworks.fam.exception;
 
+import java.util.Date;
+
 public class ErrorInfo
 {
     private long timestamp;
@@ -7,9 +9,9 @@ public class ErrorInfo
     private ErrorCode code;
     private String errorMessage;
 
-    public ErrorInfo(long timestamp, int httpStatus, ErrorCode code, String errorMessage)
+    public ErrorInfo(int httpStatus, ErrorCode code, String errorMessage)
     {
-        this.timestamp = timestamp;
+        this.timestamp = new Date().getTime();
         this.httpStatus = httpStatus;
         this.code = code;
         this.errorMessage = errorMessage;

@@ -1,6 +1,5 @@
 package com.thoughtworks.fam.exception;
 
-import java.util.Date;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,7 +16,6 @@ public class GlobalExceptionHandler
     @ResponseBody
     public ErrorInfo handleAuthException(AuthException ex)
     {
-        return new ErrorInfo(new Date().getTime(), ex.getStatus().value(),
-                ex.getErrorCode(), ex.getErrorMessage());
+        return new ErrorInfo(ex.getStatus().value(), ex.getErrorCode(), ex.getErrorMessage());
     }
 }

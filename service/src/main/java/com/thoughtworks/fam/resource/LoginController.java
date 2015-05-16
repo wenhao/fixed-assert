@@ -1,7 +1,5 @@
 package com.thoughtworks.fam.resource;
 
-import java.text.ParseException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +19,7 @@ public class LoginController
     private LoginService loginService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<User> login(@RequestBody User user) throws ParseException
+    public ResponseEntity<User> login(@RequestBody User user)
     {
         User userFromDB = loginService.login(user.getAccount(), user.getPassword());
         return new ResponseEntity<User>(userFromDB, HttpStatus.OK);
