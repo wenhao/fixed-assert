@@ -1,13 +1,15 @@
 package com.thoughtworks.fam.service;
 
-import com.google.common.collect.Lists;
-import com.thoughtworks.fam.domain.Asset;
-import com.thoughtworks.fam.domain.User;
-import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import com.google.common.collect.Lists;
+import com.thoughtworks.fam.domain.Asset;
+import com.thoughtworks.fam.domain.User;
+
 
 @Service
 public class UserService
@@ -30,7 +32,7 @@ public class UserService
 
     public boolean createUser(User user)
     {
-        if(!users.containsKey(user.getAccount())) {
+        if (!users.containsKey(user.getAccount())) {
             users.put(user.getAccount(), user);
             return true;
         }

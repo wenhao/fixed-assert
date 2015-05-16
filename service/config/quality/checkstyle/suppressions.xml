@@ -6,16 +6,5 @@
 
 <suppressions>
     <suppress files="CORSFilter.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="AssetRepository.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="AssetService.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="AssetServiceImpl.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="AuthService.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="UserAssetService.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="UserRepository.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="UserService.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="UserServiceImpl.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="AuthController.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="HelloWorldController.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="UserAssetController.java" checks="[a-zA-Z0-9]*" />
     <suppress files="UserController.java" checks="[a-zA-Z0-9]*" />
 </suppressions>
