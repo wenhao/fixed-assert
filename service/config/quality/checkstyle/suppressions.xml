@@ -6,5 +6,4 @@
 
 <suppressions>
     <suppress files="CORSFilter.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="UserController.java" checks="[a-zA-Z0-9]*" />
 </suppressions>
