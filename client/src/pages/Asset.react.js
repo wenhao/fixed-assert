@@ -29,28 +29,27 @@ var Asset = React.createClass({
     render() {
         return (
             <Paper zDepth={1} className="page-asset-list">
-                <RaisedButton secondary={true} >
-                    <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
-                    <span className="mui-raised-button-label example-icon-button-label">Get Assets</span>
-                </RaisedButton>
-                <Tabs>
-                    <Tab label="My Assets" onActive={this._getAssets}>
-                        <div className="tab-template-container asset-group">
-                            {this._renderAssetHeader()}
-                            <ul className="asset-list">
-                                {this._renderAssets()}
-                            </ul>
-                        </div>
-                    </Tab>
-                    <Tab label="Others Assets">
-                        <div className="tab-template-container asset-group">
-                            {this._renderAssetHeader()}
-                            <ul className="asset-list">
 
-                            </ul>
-                        </div>
-                    </Tab>
-                </Tabs>
+                <Paper zDepth={1} className="tab-group">
+                    <Tabs>
+                        <Tab label="My Assets" onActive={this._getAssets}>
+                            <div className="tab-template-container asset-group">
+                                {this._renderAssetHeader()}
+                                <ul className="asset-list">
+                                    {this._renderAssets()}
+                                </ul>
+                            </div>
+                        </Tab>
+                        <Tab label="Others Assets">
+                            <div className="tab-template-container asset-group">
+                                {this._renderAssetHeader()}
+                                <ul className="asset-list">
+
+                                </ul>
+                            </div>
+                        </Tab>
+                    </Tabs>
+                </Paper>
             </Paper>
         );
     },
@@ -83,11 +82,11 @@ var Asset = React.createClass({
                 <li className="asset-item">
                     <ul>
                         <li className="asset-attribute">{result.assetName}</li>
-                        <li className="asset-attribute"><a href="https://github.com/wenhao/fixed-asset">{result.assetNumber}</a></li>
+                        <li className="asset-attribute">{result.assetNumber}</li>
                         <li className="asset-attribute">{result.assignedDate}</li>
                         <li className="asset-attribute">{result.assetType}</li>
                         <li className="asset-attribute">
-                            <RaisedButton label="Button" secondary={true} linkButton={true} />
+                            <div className="button-view-detail"><a href="https://github.com/wenhao/fixed-asset">View Detail</a></div>
                         </li>
                     </ul>
                 </li>

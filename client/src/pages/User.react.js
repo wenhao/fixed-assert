@@ -19,7 +19,7 @@ const User = React.createClass({
   getInitialState() {
     return {
       errorMsg: '',
-      userlist: '用户列表：twer'
+      userList: 'User list：twer'
     }
   },
 
@@ -43,7 +43,7 @@ const User = React.createClass({
             <h5 className="error-label">{this.state.errorMsg}</h5>
           </div>
         </Dialog>
-        <h2>{this.state.userlist}</h2>
+        <h2>{this.state.userList}</h2>
         <RaisedButton secondary={true} onClick={this._popupCreateUser}>
           <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
           <span className="mui-raised-button-label example-icon-button-label">New User</span>
@@ -65,11 +65,9 @@ const User = React.createClass({
       self.setState({errorMsg: 'User name or password cannot be empty'});
     } else {
       userApi.create({'account': account, 'password': password}).then(function(result){
-        console.log(result);
-        // TODO: create user successfully
         self.refs.dialog.dismiss();
         self.setState({errorMsg: ''});
-        self.setState({userlist: self.state.userlist + ', '+ account });
+        self.setState({userList: self.state.userList + ', '+ account });
         self.refs.account.setValue('');
       }, function(error) {
         self.setState({errorMsg: 'The user name already exist, please use another one.'})
