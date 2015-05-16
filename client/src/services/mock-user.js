@@ -4,10 +4,10 @@ export default [
     // callback that returns the data
     fixtures: function (data) {
       if (data) {
-        if (data.username === 'admin') {
+        if (data.account === 'admin') {
           if (data.password === 'pw') {
             //login successful
-            return {username: 'admin'}
+            return {account: 'admin'}
           } else {
             //password is not correct
             throw new function() {
@@ -39,7 +39,7 @@ export default [
       }
     }
   }, {
-    pattern: 'http://localhost:8080/(users)',
+    pattern: 'http://localhost:8080/(users)$',
     fixtures: function(data) {
       if(!data.account) {
         throw new function() {

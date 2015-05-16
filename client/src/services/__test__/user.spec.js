@@ -5,11 +5,11 @@ import user from '../user'
 describe('User Services', function() {
   it('should be able to login', function(done) {
     user.login({
-        username: "admin",
+        account: "admin",
         password: "pw"
     })
     .then(function(data) {
-      data.username.should.be.equal('admin')
+      data.account.should.be.equal('admin')
       done()
     })
     .catch(function(err) {
@@ -18,7 +18,7 @@ describe('User Services', function() {
   });
   it('should not be able to login when password is incorrect', function(done) {
     user.login({
-      username: "admin",
+      account: "admin",
       password: "123"
     })
     .then(null, function(err) {
@@ -29,7 +29,7 @@ describe('User Services', function() {
   });
   it('should not be able to login when is not exist', function(done) {
     user.login({
-      username: "123",
+      account: "123",
       password: "123"
     })
     .then(null, function(err) {
