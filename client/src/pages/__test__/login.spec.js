@@ -1,14 +1,25 @@
 require('chai').should()
 
 import React from 'react/addons'
-import Login from '../Login.react.js'
+import mockRouter from '../../../utils/mock-react-router'
+import Login from '../Login.react'
+
 const TestUtils = React.addons.TestUtils
+var mockedLogin = mockRouter(Login)
+
+import {
+  RaisedButton,
+  FontIcon,
+  Paper,
+  TextField
+} from 'material-ui'
 
 let login
-describe('Login Component', function() {
-  beforeEach(function() {
-    login = TestUtils.renderIntoDocument(<Login />)
-  })
+describe('Login Page Component', function() {
+    beforeEach(function() {
+      login = TestUtils.renderIntoDocument(<mockedLogin />)
+    });
+
   it('should be able to initialized independently', function() {
     TestUtils.isCompositeComponent(login).should.be.equal(true)
     TestUtils.isCompositeComponentWithType(login, Login)
