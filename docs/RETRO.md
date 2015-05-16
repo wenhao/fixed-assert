@@ -28,3 +28,34 @@
 
 #### Feedback:
 1. 现场pair的效果很好，希望每次都能和有经验的Dev pair。
+
+
+## 2015-05-16：
+#### Learn:
+1. 写TO DO LIST
+2. 前端css小技巧
+3. 不要重复早轮子
+4. 清理代码，checkstyle & cobertura, clean code
+5. 更改Intellij配置，file template， code standard
+6. MockMvc的使用方式
+7. 敏捷session，敏捷历史
+8. React 开发方式
+
+#### Improve:
+1. 优雅的Clean code，不是驱动的代码
+2. 跟深入的了解restful
+3. Spring的验证(JSR303)， React的异步同步
+
+#### Puzzle:
+1. Controller到底测试什么, 返回ResponseEntity的好处是什么
+2. React好在哪里
+
+#### Action:
+1. 再看看TDD
+2. 再学XP
+
+#### Feedback:
+1. 教练很热情，很认真，很负责
+2. Pair方式很好，希望继续
+
+
