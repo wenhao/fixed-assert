@@ -5,7 +5,7 @@ require('chai').should();
 import asset from '../asset';
 
 describe('User Assets', function() {
-    it.skip('should be able to get user assets', function(done) {
+    it('should be able to get user assets', function(done) {
         asset.getUserAssets().then(function(data){
             data.body.length.should.be.above(0);
             data.body[0].assetName.should.be.equal('MacBook1');
