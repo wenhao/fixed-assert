@@ -7,10 +7,7 @@
 <suppressions>
     <suppress files="ApplicationRunner.java" checks="[a-zA-Z0-9]*" />
     <suppress files="Asset.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="AuthDAO.java" checks="[a-zA-Z0-9]*" />
     <suppress files="User.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="UserAssetDAO.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="UserDAO.java" checks="[a-zA-Z0-9]*" />
     <suppress files="AuthException.java" checks="[a-zA-Z0-9]*" />
     <suppress files="BaseResponseException.java" checks="[a-zA-Z0-9]*" />
     <suppress files="ErrorCode.java" checks="[a-zA-Z0-9]*" />
@@ -25,10 +22,6 @@
     <suppress files="UserRepository.java" checks="[a-zA-Z0-9]*" />
     <suppress files="UserService.java" checks="[a-zA-Z0-9]*" />
     <suppress files="UserServiceImpl.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="ErrorInfoDTO.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="HelloWorldDTO.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="UserAssetDTO.java" checks="[a-zA-Z0-9]*" />
-    <suppress files="UserDTO.java" checks="[a-zA-Z0-9]*" />
     <suppress files="AuthController.java" checks="[a-zA-Z0-9]*" />
     <suppress files="HelloWorldController.java" checks="[a-zA-Z0-9]*" />
     <suppress files="UserAssetController.java" checks="[a-zA-Z0-9]*" />
