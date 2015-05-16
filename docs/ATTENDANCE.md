@@ -1,24 +1,49 @@
 ## 2015-05-09:
 Coach:
-Team 1:
-1. Wen Hao
-2. Yan Qian
-3. MERSON James
-4. Lei Zeng
-Team 2:
-1. Liang Zhang
-2. Jian Li
+Wen Hao
+Yan Qian
+MERSON James
+Leng Lei
+Zhang liang
+Li Jiang
 
 Attender:
-Team 1:
-1. 孙晓
-2. 李澍雯
-3. 林水强
-4. 张力文
-Team 2:
+孙晓
+李澍雯
+林水强
+张力文
 
 Absentee:
-Team 1:
-1. 陈文杰
-2. 林从羽
-Team 2:
+陈文杰
+林从羽
+
+## 2015-05-16
+Coach:
+Wen Hao
+Yan Qian
+Kang Kang
+Zeng Lei
+Yang Chen 
+Yang Song
+Li Wen
+Guan Yuan
+Zhang Liang
+
+Attender:
+李澍雯
+林水强
+周玉
+胡凯
+陈文杰
+高丽峰
+屠标
+闫思语
+刘清
+毛宁川
+吕靖
+
+Absentee:
+张力文
+林从羽
+孙晓
+刘珍
