@@ -6,7 +6,8 @@ import {
   TextField
   } from 'material-ui'
 import {
-  State
+  State,
+  Link
   } from 'react-router'
 
 import userApi from '../services/user'
@@ -35,7 +36,7 @@ var Login = React.createClass({
           </div>
           <h5 className="error-label">{this.state.errorMsg}</h5>
           <div>
-            <a href="https://www.google.com">Forgot your password?</a>
+            <Link to="home">Forgot your password?</Link>
           </div>
           <RaisedButton ref="loginButton" className="login-button" secondary={true} onClick={this._login} disabled={this.state.isDisable}>
             <FontIcon className="muidocs-icon-custom-github example-button-icon"/>
