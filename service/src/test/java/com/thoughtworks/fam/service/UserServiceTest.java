@@ -1,6 +1,6 @@
 package com.thoughtworks.fam.service;
 
-import com.thoughtworks.fam.domain.TempAsset;
+import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.domain.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,20 +9,20 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TempUserServiceTest
+public class UserServiceTest
 {
-    private TempUserService userService;
+    private UserService userService;
 
     @Before
     public void setUp()
     {
-        userService = new TempUserService();
+        userService = new UserService();
     }
 
     @Test
     public void should_be_able_to_get_assets()
     {
-        List<TempAsset> assets = userService.getAssets();
+        List<Asset> assets = userService.getAssets();
 
         assertThat(assets.size()).isGreaterThan(0);
     }

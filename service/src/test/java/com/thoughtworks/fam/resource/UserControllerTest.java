@@ -1,8 +1,8 @@
 package com.thoughtworks.fam.resource;
 
-import com.thoughtworks.fam.domain.TempAsset;
+import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.domain.User;
-import com.thoughtworks.fam.service.TempUserService;
+import com.thoughtworks.fam.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -22,17 +22,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class TempUserControllerTest
+public class UserControllerTest
 {
 
-    TempUserService userService;
+    UserService userService;
     @InjectMocks
-    private TempUserController userController;
+    private UserController userController;
     private MockMvc mockMvc;
 
     @Before
     public void setUp() throws Exception {
-        userService = mock(TempUserService.class);
+        userService = mock(UserService.class);
         MockitoAnnotations.initMocks(this);
 
         mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
@@ -43,8 +43,8 @@ public class TempUserControllerTest
     {
         given(userService.getAssets()).willReturn(
                 newArrayList(
-                        new TempAsset("foo", "bar", "awe", "some"),
-                        new TempAsset("aaa", "bbb", "ccc", "ddd")));
+                        new Asset("foo", "bar", "awe", "some"),
+                        new Asset("aaa", "bbb", "ccc", "ddd")));
         mockMvc.perform(get("/users/uid/assets"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))

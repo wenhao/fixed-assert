@@ -1,7 +1,7 @@
 package com.thoughtworks.fam.service;
 
 import com.google.common.collect.Lists;
-import com.thoughtworks.fam.domain.TempAsset;
+import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.domain.User;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class TempUserService
+public class UserService
 {
     private static Map<String, User> users = new HashMap<String, User>()
     {
@@ -19,11 +19,11 @@ public class TempUserService
         }
     };
 
-    public List<TempAsset> getAssets()
+    public List<Asset> getAssets()
     {
-        List<TempAsset> assets = Lists.newArrayList(
-                new TempAsset("Macbook", "123456", "2015-05-08", "Laptop"),
-                new TempAsset("iPhone", "123457", "2015-05-09", "Mobile")
+        List<Asset> assets = Lists.newArrayList(
+                new Asset("Macbook", "123456", "2015-05-08", "Laptop"),
+                new Asset("iPhone", "123457", "2015-05-09", "Mobile")
         );
         return assets;
     }

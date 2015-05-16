@@ -1,8 +1,8 @@
 package com.thoughtworks.fam.resource;
 
-import com.thoughtworks.fam.domain.TempAsset;
+import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.domain.User;
-import com.thoughtworks.fam.service.TempUserService;
+import com.thoughtworks.fam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +16,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/users")
-public class TempUserController {
+public class UserController
+{
     @Autowired
-    private TempUserService userService;
+    private UserService userService;
 
     @RequestMapping(value = "/uid/assets", method = RequestMethod.GET)
-    public ResponseEntity<List<TempAsset>> getUserAssets() throws ParseException {
-        List<TempAsset> assets = userService.getAssets();
-        return new ResponseEntity<List<TempAsset>>(assets, HttpStatus.OK);
+    public ResponseEntity<List<Asset>> getUserAssets() throws ParseException {
+        List<Asset> assets = userService.getAssets();
+        return new ResponseEntity<List<Asset>>(assets, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST)

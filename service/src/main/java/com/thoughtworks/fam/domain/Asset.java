@@ -1,13 +1,13 @@
 package com.thoughtworks.fam.domain;
 
-public class TempAsset
+public class Asset
 {
     private String assetName;
     private String assetNumber;
     private String assignedDate;
     private String assetType;
 
-    public TempAsset(String assetName, String assetNumber, String assignedDate, String assetType)
+    public Asset(String assetName, String assetNumber, String assignedDate, String assetType)
     {
 
         this.assetName = assetName;
