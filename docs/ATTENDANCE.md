@@ -21,7 +21,7 @@ Absentee:
 Coach:
 文浩
 鄢倩
-Kang Kang
+Kang Jiangmei 
 曾磊
 Yang Chen 
 杨松
