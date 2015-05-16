@@ -41,6 +41,16 @@ export default [
   }, {
     pattern: 'http://localhost:8080/(users)',
     fixtures: function(data) {
+      if(!data.account) {
+        throw new function() {
+          this.message = 'account should not be empty';
+        };
+      }
+      if(!data.password) {
+        throw new function () {
+          this.message = 'password should not be empty';
+        };
+      }
       if(data.account === 'twer') {
         throw new function() {
           this.statusCode = 409

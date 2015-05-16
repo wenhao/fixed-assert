@@ -38,12 +38,11 @@ describe('User Services', function() {
       done()
     })
   });
-  it('should be able to create user', function(done) {
+  it('should be able to create user when user does not exist', function(done) {
     user.create({
       account: 'LSQ',
       password: '123456'
     }).then(function(result){
-      console.log(result);
       result.statusCode.should.be.equal(201);
       done();
     }).catch(function(error) {
@@ -51,7 +50,7 @@ describe('User Services', function() {
     });
   });
 
-  it('should be create user failed when user exist', function (done) {
+  it('should not be able to create user when user exists', function (done) {
     user.create({
       account:'twer',
       password: '123456'
@@ -59,5 +58,30 @@ describe('User Services', function() {
       err.statusCode.should.be.equal(409);
       done();
     });
-  })
+  });
+
+  it('should not be able to create user when password is empty', function(done) {
+    user.create({
+      account: 'test'
+    }).then(null, function(err) {
+      err.message.should.be.equal("password should not be empty");
+      done();
+    });
+  });
+
+  it('should not be able to create user when account is empty', function(done) {
+    user.create({
+      password: '12345'
+    }).then(null, function(err) {
+      err.message.should.be.equal('account should not be empty');
+      done();
+    });
+  });
+
+  it('should check user account empty first when both are empty', function(done) {
+    user.create({}).then(null, function(err) {
+      err.message.should.be.equal('account should not be empty');
+      done();
+    });
+  });
 });
