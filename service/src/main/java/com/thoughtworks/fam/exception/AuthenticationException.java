@@ -4,19 +4,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AuthException extends BaseResponseException
+public class AuthenticationException extends BaseResponseException
 {
-    public AuthException()
+    public AuthenticationException()
     {
         super(HttpStatus.UNAUTHORIZED, ErrorCode.UNAUTHORIZED);
     }
 
-    public AuthException(ErrorCode errorCode)
+    public AuthenticationException(ErrorCode errorCode)
     {
         super(HttpStatus.UNAUTHORIZED, errorCode);
     }
 
-    public AuthException(ErrorCode errorCode, String errorMessage)
+    public AuthenticationException(ErrorCode errorCode, String errorMessage)
     {
         super(HttpStatus.UNAUTHORIZED, errorCode, errorMessage);
     }
