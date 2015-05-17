@@ -1,7 +1,7 @@
 package com.thoughtworks.fam.service;
 
 
-import com.thoughtworks.fam.exception.AuthException;
+import com.thoughtworks.fam.exception.AuthenticationException;
 import com.thoughtworks.fam.domain.User;
 import org.junit.Test;
 
@@ -23,7 +23,7 @@ public class LoginServiceTest {
 
         assertThat(userFromDB.getAccount(),is("test1"));
     }
-    @Test(expected = AuthException.class)
+    @Test(expected = AuthenticationException.class)
     public void should_get_not_exist_when_name_not_exist()
     {
         User user=new User();
@@ -34,7 +34,7 @@ public class LoginServiceTest {
         loginService.login(user.getAccount(),user.getPassword());
     }
 
-    @Test(expected = AuthException.class)
+    @Test(expected = AuthenticationException.class)
     public void should_get_password_not_right_when_password_not_right()
     {
         User user=new User();

@@ -12,9 +12,9 @@ public class GlobalExceptionHandler
 {
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    @ExceptionHandler(AuthException.class)
+    @ExceptionHandler(AuthenticationException.class)
     @ResponseBody
-    public ErrorInfo handleAuthException(AuthException ex)
+    public ErrorInfo handleAuthException(AuthenticationException ex)
     {
         return new ErrorInfo(ex.getStatus().value(), ex.getErrorCode(), ex.getErrorMessage());
     }

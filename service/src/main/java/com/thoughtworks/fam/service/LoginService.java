@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import com.thoughtworks.fam.domain.User;
-import com.thoughtworks.fam.exception.AuthException;
+import com.thoughtworks.fam.exception.AuthenticationException;
 import com.thoughtworks.fam.exception.ErrorCode;
 
 
@@ -25,10 +25,10 @@ public class LoginService
 
         User user = users.get(userName);
         if (user == null) {
-            throw new AuthException(ErrorCode.USER_NOT_EXIST, "The user is not exist.");
+            throw new AuthenticationException(ErrorCode.USER_NOT_EXIST, "The user is not exist.");
         }
         if (!user.getPassword().equals(password)) {
-            throw new AuthException(ErrorCode.PASSWORD_NOT_MATCHED,
+            throw new AuthenticationException(ErrorCode.PASSWORD_NOT_MATCHED,
                     "The password is not correct, please input again.");
         }
         return user;
