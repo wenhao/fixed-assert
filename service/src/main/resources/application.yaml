@@ -1,2 +1,7 @@
 #Cross-Origin Resource Sharing configuration
-Access-Control-Allow-Origin: http://localhost:3000
+cors:
+  allowOrigin: http://localhost:3000
+  allowMethods: GET, POST, HEAD, PUT, DELETE
+  contentType: application/json
+  allowHeaders: origin, content-type, accept, x-requested-with
+  maxAge: 3600
