@@ -14,12 +14,11 @@ import com.thoughtworks.fam.domain.User;
 @Service
 public class UserService
 {
-    private static Map<String, User> users = new HashMap<String, User>()
-    {
-        {
-            put("twer", new User("twer", "123456"));
-        }
-    };
+    private static Map<String, User> users = new HashMap<>();
+
+    static {
+        users.put("twer", new User("twer", "123456"));
+    }
 
     public List<Asset> getAssets()
     {
