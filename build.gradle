@@ -20,12 +20,53 @@ allprojects {
     apply plugin: 'idea'
 }
 
+ext {
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        bootRunCommandLine = ['gradlew.bat', 'bRun']
+        jasmineNodeCommandLine = ['cmd', '/c', 'jasmine-node', 'src/test/specs']
+        shutdownCommandLine = ['cmd', '/c', 'curl', '-d', '123', 'localhost:8080/shutdown']
+    } else {
+        bootRunCommandLine = ['./gradlew', 'bRun']
+        jasmineNodeCommandLine  = ['jasmine-node', 'src/test/specs']
+        shutdownCommandLine = ['curl', '-d', '123', 'localhost:8080/shutdown']
+    }
+}
 idea {
     project {
         jdkName = JavaVersion.VERSION_1_7
         languageLevel = JavaVersion.VERSION_1_7
 
         vcs = "Git"
+    }
+}
+
+task shutdown(type: Exec) {
+    commandLine shutdownCommandLine
+}
+
+task APItest(type:Exec) {
+    workingDir 'api'
+    commandLine  jasmineNodeCommandLine
+
+    doFirst{
+        //gradlew bootRun
+        def builder = new ProcessBuilder(bootRunCommandLine)
+        builder.redirectErrorStream(true)
+        builder.directory(new File("."))
+        def process = builder.start()
+        //
+        def line
+        def reader = new BufferedReader(new InputStreamReader(process.getInputStream()))
+        while ((line = reader.readLine()) != null) {
+            logger.quiet line
+            if (line.contains("Started ApplicationRunner")) {
+                logger.quiet "Started ApplicationRunner is ready."
+                break;
+            }
+        }
+    }
+    doLast{
+        shutdown.exec()
     }
 }
 

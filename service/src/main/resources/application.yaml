@@ -5,3 +5,6 @@ cors:
   contentType: application/json
   allowHeaders: origin, content-type, accept, x-requested-with
   maxAge: 3600
+endpoints:
+  shutdown:
+    enabled: true
