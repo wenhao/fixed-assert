@@ -6,14 +6,14 @@ public class ErrorInfo
 {
     private long timestamp;
     private int httpStatus;
-    private ErrorCode code;
+    private ErrorCode errorCode;
     private String errorMessage;
 
-    public ErrorInfo(int httpStatus, ErrorCode code, String errorMessage)
+    public ErrorInfo(int httpStatus, ErrorCode errorCode, String errorMessage)
     {
         this.timestamp = new Date().getTime();
         this.httpStatus = httpStatus;
-        this.code = code;
+        this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }
 
@@ -27,14 +27,14 @@ public class ErrorInfo
         this.timestamp = timestamp;
     }
 
-    public ErrorCode getCode()
+    public ErrorCode getErrorCode()
     {
-        return code;
+        return errorCode;
     }
 
-    public void setCode(ErrorCode code)
+    public void setErrorCode(ErrorCode errorCode)
     {
-        this.code = code;
+        this.errorCode = errorCode;
     }
 
     public String getErrorMessage()

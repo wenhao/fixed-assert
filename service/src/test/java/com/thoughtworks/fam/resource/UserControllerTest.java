@@ -87,7 +87,7 @@ public class UserControllerTest
 
         mockMvc.perform(post("/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"account\": \"twer\", \"p   assword\": \"123456\"}"))
+                .content("{\"account\": \"twer\", \"password\": \"123456\"}"))
                 .andExpect(status().isConflict());
     }
 }
