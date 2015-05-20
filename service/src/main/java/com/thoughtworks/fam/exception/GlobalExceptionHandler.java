@@ -1,21 +1,18 @@
 package com.thoughtworks.fam.exception;
 
-import org.springframework.http.HttpStatus;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class GlobalExceptionHandler
 {
-
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    @ExceptionHandler(AuthenticationException.class)
-    @ResponseBody
-    public ErrorInfo handleAuthException(AuthenticationException ex)
+    @ExceptionHandler(BaseResponseException.class)
+    public ResponseEntity<ErrorInfo> handleAuthException(BaseResponseException ex)
     {
-        return new ErrorInfo(ex.getStatus().value(), ex.getErrorCode(), ex.getErrorMessage());
+        ErrorInfo errorInfo = new ErrorInfo(ex.getStatus().value(),
+                ex.getErrorCode(), ex.getErrorMessage());
+
+        return new ResponseEntity<>(errorInfo, ex.getStatus());
     }
 }
