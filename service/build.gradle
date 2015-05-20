@@ -3,7 +3,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'checkstyle'
 apply plugin: 'cobertura'
 apply plugin: 'docker'
-
+build.dependsOn ':APItest'
 repositories {
     mavenLocal()
     mavenCentral()
