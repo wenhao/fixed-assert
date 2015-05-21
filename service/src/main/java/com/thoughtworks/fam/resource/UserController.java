@@ -30,9 +30,7 @@ public class UserController
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createUser(@RequestBody User user)
     {
-        if (!userService.createUser(user)) {
-            return new ResponseEntity(HttpStatus.CONFLICT);
-        }
+        userService.createUser(user);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 }

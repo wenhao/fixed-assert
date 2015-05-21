@@ -2,6 +2,7 @@ package com.thoughtworks.fam.service;
 
 import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.domain.User;
+import com.thoughtworks.fam.exception.ConflictException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,16 +31,16 @@ public class UserServiceTest
     @Test
     public void should_be_able_to_create_user()
     {
-        boolean result = userService.createUser(new User("test", "123"));
+        int beforeCreateAmount = UserService.getUsers().size();
+        userService.createUser(new User("test", "123"));
 
-        assertThat(result).isEqualTo(true);
+        assertThat(UserService.getUsers().size())
+                .isEqualTo(beforeCreateAmount + 1);
     }
 
-    @Test
+    @Test(expected = ConflictException.class)
     public void should_create_user_failed_when_user_exist()
     {
-        boolean result = userService.createUser(new User("twer", "123"));
-
-        assertThat(result).isEqualTo(false);
+        userService.createUser(new User("twer", "123"));
     }
 }

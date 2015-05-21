@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.google.common.collect.Lists;
 import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.domain.User;
+import com.thoughtworks.fam.exception.ConflictException;
+import com.thoughtworks.fam.exception.ErrorCode;
 
 
 @Service
@@ -29,12 +31,16 @@ public class UserService
         return assets;
     }
 
-    public boolean createUser(User user)
+    public void createUser(User user)
     {
-        if (!users.containsKey(user.getAccount())) {
-            users.put(user.getAccount(), user);
-            return true;
+        if (users.containsKey(user.getAccount())) {
+            throw new ConflictException(ErrorCode.ACCOUNT_EXISTED, "account has existed.");
         }
-        return false;
+        users.put(user.getAccount(), user);
+    }
+
+    public static Map<String, User> getUsers()
+    {
+        return users;
     }
 }

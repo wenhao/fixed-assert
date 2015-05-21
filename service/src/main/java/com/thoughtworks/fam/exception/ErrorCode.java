@@ -11,4 +11,5 @@ public enum ErrorCode
     PASSWORD_NOT_MATCHED,
 
     //user error
+    ACCOUNT_EXISTED
 }
