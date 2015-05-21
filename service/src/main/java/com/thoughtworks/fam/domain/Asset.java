@@ -22,11 +22,14 @@ public class Asset
     private String assetNumber;
 
     @Column(name = "ASSIGNED_DATE")
-    @Temporal(TemporalType.DATE)
     private String assignedDate;
 
     @Column(name = "ASSET_TYPE")
     private String assetType;
+
+    public Asset()
+    {
+    }
 
     public Asset(String assetName, String assetNumber, String assignedDate, String assetType)
     {
