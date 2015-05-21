@@ -1,10 +1,10 @@
 package com.thoughtworks.fam.service;
 
-import com.thoughtworks.fam.domain.Asset;
-import com.thoughtworks.fam.domain.User;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+import com.thoughtworks.fam.domain.Asset;
+import com.thoughtworks.fam.domain.User;
 
 public interface AssetRepository extends CrudRepository<Asset, Long>
 {
