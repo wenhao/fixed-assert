@@ -59,7 +59,7 @@ var Asset = React.createClass({
     onAssetsLoad(result) {
         console.log(result);
         this.setState({
-            assets: result.body
+            assets: result
         })
     },
     onAssetsLoadFailed(error) {
@@ -80,15 +80,17 @@ var Asset = React.createClass({
         return this.state.assets.map(function (result) {
             return (
                 <li className="asset-item">
-                    <ul>
-                        <li className="asset-attribute">{result.assetName}</li>
-                        <li className="asset-attribute">{result.assetNumber}</li>
-                        <li className="asset-attribute">{result.assignedDate}</li>
-                        <li className="asset-attribute">{result.assetType}</li>
-                        <li className="asset-attribute">
-                            <div className="button-view-detail"><a href="https://github.com/wenhao/fixed-asset">View Detail</a></div>
-                        </li>
-                    </ul>
+                    <a href="https://github.com/wenhao/fixed-asset">
+                        <ul>
+                            <li className="asset-attribute">{result.assetName}</li>
+                            <li className="asset-attribute">{result.assetNumber}</li>
+                            <li className="asset-attribute">{result.assignedDate}</li>
+                            <li className="asset-attribute">{result.assetType}</li>
+                            <li className="asset-attribute">
+                                <div className="button-view-detail"><a href="https://github.com/wenhao/fixed-asset">View Detail</a></div>
+                            </li>
+                        </ul>
+                    </a>
                 </li>
             )
         })
