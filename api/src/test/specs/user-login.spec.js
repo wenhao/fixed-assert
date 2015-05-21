@@ -11,7 +11,7 @@ describe("User Login API tests", function () {
             json: {"account": "test1", "password": "123456"}
         }).then(function (res) {
             expect(res.statusCode).toBe(httpStatus.OK);
-            expect(res.body).toEqual({"id":"0","account": "test1","password":"123456","assets"});
+            expect(res.body).toEqual({"id":0,"account": "test1","password":"123456","assets":null});
             done();
         }).catch(utils.printErr);
     });
