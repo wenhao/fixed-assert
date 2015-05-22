@@ -1,8 +1,6 @@
 package com.thoughtworks.fam.resource;
 
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,24 +33,15 @@ public class AssetController
 
     private void handleRequestParamError(List<FieldError> errors)
     {
-        //just want to try java8 new features
-        errors.stream().filter(new Predicate<FieldError>()
-        {
-            @Override
-            public boolean test(FieldError fieldError)
-            {
-                return fieldError.getField().equals("assetName");
-            }
-        }).forEach(new Consumer<FieldError>()
-        {
-            @Override
-            public void accept(FieldError fieldError)
-            {
+        for (FieldError error : errors) {
+            if (error.getField().equals("assetName")) {
                 throw new BadRequestException(ErrorCode.INVALID_ASSET_NAME,
-                        fieldError.getDefaultMessage());
-
+                        error.getDefaultMessage());
             }
-        });
-
+            if (error.getField().equals("assetType")) {
+                throw new BadRequestException(ErrorCode.INVALID_ASSET_TYPE,
+                        error.getDefaultMessage());
+            }
+        }
     }
 }

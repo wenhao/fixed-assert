@@ -70,6 +70,19 @@ public class AssetControllerTest
     }
 
     @Test
+    public void should_return_bad_request_and_error_message_when_asset_type_be_null() throws Exception
+    {
+        doNothing().when(assetService).createAsset(any(Asset.class));
+
+        mockMvc.perform(post("/asset")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"assetName\": \"12345678\"}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.errorCode", is("INVALID_ASSET_TYPE")))
+                .andExpect(jsonPath("$.errorMessage", is("Type should not be null.")));
+    }
+
+    @Test
     public void should_return_bad_request_and_error_message_when_asset_name_not_be_made_up_of_8_numbers() throws Exception
     {
         doNothing().when(assetService).createAsset(any(Asset.class));

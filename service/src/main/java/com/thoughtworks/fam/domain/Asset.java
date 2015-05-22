@@ -37,6 +37,7 @@ public class Asset
     private String assignedDate;
 
     @Column(name = "ASSET_TYPE")
+    @NotNull(message = "Type should not be null.")
     private String assetType;
 
     public Asset()

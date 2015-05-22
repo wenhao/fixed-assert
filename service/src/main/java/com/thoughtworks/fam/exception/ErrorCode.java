@@ -14,6 +14,6 @@ public enum ErrorCode
     INVALID_ASSET_NAME,
     ASSET_NAME_EXISTED,
 
-    //user error
+    INVALID_ASSET_TYPE, //user error
     ACCOUNT_EXISTED
 }
