@@ -23,7 +23,7 @@ public class UserServiceTest
     @Test
     public void should_be_able_to_get_assets()
     {
-        List<Asset> assets = userService.getAssets();
+        List<Asset> assets = userService.getUserAssets("uid");
 
         assertThat(assets.size()).isGreaterThan(0);
     }

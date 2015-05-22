@@ -6,18 +6,15 @@ import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.domain.User;
 import com.thoughtworks.fam.exception.ConflictException;
 import com.thoughtworks.fam.exception.ErrorCode;
-import com.thoughtworks.fam.exception.GlobalExceptionHandler;
 import com.thoughtworks.fam.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
-import org.springframework.context.support.StaticApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.HandlerExceptionResolver;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.CoreMatchers.is;
@@ -58,13 +55,32 @@ public class UserControllerTest
     @Test
     public void should_be_able_to_get_user_assets() throws Exception
     {
-        given(userService.getAssets()).willReturn(
+        given(userService.getUserAssets("uid")).willReturn(
                 newArrayList(
-                        new Asset("foo", "bar", "awe", "some"),
-                        new Asset("aaa", "bbb", "ccc", "ddd")));
+                        new Asset("twer", "foo", "bar", "awe", "some"),
+                        new Asset("twer", "aaa", "bbb", "ccc", "ddd")));
         mockMvc.perform(get("/users/uid/assets"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].assetName", is("foo")))
+                .andExpect(jsonPath("$[0].assetNumber", is("bar")))
+                .andExpect(jsonPath("$[0].assignedDate", is("awe")))
+                .andExpect(jsonPath("$[0].assetType", is("some")));
+    }
+
+    @Test
+    public void should_be_able_to_get_other_users_assets() throws Exception
+    {
+        given(userService.getUserAssets()).willReturn(
+                newArrayList(
+                        new Asset("shuiqiang", "foo", "bar", "awe", "some"),
+                        new Asset("kaihu", "aaa", "bbb", "ccc", "ddd")
+                )
+        );
+        mockMvc.perform(get("/users/assets"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].ownerName", is("shuiqiang")))
                 .andExpect(jsonPath("$[0].assetName", is("foo")))
                 .andExpect(jsonPath("$[0].assetNumber", is("bar")))
                 .andExpect(jsonPath("$[0].assignedDate", is("awe")))

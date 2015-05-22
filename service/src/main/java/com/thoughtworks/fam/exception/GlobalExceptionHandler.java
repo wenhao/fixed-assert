@@ -13,6 +13,6 @@ public class GlobalExceptionHandler
         ErrorInfo errorInfo = new ErrorInfo(ex.getStatus().value(),
                 ex.getErrorCode(), ex.getErrorMessage());
 
-        return new ResponseEntity<>(errorInfo, ex.getStatus());
+        return new ResponseEntity<ErrorInfo>(errorInfo, ex.getStatus());
     }
 }

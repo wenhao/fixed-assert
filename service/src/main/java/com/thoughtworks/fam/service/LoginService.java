@@ -18,7 +18,7 @@ public class LoginService
         User user1 = new User("test1", "123456") ;
         User user2 = new User("test2", "123456") ;
         User user3 = new User("test3", "123456") ;
-        Map<String, User> users = new HashMap<>();
+        Map<String, User> users = new HashMap<String, User>();
         users.put(user1.getAccount(), user1);
         users.put(user2.getAccount(), user2);
         users.put(user3.getAccount(), user3);

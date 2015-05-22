@@ -16,17 +16,29 @@ import com.thoughtworks.fam.exception.ErrorCode;
 @Service
 public class UserService
 {
-    private static Map<String, User> users = new HashMap<>();
+    private static Map<String, User> users = new HashMap<String, User>();
 
     static {
         users.put("twer", new User("twer", "123456"));
     }
 
-    public List<Asset> getAssets()
+    public List<Asset> getUserAssets(String uuid)
     {
         List<Asset> assets = Lists.newArrayList(
-                new Asset("Macbook", "123456", "2015-05-08", "Laptop"),
-                new Asset("iPhone", "123457", "2015-05-09", "Mobile")
+                new Asset("twer", "Macbook", "123456", "2015-05-08", "Laptop"),
+                new Asset("twer", "iPhone", "123457", "2015-05-09", "Mobile")
+        );
+        return assets;
+    }
+
+    public List<Asset> getUserAssets()
+    {
+        List<Asset> assets = Lists.newArrayList(
+                new Asset("twer", "Macbook", "123456", "2015-05-08", "Laptop"),
+                new Asset("shuiqiang", "iPhone", "123457", "2015-05-09", "Mobile"),
+                new Asset("kaihu", "Macbook", "223457", "2015-02-09", "Laptop"),
+                new Asset("water", "Macbook", "323457", "2015-03-09", "Laptop"),
+                new Asset("wrongkey", "IPad", "423457", "2015-04-09", "Pad")
         );
         return assets;
     }

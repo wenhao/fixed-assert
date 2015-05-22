@@ -11,10 +11,10 @@ import com.thoughtworks.fam.exception.ErrorCode;
 @Service
 public class AssetService
 {
-    private static List<Asset> assets = new LinkedList<>();
+    private static List<Asset> assets = new LinkedList<Asset>();
 
     static {
-        assets.add(new Asset("12345678", "123321",
+        assets.add(new Asset("twer", "12345678", "123321",
                 "Apple Laptop", new Date().toString()));
     }
 

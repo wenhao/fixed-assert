@@ -23,7 +23,7 @@ public class AssetServiceTest
     {
         int beforeCreateAmount = AssetService.getAssets().size();
 
-        Asset asset = new Asset("11111111", "123321",
+        Asset asset = new Asset("twer", "11111111", "123321",
                 "Apple Laptop", new Date().toString());
         assetService.createAsset(asset);
 
@@ -33,7 +33,7 @@ public class AssetServiceTest
 
     @Test(expected = ConflictException.class)
     public void should_throw_conflict_exception_when_asset_name_existed() {
-        Asset asset = new Asset("12345678", "123321",
+        Asset asset = new Asset("twer", "12345678", "123321",
                 "Apple Laptop", new Date().toString());
         assetService.createAsset(asset);
     }

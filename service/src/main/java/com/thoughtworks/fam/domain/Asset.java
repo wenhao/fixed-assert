@@ -40,13 +40,17 @@ public class Asset
     @NotNull(message = "Type should not be null.")
     private String assetType;
 
+    @Column(name = "OWNER_NAME")
+    private String ownerName;
+
     public Asset()
     {
     }
 
-    public Asset(String assetName, String assetNumber, String assignedDate, String assetType)
+    public Asset(String ownerName, String assetName, String assetNumber,
+                 String assignedDate, String assetType)
     {
-
+        this.ownerName = ownerName;
         this.assetName = assetName;
         this.assetNumber = assetNumber;
         this.assignedDate = assignedDate;
@@ -82,5 +86,10 @@ public class Asset
     public User getUser()
     {
         return user;
+    }
+
+    public String getOwnerName()
+    {
+        return ownerName;
     }
 }
