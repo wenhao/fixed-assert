@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "TABLE_ASSETS")
@@ -24,6 +26,8 @@ public class Asset
     private User user;
 
     @Column(name = "ASSET_NAME")
+    @NotNull(message = "Name should not be null.")
+    @Pattern(regexp = "^\\d{8}$", message = "Name should be made up of 8 numbers.")
     private String assetName;
 
     @Column(name = "ASSET_NUMBER")

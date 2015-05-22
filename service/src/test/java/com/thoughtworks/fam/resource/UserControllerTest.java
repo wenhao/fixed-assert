@@ -1,5 +1,6 @@
 package com.thoughtworks.fam.resource;
 
+import com.google.gson.Gson;
 import com.thoughtworks.fam.TestUtils;
 import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.domain.User;
@@ -34,11 +35,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class UserControllerTest
 {
 
-    UserService userService;
+    private UserService userService;
     @InjectMocks
     private UserController userController;
     private MockMvc mockMvc;
-
+    private Gson gson;
     @Before
     public void setUp()
     {
@@ -51,6 +52,7 @@ public class UserControllerTest
         mockMvc = MockMvcBuilders.standaloneSetup(userController)
                 .setHandlerExceptionResolvers(handlerExceptionResolver)
                 .build();
+        gson = new Gson();
     }
 
     @Test
@@ -75,7 +77,7 @@ public class UserControllerTest
         doNothing().when(userService).createUser(any(User.class));
 
         mockMvc.perform(post("/users").contentType(MediaType.APPLICATION_JSON)
-                .content("{\"account\": \"test\", \"password\": \"123456\"}"))
+                .content(gson.toJson(new User("test","123456"))))
                 .andExpect(status().isCreated());
     }
 
@@ -87,7 +89,7 @@ public class UserControllerTest
 
         mockMvc.perform(post("/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"account\": \"twer\", \"password\": \"123456\"}"))
+                .content(gson.toJson(new User("twer","123456"))))
                 .andExpect(status().isConflict());
     }
 }

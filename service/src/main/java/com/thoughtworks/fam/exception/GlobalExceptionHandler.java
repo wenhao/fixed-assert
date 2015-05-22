@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler
 {
     @ExceptionHandler(BaseResponseException.class)
-    public ResponseEntity<ErrorInfo> handleAuthException(BaseResponseException ex)
+    public ResponseEntity<ErrorInfo> handleException(BaseResponseException ex)
     {
         ErrorInfo errorInfo = new ErrorInfo(ex.getStatus().value(),
                 ex.getErrorCode(), ex.getErrorMessage());
