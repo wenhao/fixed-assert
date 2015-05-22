@@ -3,7 +3,6 @@ package com.thoughtworks.fam.service;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Predicate;
 import org.springframework.stereotype.Service;
 import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.exception.ConflictException;
@@ -31,14 +30,13 @@ public class AssetService
 
     private boolean isAssetNameAvailable(final String assetName)
     {
-        return assets.stream().allMatch(new Predicate<Asset>()
-        {
-            @Override
-            public boolean test(Asset asset)
-            {
-                return !asset.getAssetName().equals(assetName);
+        for (Asset asset : assets) {
+            if (assetName.equals(asset.getAssetName())) {
+                return false;
             }
-        });
+        }
+
+        return true;
     }
 
     public static List<Asset> getAssets()
