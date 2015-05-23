@@ -46,14 +46,13 @@ public class AssetControllerTest
 
 
     @Test
-    @Ignore
     public void should_return_201_when_create_assets_success() throws Exception
     {
         doNothing().when(assetService).createAsset(any(Asset.class));
 
         mockMvc.perform(post("/asset")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"assetName\": \"17001176\", \"assetType\": \"Apple Laptop\"}"))
+                .content("{\"assetNumber\": \"17000001\", \"assetType\": \"Laptop\"}"))
                 .andExpect(status().isCreated());
     }
 
@@ -65,21 +64,20 @@ public class AssetControllerTest
 
         mockMvc.perform(post("/asset")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"assetType\": \"Apple Laptop\"}"))
+                .content("{\"assetType\": \"Laptop\"}"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.errorCode", is("INVALID_ASSET_NAME")))
-                .andExpect(jsonPath("$.errorMessage", is("Name should not be null.")));
+                .andExpect(jsonPath("$.errorCode", is("INVALID_ASSET_NUMBER")))
+                .andExpect(jsonPath("$.errorMessage", is("Number should not be null.")));
     }
 
     @Test
-    @Ignore
     public void should_return_bad_request_and_error_message_when_asset_type_be_null() throws Exception
     {
         doNothing().when(assetService).createAsset(any(Asset.class));
 
         mockMvc.perform(post("/asset")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"assetName\": \"12345678\"}"))
+                .content("{\"assetNumber\": \"17000001\"}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.errorCode", is("INVALID_ASSET_TYPE")))
                 .andExpect(jsonPath("$.errorMessage", is("Type should not be null.")));
@@ -93,25 +91,25 @@ public class AssetControllerTest
 
         mockMvc.perform(post("/asset")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"assetName\": \"123abc\",\"assetType\": \"Apple Laptop\"}"))
+                .content("{\"assetName\": \"123456\",\"assetType\": \"Apple Laptop\"}"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.errorCode", is("INVALID_ASSET_NAME")))
-                .andExpect(jsonPath("$.errorMessage", is("Name should be made up of 8 numbers.")));
+                .andExpect(jsonPath("$.errorCode", is("INVALID_ASSET_NUMBER")))
+                .andExpect(jsonPath("$.errorMessage", is("Number should be made up of 8 numbers.")));
     }
 
     @Test
     @Ignore
     public void should_return_bad_request_and_error_message_when_asset_name_existed() throws Exception
     {
-        doThrow(new ConflictException(ErrorCode.ASSET_NAME_EXISTED,"The name already exist, please use another one."))
+        doThrow(new ConflictException(ErrorCode.ASSET_NUMBER_EXISTED,"The number already exist, please use another one."))
                 .when(assetService).createAsset(any(Asset.class));
 
         mockMvc.perform(post("/asset")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"assetName\": \"12345678\",\"assetType\": \"Apple Laptop\"}"))
+                .content("{\"assetName\": \"17000000\",\"assetType\": \"Laptop\"}"))
                 .andExpect(status().isConflict())
-                .andExpect(jsonPath("$.errorCode", is("ASSET_NAME_EXISTED")))
-                .andExpect(jsonPath("$.errorMessage", is("The name already exist, please use another one.")));
+                .andExpect(jsonPath("$.errorCode", is("ASSET_NUMBER_EXISTED")))
+                .andExpect(jsonPath("$.errorMessage", is("The number already exist, please use another one.")));
     }
 
 

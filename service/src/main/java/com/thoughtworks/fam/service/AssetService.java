@@ -1,6 +1,5 @@
 package com.thoughtworks.fam.service;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,23 +27,23 @@ public class AssetService
     }
 
     static {
-        assets.add(new Asset("twer", "12345678", "123321", "Apple Laptop", new Date().toString()));
+        assets.add(new Asset("twer", "MacBook Pro", "17000000", "2015-5-23", "Laptop"));
     }
 
     public void createAsset(Asset asset)
     {
-        if (!isAssetNameAvailable(asset.getAssetName())) {
-            throw new ConflictException(ErrorCode.ASSET_NAME_EXISTED,
+        if (!isAssetAvailable(asset.getAssetNumber())) {
+            throw new ConflictException(ErrorCode.ASSET_NUMBER_EXISTED,
                     "The name already exist, please use another one.");
         }
 
         assets.add(asset);
     }
 
-    private boolean isAssetNameAvailable(final String assetName)
+    private boolean isAssetAvailable(final String assetNumber)
     {
         for (Asset asset : assets) {
-            if (assetName.equals(asset.getAssetName())) {
+            if (assetNumber.equals(asset.getAssetNumber())) {
                 return false;
             }
         }
@@ -54,17 +53,6 @@ public class AssetService
 
     public static List<Asset> getAssets()
     {
-        return assets;
-    }
-
-    public List<Asset> getOthersAssets()
-    {
-        List<Asset> assets = Lists.newArrayList(
-                new Asset("twer", "Macbook", "123456", "2015-05-08", "Laptop"),
-                new Asset("shuiqiang", "iPhone", "123457", "2015-05-09", "Mobile"),
-                new Asset("kaihu", "Macbook", "223457", "2015-02-09", "Laptop"),
-                new Asset("water", "Macbook", "323457", "2015-03-09", "Laptop"),
-                new Asset("wrongkey", "IPad", "423457", "2015-04-09", "Pad"));
         return assets;
     }
 

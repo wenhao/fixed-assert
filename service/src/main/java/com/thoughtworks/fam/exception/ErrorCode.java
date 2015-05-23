@@ -11,8 +11,8 @@ public enum ErrorCode
     PASSWORD_NOT_MATCHED,
 
     //asset error
-    INVALID_ASSET_NAME,
-    ASSET_NAME_EXISTED,
+    INVALID_ASSET_NUMBER,
+    ASSET_NUMBER_EXISTED,
 
     INVALID_ASSET_TYPE, //user error
     ACCOUNT_EXISTED

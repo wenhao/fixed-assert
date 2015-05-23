@@ -37,9 +37,9 @@ public class AssetController
     private void handleRequestParamError(List<FieldError> errors)
     {
         for (FieldError error : errors) {
-            if (error.getField().equals("assetName")) {
+            if (error.getField().equals("assetNumber")) {
                 throw new BadRequestException(
-                        ErrorCode.INVALID_ASSET_NAME, error.getDefaultMessage());
+                        ErrorCode.INVALID_ASSET_NUMBER, error.getDefaultMessage());
             }
             if (error.getField().equals("assetType")) {
                 throw new BadRequestException(
