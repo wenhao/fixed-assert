@@ -1,6 +1,6 @@
 #Cross-Origin Resource Sharing configuration
 cors:
-  allowOrigin: http://localhost:3000
+  allowOrigin: http://localhost:3000, http://54.223.177.169:9000
   allowMethods: GET, POST, HEAD, PUT, DELETE
   contentType: application/json
   allowHeaders: origin, content-type, accept, x-requested-with
