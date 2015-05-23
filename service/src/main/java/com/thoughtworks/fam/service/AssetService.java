@@ -72,7 +72,12 @@ public class AssetService
                     @Override
                     public boolean apply(Asset asset)
                     {
-                        return !userAssets.contains(asset);
+                        for (Asset userAsset : userAssets) {
+                            if (!userAsset.getAssetNumber().equals(asset.getAssetNumber())) {
+                                return true;
+                            }
+                        }
+                        return false;
                     }
                 })
         );
