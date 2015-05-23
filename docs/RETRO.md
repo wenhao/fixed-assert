@@ -59,3 +59,28 @@
 2. Pair方式很好，希望继续
 
 
+
+## 2015-05-23：
+#### Learned:
+1. React的设计思想
+2. Web开发History
+3. More understanding on RESTFul
+4. DB设计方法和思路
+5. Showcase方法和技巧
+6. E2E Test
+
+#### Improve:
+1. Learn MVC
+2. Learn Spring Boot
+3. Refactoring
+
+#### Puzzle:
+1. Simple or too simple design ?
+2. How to use react to improve our programing ?
+3. Lack of communication with BA on requirement.
+
+#### Action:
+1. Challenge Code / Code Review
+2. Add E2E tests
+3. Create TECH card
+
