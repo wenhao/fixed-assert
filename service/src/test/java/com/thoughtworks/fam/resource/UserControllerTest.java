@@ -53,22 +53,6 @@ public class UserControllerTest
     }
 
     @Test
-    public void should_be_able_to_get_user_assets() throws Exception
-    {
-        given(userService.getUserAssets("uid")).willReturn(
-                newArrayList(
-                        new Asset("twer", "foo", "bar", "awe", "some"),
-                        new Asset("twer", "aaa", "bbb", "ccc", "ddd")));
-        mockMvc.perform(get("/users/uid/assets"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].assetName", is("foo")))
-                .andExpect(jsonPath("$[0].assetNumber", is("bar")))
-                .andExpect(jsonPath("$[0].assignedDate", is("awe")))
-                .andExpect(jsonPath("$[0].assetType", is("some")));
-    }
-
-    @Test
     public void should_be_able_to_get_other_users_assets() throws Exception
     {
         given(userService.getUserAssets()).willReturn(
@@ -107,5 +91,23 @@ public class UserControllerTest
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(gson.toJson(new User("twer","123456"))))
                 .andExpect(status().isConflict());
+    }
+
+    @Test
+    public void should_get_assets_given_valid_user_id() throws Exception
+    {
+        long uid = 1L;
+        given(userService.getAssets(uid)).willReturn(
+                newArrayList(
+                    new Asset("owner","foo", "bar", "awe", "some"),
+                    new Asset("owner","aaa", "bbb", "ccc", "ddd")));
+        String urlTemplate = "/users/"+uid+"/assets";
+        mockMvc.perform(get(urlTemplate))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].assetName", is("foo")))
+                .andExpect(jsonPath("$[0].assetNumber", is("bar")))
+                .andExpect(jsonPath("$[0].assignedDate", is("awe")))
+                .andExpect(jsonPath("$[0].assetType", is("some")));
     }
 }

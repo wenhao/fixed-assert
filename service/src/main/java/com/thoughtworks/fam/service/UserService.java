@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
@@ -22,13 +23,14 @@ public class UserService
         users.put("twer", new User("twer", "123456"));
     }
 
-    public List<Asset> getUserAssets(String uuid)
+    private final UserRepository userRepository;
+    private final AssetRepository assetRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository, AssetRepository assetRepository)
     {
-        List<Asset> assets = Lists.newArrayList(
-                new Asset("twer", "Macbook", "123456", "2015-05-08", "Laptop"),
-                new Asset("twer", "iPhone", "123457", "2015-05-09", "Mobile")
-        );
-        return assets;
+        this.userRepository = userRepository;
+        this.assetRepository = assetRepository;
     }
 
     public List<Asset> getUserAssets()
@@ -54,5 +56,15 @@ public class UserService
     public static Map<String, User> getUsers()
     {
         return users;
+    }
+
+    public List<Asset> getAssets(long uid)
+    {
+        return this.assetRepository.findByUser(getUser(uid));
+    }
+
+    public User getUser(long uid)
+    {
+        return this.userRepository.findOne(uid);
     }
 }

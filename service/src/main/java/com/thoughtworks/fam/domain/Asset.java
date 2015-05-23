@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "TABLE_ASSETS")
 public class Asset
@@ -21,6 +23,7 @@ public class Asset
     @Column(name = "ASSET_ID")
     private long id;
 
+    @JsonBackReference
     @ManyToOne(optional = true)
     @JoinColumn(name = "USER_ID")
     private User user;
