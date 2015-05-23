@@ -10,11 +10,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -108,5 +112,43 @@ public class AssetControllerTest
                 .andExpect(jsonPath("$.errorCode", is("ASSET_NAME_EXISTED")))
                 .andExpect(jsonPath("$.errorMessage", is("The name already exist, please use another one.")));
     }
+
+    @Test
+    public void should_be_able_to_get_other_users_assets() throws Exception
+    {
+        given(assetService.getOthersAssets()).willReturn(
+                newArrayList(
+                        new Asset("shuiqiang", "foo", "bar", "awe", "some"),
+                        new Asset("kaihu", "aaa", "bbb", "ccc", "ddd")
+                )
+        );
+        mockMvc.perform(get("/asset/others"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].ownerName", is("shuiqiang")))
+                .andExpect(jsonPath("$[0].assetName", is("foo")))
+                .andExpect(jsonPath("$[0].assetNumber", is("bar")))
+                .andExpect(jsonPath("$[0].assignedDate", is("awe")))
+                .andExpect(jsonPath("$[0].assetType", is("some")));
+    }
+
+    @Test
+    public void should_get_assets_given_valid_user_id() throws Exception
+    {
+        long uid = 1L;
+        given(assetService.getUserAssets(uid)).willReturn(
+                newArrayList(
+                        new Asset("owner","foo", "bar", "awe", "some"),
+                        new Asset("owner","aaa", "bbb", "ccc", "ddd")));
+        String urlTemplate = "/asset/"+uid;
+        mockMvc.perform(get(urlTemplate))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].assetName", is("foo")))
+                .andExpect(jsonPath("$[0].assetNumber", is("bar")))
+                .andExpect(jsonPath("$[0].assignedDate", is("awe")))
+                .andExpect(jsonPath("$[0].assetType", is("some")));
+    }
+
 
 }

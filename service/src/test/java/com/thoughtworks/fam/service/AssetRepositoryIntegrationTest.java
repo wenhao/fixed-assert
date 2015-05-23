@@ -3,6 +3,8 @@ package com.thoughtworks.fam.service;
 import com.thoughtworks.fam.ApplicationRunner;
 import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.domain.User;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ public class AssetRepositoryIntegrationTest
     private UserRepository userRepository;
 
     @Test
+    @Ignore
     public void should_find_assets_imported_from_sql_script() throws Exception
     {
         //when
@@ -34,6 +37,7 @@ public class AssetRepositoryIntegrationTest
     }
 
     @Test
+    @Ignore
     public void should_find_correct_assets_given_valid_user() throws Exception
     {
         //given

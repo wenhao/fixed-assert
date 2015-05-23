@@ -1,21 +1,16 @@
 package com.thoughtworks.fam.service;
 
-import com.thoughtworks.fam.domain.Asset;
-import com.thoughtworks.fam.domain.User;
-import com.thoughtworks.fam.exception.ConflictException;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
+import static org.mockito.MockitoAnnotations.initMocks;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Mockito.mock;
-import static org.mockito.MockitoAnnotations.initMocks;
+import com.thoughtworks.fam.domain.User;
+import com.thoughtworks.fam.exception.ConflictException;
 
 public class UserServiceTest
 {
@@ -24,14 +19,11 @@ public class UserServiceTest
     @Mock
     private UserRepository userRepository;
 
-    @Mock
-    private AssetRepository assetRepository;
-
     @Before
     public void setUp()
     {
         initMocks(this);
-        userService = new UserService(userRepository, assetRepository);
+        userService = new UserService(userRepository);
     }
 
     @Test
@@ -65,19 +57,4 @@ public class UserServiceTest
         assertThat(user).isEqualTo(mockUser);
     }
 
-    @Test
-    public void should_get_assets_given_valid_user_id()
-    {
-        //given
-        long uid = 1L;
-        List mockAssets = mock(List.class);
-        given(assetRepository.findByUser(any(User.class))).willReturn(mockAssets);
-
-        //when
-        List<Asset> assets = userService.getAssets(uid);
-
-        //then
-        assertThat(assets).isEqualTo(mockAssets);
-
-    }
 }

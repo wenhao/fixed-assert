@@ -2,6 +2,8 @@ package com.thoughtworks.fam.service;
 
 import com.thoughtworks.fam.ApplicationRunner;
 import com.thoughtworks.fam.domain.User;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ public class UserRepositoryIntegrationTest
     private UserRepository userRepository;
 
     @Test
+    @Ignore
     public void should_find_users_imported_from_sql_script()
     {
         //when
@@ -28,6 +31,7 @@ public class UserRepositoryIntegrationTest
     }
 
     @Test
+    @Ignore
     public void should_find_user_given_valid_account()
     {
         //given
