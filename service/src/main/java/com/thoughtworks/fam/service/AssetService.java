@@ -68,7 +68,7 @@ public class AssetService
 
     public List<Asset> getUserAssets(String account)
     {
-        return this.assetRepository.findByOwnerName(account);
+        return this.assetRepository.findByAccount(account);
     }
 
     public List<Asset> getOthersAssets(String account)

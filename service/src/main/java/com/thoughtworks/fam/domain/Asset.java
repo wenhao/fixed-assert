@@ -10,8 +10,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Table(name = "TABLE_ASSETS")
 public class Asset
@@ -21,8 +19,8 @@ public class Asset
     @Column(name = "ASSET_ID")
     private long id;
 
-    @Column(name = "OWNER_NAME")
-    private String ownerName;
+    @Column(name = "ACCOUNT")
+    private String account;
 
     @Column(name = "ASSET_NAME")
     private String assetName;
@@ -43,10 +41,10 @@ public class Asset
     {
     }
 
-    public Asset(String ownerName, String assetName, String assetNumber,
+    public Asset(String account, String assetName, String assetNumber,
                  String assignedDate, String assetType)
     {
-        this.ownerName = ownerName;
+        this.account = account;
         this.assetName = assetName;
         this.assetNumber = assetNumber;
         this.assignedDate = assignedDate;
@@ -63,7 +61,6 @@ public class Asset
         return assetNumber;
     }
 
-
     public String getAssetType()
     {
         return assetType;
@@ -79,8 +76,8 @@ public class Asset
         return id;
     }
 
-    public String getOwnerName()
+    public String getAccount()
     {
-        return ownerName;
+        return account;
     }
 }

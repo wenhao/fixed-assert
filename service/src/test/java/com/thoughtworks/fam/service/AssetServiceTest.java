@@ -13,7 +13,6 @@ import org.mockito.Mock;
 
 import com.google.common.collect.Lists;
 import com.thoughtworks.fam.domain.Asset;
-import com.thoughtworks.fam.domain.User;
 import com.thoughtworks.fam.exception.ConflictException;
 
 public class AssetServiceTest
@@ -59,7 +58,7 @@ public class AssetServiceTest
     {
         //given
         String account = "admin";
-        given(assetRepository.findByOwnerName(account)).willReturn(Lists.newArrayList(
+        given(assetRepository.findByAccount(account)).willReturn(Lists.newArrayList(
                 new Asset("admin", "Macbook", "123456", "2015-5-23", "Laptop")
         ));
 

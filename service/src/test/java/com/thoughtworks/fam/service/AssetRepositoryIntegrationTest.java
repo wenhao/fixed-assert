@@ -2,16 +2,12 @@ package com.thoughtworks.fam.service;
 
 import com.thoughtworks.fam.ApplicationRunner;
 import com.thoughtworks.fam.domain.Asset;
-import com.thoughtworks.fam.domain.User;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,7 +41,7 @@ public class AssetRepositoryIntegrationTest
         Asset asset = assetRepository.findByAssetNumber(number);
 
         //then
-        assertThat(asset.getOwnerName()).isEqualTo(expectedOwnerName);
+        assertThat(asset.getAccount()).isEqualTo(expectedOwnerName);
         assertThat(asset.getAssetName()).isEqualTo(expectedAssetName);
         assertThat(asset.getAssetType()).isEqualTo(expectedAssetType);
     }
