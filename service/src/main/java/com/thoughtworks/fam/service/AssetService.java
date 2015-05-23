@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.exception.ConflictException;
@@ -73,12 +75,18 @@ public class AssetService
 
     public List<Asset> getOthersAssets(String account)
     {
-        List<Asset> assets = Lists.newArrayList(
-                new Asset("twer", "Macbook", "123456", "2015-05-08", "Laptop"),
-                new Asset("shuiqiang", "iPhone", "123457", "2015-05-09", "Mobile"),
-                new Asset("kaihu", "Macbook", "223457", "2015-02-09", "Laptop"),
-                new Asset("water", "Macbook", "323457", "2015-03-09", "Laptop"),
-                new Asset("wrongkey", "IPad", "423457", "2015-04-09", "Pad"));
-        return assets;
+        final List<Asset> userAssets = getUserAssets(account);
+        Iterable<Asset> allAssets = this.assetRepository.findAll();
+
+        return Lists.newArrayList(
+                Iterables.filter(allAssets, new Predicate<Asset>()
+                {
+                    @Override
+                    public boolean apply(Asset asset)
+                    {
+                        return !userAssets.contains(asset);
+                    }
+                })
+        );
     }
 }

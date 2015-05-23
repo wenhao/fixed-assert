@@ -80,4 +80,14 @@ public class Asset
     {
         return account;
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (!(obj instanceof Asset)){
+            return false;
+        }
+        Asset other = (Asset) obj;
+        return this.assetNumber.equals(other.assetNumber);
+    }
 }

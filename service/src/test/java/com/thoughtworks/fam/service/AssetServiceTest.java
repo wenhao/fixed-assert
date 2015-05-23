@@ -74,11 +74,22 @@ public class AssetServiceTest
     @Test
     public void should_get_others_assets() throws Exception
     {
+        //given
         String account = "admin";
+        given(assetRepository.findByAccount(account)).willReturn(Lists.newArrayList(
+                new Asset("admin", "Macbook", "123456", "2015-5-23", "Laptop")
+        ));
+        given(assetRepository.findAll()).willReturn(Lists.newArrayList(
+                new Asset("admin", "Macbook", "123456", "2015-5-23", "Laptop"),
+                new Asset("lwzhang", "iPhone", "123457", "2015-5-23", "Mobile")
+        ));
+
+        //when
         List<Asset> othersAssets = assetService.getOthersAssets(account);
 
+        //then
         assertThat(othersAssets.size()).isGreaterThan(0);
-        assertThat(othersAssets.get(0).getAssetNumber()).isEqualTo("123456");
-        assertThat(othersAssets.get(0).getAssetType()).isEqualTo("Laptop");
+        assertThat(othersAssets.get(0).getAssetNumber()).isEqualTo("123457");
+        assertThat(othersAssets.get(0).getAssetType()).isEqualTo("Mobile");
     }
 }
