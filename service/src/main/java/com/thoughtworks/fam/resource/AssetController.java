@@ -38,10 +38,12 @@ public class AssetController
     {
         for (FieldError error : errors) {
             if (error.getField().equals("assetName")) {
-                throw new BadRequestException(ErrorCode.INVALID_ASSET_NAME, error.getDefaultMessage());
+                throw new BadRequestException(
+                        ErrorCode.INVALID_ASSET_NAME, error.getDefaultMessage());
             }
             if (error.getField().equals("assetType")) {
-                throw new BadRequestException(ErrorCode.INVALID_ASSET_TYPE, error.getDefaultMessage());
+                throw new BadRequestException(
+                        ErrorCode.INVALID_ASSET_TYPE, error.getDefaultMessage());
             }
         }
     }

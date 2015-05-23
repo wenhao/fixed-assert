@@ -53,7 +53,7 @@ public class UserAssetsControllerTest
         mockMvc.perform(get("/users/" + account + "/others/assets"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].ownerName", is("shuiqiang")))
+                .andExpect(jsonPath("$[0].account", is("shuiqiang")))
                 .andExpect(jsonPath("$[0].assetName", is("foo")))
                 .andExpect(jsonPath("$[0].assetNumber", is("bar")))
                 .andExpect(jsonPath("$[0].assignedDate", is("awe")))
@@ -66,13 +66,13 @@ public class UserAssetsControllerTest
         String account = "admin";
         given(assetService.getUserAssets(account)).willReturn(
                 newArrayList(
-                        new Asset("owner","foo", "bar", "awe", "some"),
-                        new Asset("owner","aaa", "bbb", "ccc", "ddd")));
+                        new Asset("account","foo", "bar", "awe", "some"),
+                        new Asset("account","aaa", "bbb", "ccc", "ddd")));
         String urlTemplate = "/users/"+account+"/assets";
         mockMvc.perform(get(urlTemplate))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].ownerName", is("owner")))
+                .andExpect(jsonPath("$[0].account", is("account")))
                 .andExpect(jsonPath("$[0].assetName", is("foo")))
                 .andExpect(jsonPath("$[0].assetNumber", is("bar")))
                 .andExpect(jsonPath("$[0].assignedDate", is("awe")))

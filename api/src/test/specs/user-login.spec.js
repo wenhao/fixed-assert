@@ -6,7 +6,7 @@ var request = require('request-promised'),
     utils = require("../common/utils");
 
 describe("User Login API tests", function () {
-    it("should login successfully when given correct account and password", function (done) {
+    xit("should login successfully when given correct account and password", function (done) {
         request.post(config.host + "/auth/login",{
             json: {"account": "test1", "password": "123456"}
         }).then(function (res) {

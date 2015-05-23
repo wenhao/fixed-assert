@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 @Entity
 @Table(name = "TABLE_ASSETS")
 public class Asset
@@ -84,10 +86,18 @@ public class Asset
     @Override
     public boolean equals(Object obj)
     {
-        if (!(obj instanceof Asset)){
+        if (!(obj instanceof Asset)) {
             return false;
         }
         Asset other = (Asset) obj;
         return this.assetNumber.equals(other.assetNumber);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return new HashCodeBuilder(17, 31)
+                .append(assetNumber)
+                .toHashCode();
     }
 }

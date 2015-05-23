@@ -6,7 +6,7 @@ var request = require("request-promised"),
     utils = require("../common/utils");
 
   describe("create assets api tests", function () {
-    it("should create  assets success", function (done) {
+    xit("should create  assets success", function (done) {
         request.post({
             uri: config.host + "/asset",
             json: {assetType: "Apple Laptop", assetName: "17001176"}
@@ -16,7 +16,7 @@ var request = require("request-promised"),
         }).catch(utils.printErr);
     });
 
-      it("should get bad request code and error message " +
+      xit("should get bad request code and error message " +
           "when asset name be null", function (done) {
           request.post({
               uri: config.host + "/asset",
@@ -29,7 +29,7 @@ var request = require("request-promised"),
           }).catch(utils.printErr);
       });
 
-      it("should get bad request code and error message " +
+      xit("should get bad request code and error message " +
           "when asset name not be made up of 8 numbers.", function (done) {
           request.post({
               uri: config.host + "/asset",

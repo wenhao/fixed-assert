@@ -6,7 +6,7 @@ var request = require("request-promised"),
     utils = require("../common/utils");
 
 describe("create user api tests", function () {
-    it("should create user success when given name and password", function (done) {
+    xit("should create user success when given name and password", function (done) {
         request.post({
             uri: config.host + "/users",
             json: {account: "jTao", password: "P@ss123456"}

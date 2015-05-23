@@ -15,6 +15,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion")
     compile("com.google.guava:guava:$guavaVersion")
     compile("com.google.code.gson:gson:$gsonVersion")
+    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
     runtime("com.h2database:h2:$h2Version")
     testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testCompile("org.assertj:assertj-core:$assertJVersion")
