@@ -24,7 +24,7 @@ var Asset = React.createClass({
         }
     },
     componentDidMount() {
-        this._getAssets()
+        this._getUserAssets()
     },
     render() {
         return (
@@ -32,19 +32,19 @@ var Asset = React.createClass({
 
                 <Paper zDepth={1} className="tab-group">
                     <Tabs>
-                        <Tab label="My Assets" onActive={this._getAssets}>
+                        <Tab label="My Assets" onActive={this._getUserAssets}>
                             <div className="tab-template-container asset-group">
-                                {this._renderAssetHeader()}
+                                {this._renderAssetHeader(false)}
                                 <ul className="asset-list">
-                                    {this._renderAssets()}
+                                    {this._renderAssets(false)}
                                 </ul>
                             </div>
                         </Tab>
-                        <Tab label="Others Assets">
+                        <Tab label="Others Assets" onActive={this._getOthersAssets}>
                             <div className="tab-template-container asset-group">
-                                {this._renderAssetHeader()}
+                                {this._renderAssetHeader(true)}
                                 <ul className="asset-list">
-
+                                    {this._renderAssets(true)}
                                 </ul>
                             </div>
                         </Tab>
@@ -53,8 +53,11 @@ var Asset = React.createClass({
             </Paper>
         );
     },
-    _getAssets(userId) {
+    _getUserAssets(userId) {
         assetApi.getUserAssets(userId).then(this.onAssetsLoad, this.onAssetsLoadFailed)
+    },
+    _getOthersAssets() {
+        assetApi.getOthersAssets().then(this.onAssetsLoad, this.onAssetsLoadFailed);
     },
     onAssetsLoad(result) {
         console.log(result);
@@ -65,9 +68,14 @@ var Asset = React.createClass({
     onAssetsLoadFailed(error) {
         //
     },
-    _renderAssetHeader() {
+    _renderAssetHeader(showOthers) {
+        var ownerHeader;
+        if(showOthers) {
+            ownerHeader = <li className="asset-attribute">Owner</li>;
+        }
         return (
             <ul className="asset-header">
+                {ownerHeader}
                 <li className="asset-attribute">Name</li>
                 <li className="asset-attribute">Number</li>
                 <li className="asset-attribute">Assigned Date</li>
@@ -76,18 +84,23 @@ var Asset = React.createClass({
             </ul>
         )
     },
-    _renderAssets() {
+    _renderAssets(showOthers) {
         return this.state.assets.map(function (result) {
+            var ownerItem;
+            if(showOthers) {
+                ownerItem = <li className="asset-attribute">{result.ownerName}</li>;
+            }
             return (
                 <li className="asset-item">
                     <a href="https://github.com/wenhao/fixed-asset">
                         <ul>
+                            {ownerItem}
                             <li className="asset-attribute">{result.assetName}</li>
                             <li className="asset-attribute">{result.assetNumber}</li>
                             <li className="asset-attribute">{result.assignedDate}</li>
                             <li className="asset-attribute">{result.assetType}</li>
                             <li className="asset-attribute">
-                                <div className="button-view-detail"><a href="https://github.com/wenhao/fixed-asset">View Detail</a></div>
+                                <div className="button-view-detail"><a href="https://github.com/wenhao/fixed-asset">Button</a></div>
                             </li>
                         </ul>
                     </a>
