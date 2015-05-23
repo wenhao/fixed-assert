@@ -19,19 +19,19 @@ import com.thoughtworks.fam.exception.ConflictException;
 public class AssetServiceTest
 {
 
+    private AssetService assetService;
+
     @Mock
     private AssetRepository assetRepository;
 
     @Mock
     private UserRepository userRepository;
 
-    private AssetService assetService;
-
     @Before
     public void setUp() throws Exception
     {
         initMocks(this);
-        assetService = new AssetService(assetRepository, userRepository);
+        assetService = new AssetService(assetRepository);
     }
 
     @Test
@@ -75,7 +75,8 @@ public class AssetServiceTest
     @Test
     public void should_get_others_assets() throws Exception
     {
-        List<Asset> othersAssets = assetService.getOthersAssets();
+        String account = "admin";
+        List<Asset> othersAssets = assetService.getOthersAssets(account);
 
         assertThat(othersAssets.size()).isGreaterThan(0);
         assertThat(othersAssets.get(0).getAssetNumber()).isEqualTo("123456");

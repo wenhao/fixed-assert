@@ -11,6 +11,4 @@ public interface AssetRepository extends CrudRepository<Asset, Long>
     Asset findByAssetNumber(String assetNumber);
 
     List<Asset> findByOwnerName(String ownerName);
-
-    List<Asset> findOtherAssets(String ownerName);
 }
