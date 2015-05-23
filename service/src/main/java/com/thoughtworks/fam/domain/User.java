@@ -1,19 +1,12 @@
 package com.thoughtworks.fam.domain;
 
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "TABLE_USERS")
@@ -29,10 +22,6 @@ public class User
 
     @Column(name = "USER_PASSWORD")
     private String password;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Asset> assets;
 
     public User()
     {
@@ -69,8 +58,4 @@ public class User
         return id;
     }
 
-    public List<Asset> getAssets()
-    {
-        return assets;
-    }
 }

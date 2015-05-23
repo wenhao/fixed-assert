@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -24,16 +22,15 @@ public class Asset
     private long id;
 
     @JsonBackReference
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "USER_ID")
-    private User user;
+    @Column(name = "OWNER_NAME")
+    private String ownerName;
 
     @Column(name = "ASSET_NAME")
-    @NotNull(message = "Name should not be null.")
-    @Pattern(regexp = "^\\d{8}$", message = "Name should be made up of 8 numbers.")
     private String assetName;
 
     @Column(name = "ASSET_NUMBER")
+    @NotNull(message = "Number should not be null.")
+    @Pattern(regexp = "^\\d{8}$", message = "Number should be made up of 8 numbers.")
     private String assetNumber;
 
     @Column(name = "ASSIGNED_DATE")
@@ -42,9 +39,6 @@ public class Asset
     @Column(name = "ASSET_TYPE")
     @NotNull(message = "Type should not be null.")
     private String assetType;
-
-    @Column(name = "OWNER_NAME")
-    private String ownerName;
 
     public Asset()
     {
@@ -84,11 +78,6 @@ public class Asset
     public long getId()
     {
         return id;
-    }
-
-    public User getUser()
-    {
-        return user;
     }
 
     public String getOwnerName()

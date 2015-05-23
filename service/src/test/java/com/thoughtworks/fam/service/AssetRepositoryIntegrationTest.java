@@ -22,9 +22,6 @@ public class AssetRepositoryIntegrationTest
     @Autowired
     private AssetRepository assetRepository;
 
-    @Autowired
-    private UserRepository userRepository;
-
     @Test
     @Ignore
     public void should_find_assets_imported_from_sql_script() throws Exception
@@ -37,31 +34,30 @@ public class AssetRepositoryIntegrationTest
     }
 
     @Test
-    @Ignore
-    public void should_find_correct_assets_given_valid_user() throws Exception
+    public void should_find_correct_assets_given_valid_number()
     {
         //given
-        String account = "lwzhang";
-        String expectedNumberOne = "170170170";
-        String expectedNumberTwo = "180170170";
-        User user = this.userRepository.findByAccount(account);
+        String number = "17000001";
+        String expectedOwnerName = "lwzhang";
+        String expectedAssetName = "MacBook Pro";
+        String expectedAssetType = "Laptop";
 
         //when
-        List<Asset> assets = this.assetRepository.findByUser(user);
+        Asset asset = assetRepository.findByAssetNumber(number);
 
         //then
-        assertThat(assets.size()).isNotZero();
-        assertThat(assets.get(0).getAssetNumber()).isEqualTo(expectedNumberOne);
-        assertThat(assets.get(1).getAssetNumber()).isEqualTo(expectedNumberTwo);
+        assertThat(asset.getOwnerName()).isEqualTo(expectedOwnerName);
+        assertThat(asset.getAssetName()).isEqualTo(expectedAssetName);
+        assertThat(asset.getAssetType()).isEqualTo(expectedAssetType);
     }
 
     @Test
-    public void should_get_failed_given_invalid_user() throws Exception
+    public void should_get_failed_given_invalid_number()
     {
         //when
-        List<Asset> assets = this.assetRepository.findByUser(null);
+        Asset asset = assetRepository.findByAssetNumber(null);
 
         //then
-        assertThat(assets.size()).isZero();
+        assertThat(asset).isNull();
     }
 }
