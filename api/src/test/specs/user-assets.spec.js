@@ -8,7 +8,7 @@ var request = require('request-promised'),
 describe("User Assets API tests", function () {
 
     xit("should get others users assets", function (done) {
-        request.get(config.host + "/asset/others", {json: true}).
+        request.get(config.host + "/users/lwzhang/others/assets", {json: true}).
             then(function (res) {
                 expect(res.statusCode).toBe(httpStatus.OK);
                 var assets = res.body;
@@ -26,16 +26,16 @@ describe("User Assets API tests", function () {
             }).catch(utils.printErr);
     });
 
-    xit("-> should get specific user assets", function (done) {
-        request.get(config.host + "/asset/2", {json: true})
+    it("-> should get specific user assets", function (done) {
+        request.get(config.host + "/users/lwzhang/assets", {json: true})
             .then(function (res) {
                 expect(res.statusCode).toBe(httpStatus.OK);
                 expect(res.body[0].assetName).toBe("MacBook Pro");
-                expect(res.body[0].assetNumber).toBe("170170170");
+                expect(res.body[0].assetNumber).toBe("17000001");
                 expect(res.body[0].assignedDate).toBe("2015-04-05");
                 expect(res.body[0].assetType).toBe("Laptop");
                 expect(res.body[1].assetName).toBe("iPhone5S");
-                expect(res.body[1].assetNumber).toBe("180170170");
+                expect(res.body[1].assetNumber).toBe("17000002");
                 expect(res.body[1].assignedDate).toBe("2015-04-05");
                 expect(res.body[1].assetType).toBe("Mobile");
                 done();

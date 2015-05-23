@@ -23,7 +23,6 @@ public class AssetRepositoryIntegrationTest
     private AssetRepository assetRepository;
 
     @Test
-    @Ignore
     public void should_find_assets_imported_from_sql_script() throws Exception
     {
         //when

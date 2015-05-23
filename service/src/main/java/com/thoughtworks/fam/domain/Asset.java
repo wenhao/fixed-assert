@@ -21,7 +21,6 @@ public class Asset
     @Column(name = "ASSET_ID")
     private long id;
 
-    @JsonBackReference
     @Column(name = "OWNER_NAME")
     private String ownerName;
 

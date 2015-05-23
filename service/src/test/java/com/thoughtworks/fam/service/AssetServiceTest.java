@@ -1,8 +1,9 @@
 package com.thoughtworks.fam.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.MockitoAnnotations.initMocks;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.mockito.Mock;
 
 import com.google.common.collect.Lists;
 import com.thoughtworks.fam.domain.Asset;
+import com.thoughtworks.fam.domain.User;
 import com.thoughtworks.fam.exception.ConflictException;
 
 public class AssetServiceTest
@@ -20,12 +22,16 @@ public class AssetServiceTest
     @Mock
     private AssetRepository assetRepository;
 
+    @Mock
+    private UserRepository userRepository;
+
     private AssetService assetService;
 
     @Before
     public void setUp() throws Exception
     {
-        assetService = new AssetService(assetRepository);
+        initMocks(this);
+        assetService = new AssetService(assetRepository, userRepository);
     }
 
     @Test
@@ -52,10 +58,13 @@ public class AssetServiceTest
     public void should_get_assets_given_valid_user_id()
     {
         //given
-        long uid = 1L;
+        String account = "admin";
+        given(assetRepository.findByOwnerName(account)).willReturn(Lists.newArrayList(
+                new Asset("admin", "Macbook", "123456", "2015-5-23", "Laptop")
+        ));
 
         //when
-        List<Asset> assets = assetService.getUserAssets(uid);
+        List<Asset> assets = assetService.getUserAssets(account);
 
         //then
         assertThat(assets.size()).isGreaterThan(0);

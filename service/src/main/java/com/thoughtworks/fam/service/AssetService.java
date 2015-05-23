@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
 import com.thoughtworks.fam.domain.Asset;
+import com.thoughtworks.fam.domain.User;
 import com.thoughtworks.fam.exception.ConflictException;
 import com.thoughtworks.fam.exception.ErrorCode;
 
@@ -18,11 +19,13 @@ public class AssetService
     private static List<Asset> assets = new LinkedList<Asset>();
 
     private final AssetRepository assetRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public AssetService(AssetRepository assetRepository)
+    public AssetService(AssetRepository assetRepository, UserRepository userRepository)
     {
         this.assetRepository = assetRepository;
+        this.userRepository = userRepository;
     }
 
     static {
@@ -68,13 +71,20 @@ public class AssetService
         return assets;
     }
 
-    public List<Asset> getUserAssets(long uid)
+    public List<Asset> getUserAssets(String account)
+    {
+        return this.assetRepository.findByOwnerName(account);
+    }
+
+    public List<Asset> getOthersAssets(String account)
     {
         List<Asset> assets = Lists.newArrayList(
                 new Asset("twer", "Macbook", "123456", "2015-05-08", "Laptop"),
-                new Asset("twer", "Macbook", "223456", "2015-05-08", "Laptop")
+                new Asset("shuiqiang", "iPhone", "123457", "2015-05-09", "Mobile"),
+                new Asset("kaihu", "Macbook", "223457", "2015-02-09", "Laptop"),
+                new Asset("water", "Macbook", "323457", "2015-03-09", "Laptop"),
+                new Asset("wrongkey", "IPad", "423457", "2015-04-09", "Pad")
         );
         return assets;
-//        return this.assetRepository.findByUser(getUser(uid));
     }
 }

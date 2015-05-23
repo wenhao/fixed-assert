@@ -20,7 +20,6 @@ public class UserRepositoryIntegrationTest
     private UserRepository userRepository;
 
     @Test
-    @Ignore
     public void should_find_users_imported_from_sql_script()
     {
         //when
@@ -31,7 +30,6 @@ public class UserRepositoryIntegrationTest
     }
 
     @Test
-    @Ignore
     public void should_find_user_given_valid_account()
     {
         //given
