@@ -37,7 +37,7 @@ public class Asset
     @NotNull(message = "Type should not be null.")
     private String assetType;
 
-    public Asset()
+    protected Asset()
     {
     }
 

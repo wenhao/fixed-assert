@@ -46,14 +46,14 @@ public class UserAssetsControllerTest
         String account = "admin";
         given(assetService.getOthersAssets(account)).willReturn(
                 newArrayList(
-                        new Asset("shuiqiang", "foo", "bar", "awe", "some"),
-                        new Asset("kaihu", "aaa", "bbb", "ccc", "ddd")
+                        new Asset("admin", "foo", "bar", "awe", "some"),
+                        new Asset("admin", "aaa", "bbb", "ccc", "ddd")
                 )
         );
         mockMvc.perform(get("/users/" + account + "/others/assets"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].account", is("shuiqiang")))
+                .andExpect(jsonPath("$[0].account", is("admin")))
                 .andExpect(jsonPath("$[0].assetName", is("foo")))
                 .andExpect(jsonPath("$[0].assetNumber", is("bar")))
                 .andExpect(jsonPath("$[0].assignedDate", is("awe")))

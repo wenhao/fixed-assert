@@ -88,7 +88,7 @@ public class AssetServiceTest
         List<Asset> othersAssets = assetService.getOthersAssets(account);
 
         //then
-        assertThat(othersAssets.size()).isGreaterThan(0);
+        assertThat(othersAssets.size()).isEqualTo(1);
         assertThat(othersAssets.get(0).getAssetNumber()).isEqualTo("123457");
         assertThat(othersAssets.get(0).getAssetType()).isEqualTo("Mobile");
     }

@@ -7,21 +7,22 @@ var request = require('request-promised'),
 
 describe("User Assets API tests", function () {
 
-    xit("should get others users assets", function (done) {
+    it("should get others users assets", function (done) {
         request.get(config.host + "/users/lwzhang/others/assets", {json: true}).
             then(function (res) {
                 expect(res.statusCode).toBe(httpStatus.OK);
                 var assets = res.body;
-                expect(assets[0].ownerName).toBe("twer");
-                expect(assets[0].assetName).toBe("Macbook");
-                expect(assets[0].assetNumber).toBe("123456");
-                expect(assets[0].assignedDate).toBe("2015-05-08");
-                expect(assets[0].assetType).toBe("Laptop");
-                expect(assets[1].ownerName).toBe("shuiqiang");
-                expect(assets[1].assetName).toBe("iPhone");
-                expect(assets[1].assetNumber).toBe("123457");
-                expect(assets[1].assignedDate).toBe("2015-05-09");
-                expect(assets[1].assetType).toBe("Mobile");
+                expect(assets.length).toBe(11);
+                expect(assets[0].account).toBe("admin");
+                expect(assets[0].assetName).toBe("All assets");
+                expect(assets[0].assetNumber).toBe("17000000");
+                expect(assets[0].assignedDate).toBe("2015-04-05");
+                expect(assets[0].assetType).toBe("All");
+                expect(assets[1].account).toBe("cylin");
+                expect(assets[1].assetName).toBe("MacBook Air");
+                expect(assets[1].assetNumber).toBe("17000003");
+                expect(assets[1].assignedDate).toBe("2015-04-06");
+                expect(assets[1].assetType).toBe("Laptop");
                 done();
             }).catch(utils.printErr);
     });
@@ -30,6 +31,7 @@ describe("User Assets API tests", function () {
         request.get(config.host + "/users/lwzhang/assets", {json: true})
             .then(function (res) {
                 expect(res.statusCode).toBe(httpStatus.OK);
+                expect(res.body.length).toBe(2);
                 expect(res.body[0].assetName).toBe("MacBook Pro");
                 expect(res.body[0].assetNumber).toBe("17000001");
                 expect(res.body[0].assignedDate).toBe("2015-04-05");
