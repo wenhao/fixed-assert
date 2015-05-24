@@ -10,6 +10,7 @@ import {
   Home,
   User,
   Asset,
+  AddAsset,
   NotFound,
   Login
 } from './pages'
@@ -22,6 +23,7 @@ const appRoutes = (
     <Route name='user' handler={User}/>
     <Route name='asset' handler={Asset}/>
     <Route name='login' handler={Login}/>
+    <Route name='addAsset' handler={AddAsset}/>
     <NotFoundRoute handler={NotFound}/>
   </Route>
 )

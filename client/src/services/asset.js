@@ -12,6 +12,11 @@ const assetApis = {
         method: 'get',
         url: '/users/uid/assets' // TODO: use path param to replace sqlin
     },
+
+    addAsset:{
+        method: 'post',
+        url: '/addAsset'
+    },
     getOthersAssets: {
         method: 'get',
         url: '/users/assets/'

@@ -57,5 +57,23 @@ export default [
                 return new Error('Do not match any urls!')
             }
         }
+    }, {
+        pattern: 'http://localhost:8080/addAsset',
+        fixtures: function(data) {
+            if(data.number.length != 8) {
+                throw new function() {
+                    this.errorMessage = 'The length of number must be 8!';
+                    this.statusCode = 409
+                };
+            }
+            return {statusCode: 201};
+        },
+        callback: function(match, data){
+            if(match[1]){
+                return data
+            }else{
+                return new Error('Do not match any urls!')
+            }
+        }
     }
 ];
