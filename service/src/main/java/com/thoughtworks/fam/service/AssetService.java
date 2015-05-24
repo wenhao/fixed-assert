@@ -66,20 +66,19 @@ public class AssetService
         final List<Asset> userAssets = getUserAssets(account);
         Iterable<Asset> allAssets = this.assetRepository.findAll();
 
-        return Lists.newArrayList(
-                Iterables.filter(allAssets, new Predicate<Asset>()
-                {
-                    @Override
-                    public boolean apply(Asset asset)
-                    {
-                        for (Asset userAsset : userAssets) {
-                            if (!userAsset.getAssetNumber().equals(asset.getAssetNumber())) {
-                                return true;
-                            }
-                        }
-                        return false;
+        Iterables.removeIf(allAssets, new Predicate<Asset>()
+        {
+            @Override
+            public boolean apply(Asset asset)
+            {
+                for (Asset userAsset : userAssets) {
+                    if ((userAsset.getAssetNumber().equals(asset.getAssetNumber()))) {
+                        return true;
                     }
-                })
-        );
+                }
+                return false;
+            }
+        });
+        return Lists.newArrayList(allAssets);
     }
 }
