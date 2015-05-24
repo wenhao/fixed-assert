@@ -16,28 +16,28 @@ var request = require("request-promised"),
         }).catch(utils.printErr);
     });
 
-      xit("should get bad request code and error message " +
-          "when asset name be null", function (done) {
+      it("should get bad request code and error message " +
+          "when asset number be null", function (done) {
           request.post({
               uri: config.host + "/asset",
               json: {assetType: "Apple Laptop"}
           }).then(function (res) {
               expect(res.statusCode).toBe(400)
-              expect(res.body.errorMessage).toBe("Name should not be null.")
-              expect(res.body.errorCode).toBe("INVALID_ASSET_NAME")
+              expect(res.body.errorMessage).toBe("Number should not be null.")
+              expect(res.body.errorCode).toBe("INVALID_ASSET_NUMBER")
               done();
           }).catch(utils.printErr);
       });
 
-      xit("should get bad request code and error message " +
-          "when asset name not be made up of 8 numbers.", function (done) {
+      it("should get bad request code and error message " +
+          "when asset number not be made up of 8 numbers.", function (done) {
           request.post({
               uri: config.host + "/asset",
-              json: {assetType: "Apple Laptop",assetName: "123abc"}
+              json: {assetType: "Apple Laptop",assetNumber: "123abc"}
           }).then(function (res) {
               expect(res.statusCode).toBe(400)
-              expect(res.body.errorMessage).toBe("Name should be made up of 8 numbers.")
-              expect(res.body.errorCode).toBe("INVALID_ASSET_NAME")
+              expect(res.body.errorMessage).toBe("Number should be made up of 8 numbers.")
+              expect(res.body.errorCode).toBe("INVALID_ASSET_NUMBER")
               done();
           }).catch(utils.printErr);
       });
