@@ -37,7 +37,7 @@ public class Asset
     @NotNull(message = "Type should not be null.")
     private String assetType;
 
-    protected Asset()
+    public Asset()
     {
     }
 
@@ -81,4 +81,28 @@ public class Asset
         return account;
     }
 
+    public void setAccount(String account)
+    {
+        this.account = account;
+    }
+
+    public void setAssetName(String assetName)
+    {
+        this.assetName = assetName;
+    }
+
+    public void setAssetNumber(String assetNumber)
+    {
+        this.assetNumber = assetNumber;
+    }
+
+    public void setAssignedDate(String assignedDate)
+    {
+        this.assignedDate = assignedDate;
+    }
+
+    public void setAssetType(String assetType)
+    {
+        this.assetType = assetType;
+    }
 }

@@ -61,7 +61,7 @@ public class UserAssetsControllerTest
     }
 
     @Test
-    public void should_get_assets_given_valid_user_id() throws Exception
+    public void should_get_assets_given_valid_user_account() throws Exception
     {
         String account = "admin";
         given(assetService.getUserAssets(account)).willReturn(
