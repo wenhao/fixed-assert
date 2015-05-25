@@ -23,21 +23,21 @@ public class AssetBuilder
         return this;
     }
 
-    public AssetBuilder withAssetNumber(String assetNnumber)
+    public AssetBuilder withAssetNumber(String assetNumber)
     {
-        asset.setAssetName(assetNnumber);
+        asset.setAssetNumber(assetNumber);
         return this;
     }
 
     public AssetBuilder withAssignedDate(String assignedDate)
     {
-        asset.setAssetName(assignedDate);
+        asset.setAssignedDate(assignedDate);
         return this;
     }
 
     public AssetBuilder withAssetType(String assetType)
     {
-        asset.setAssetName(assetType);
+        asset.setAssetType(assetType);
         return this;
     }
 
