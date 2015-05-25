@@ -33,7 +33,8 @@ public class AssetService
     public void createAsset(Asset asset)
     {
         if (!isAssetAvailable(asset.getAssetNumber())) {
-            throw new ConflictException(ErrorCode.ASSET_NUMBER_EXISTED, "The name already exist, please use another one.");
+            throw new ConflictException(ErrorCode.ASSET_NUMBER_EXISTED,
+                    "The name already exist, please use another one.");
         }
 
         assets.add(asset);
@@ -65,24 +66,22 @@ public class AssetService
         final List<Asset> userAssets = getUserAssets(account);
         if (userAssets.isEmpty()) {
             return Lists.newArrayList();
-        } else {
-            Iterable<Asset> allAssets = this.assetRepository.findAll();
-
-            Iterables.removeIf(allAssets, new Predicate<Asset>()
-            {
-                @Override
-                public boolean apply(Asset asset)
-                {
-                    for (Asset userAsset : userAssets) {
-                        if ((userAsset.getAssetNumber().equals(asset.getAssetNumber()))) {
-                            return true;
-                        }
-                    }
-                    return false;
-                }
-            });
-            return Lists.newArrayList(allAssets);
         }
+        Iterable<Asset> allAssets = this.assetRepository.findAll();
+        Iterables.removeIf(allAssets, new Predicate<Asset>()
+        {
+            @Override
+            public boolean apply(Asset asset)
+            {
+                for (Asset userAsset : userAssets) {
+                    if ((userAsset.getAssetNumber().equals(asset.getAssetNumber()))) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+        return Lists.newArrayList(allAssets);
     }
 
     public void saveAsset(Asset asset)
