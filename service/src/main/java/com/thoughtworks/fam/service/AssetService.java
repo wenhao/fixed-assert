@@ -67,6 +67,12 @@ public class AssetService
         if (userAssets.isEmpty()) {
             return Lists.newArrayList();
         }
+        Iterable<Asset> allAssets = removeUserAssetsFromAllAssets(userAssets);
+        return Lists.newArrayList(allAssets);
+    }
+
+    private Iterable<Asset> removeUserAssetsFromAllAssets(final List<Asset> userAssets)
+    {
         Iterable<Asset> allAssets = this.assetRepository.findAll();
         Iterables.removeIf(allAssets, new Predicate<Asset>()
         {
@@ -81,10 +87,10 @@ public class AssetService
                 return false;
             }
         });
-        return Lists.newArrayList(allAssets);
+        return allAssets;
     }
 
-    public void saveAsset(Asset asset)
+    public void addAsset(Asset asset)
     {
         if (this.assetRepository.findByAccount(asset.getAssetNumber()).isEmpty()) {
             this.assetRepository.save(asset);

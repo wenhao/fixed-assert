@@ -3,6 +3,7 @@ package com.thoughtworks.fam.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.thoughtworks.fam.ApplicationRunner;
+import com.thoughtworks.fam.builder.AssetBuilder;
 import com.thoughtworks.fam.domain.Asset;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -86,6 +88,44 @@ public class AssetRepositoryIntegrationTest
 
         //then
         assertThat(assets.size()).isZero();
+
+    }
+
+    @Test
+    public void should_save_asset_given_valid_asset()
+    {
+        //given
+        long originCount = assetRepository.count();
+        Asset asset = new AssetBuilder().withAssetNumber("12345678").withAssetType("awesome").build();
+
+        //when
+        assetRepository.save(asset);
+        long count = assetRepository.count();
+
+        //then
+        assertThat(count).isGreaterThan(originCount);
+
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    public void should_not_save_given_missing_number_asset()
+    {
+        //given
+        Asset asset = new AssetBuilder().withAssetType("awesome").build();
+
+        //when
+        assetRepository.save(asset);
+
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    public void should_not_save_given_missing_type_asset()
+    {
+        //given
+        Asset asset = new AssetBuilder().withAssetNumber("12345678").build();
+
+        //when
+        assetRepository.save(asset);
 
     }
 }

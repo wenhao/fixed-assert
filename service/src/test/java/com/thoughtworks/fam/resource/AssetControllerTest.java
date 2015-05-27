@@ -108,5 +108,13 @@ public class AssetControllerTest
                 .andExpect(jsonPath("$.errorMessage", is("The number already exist, please use another one.")));
     }
 
+    @Test
+    public void should_return_201_when_add_asset_success() throws Exception
+    {
+        doNothing().when(assetService).addAsset(any(Asset.class));
 
+        mockMvc.perform(post("/addAsset").contentType(MediaType.APPLICATION_JSON)
+                .content("{\"assetNumber\": \"17000001\", \"assetType\": \"Laptop\"}"))
+                .andExpect(status().isCreated());
+    }
 }

@@ -134,7 +134,7 @@ public class AssetServiceTest
         given(assetRepository.findByAccount(anyString())).willReturn(list);
 
         //when
-        assetService.saveAsset(asset);
+        assetService.addAsset(asset);
 
         //then
         verify(assetRepository).save(asset);

@@ -11,21 +11,22 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.thoughtworks.fam.builder.AssetBuilder;
 import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.exception.BadRequestException;
 import com.thoughtworks.fam.exception.ErrorCode;
 import com.thoughtworks.fam.service.AssetService;
 
 @RestController
-@RequestMapping(value = "/asset")
 public class AssetController
 {
     @Autowired
     private AssetService assetService;
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/asset", method = RequestMethod.POST)
     public ResponseEntity create(@Valid @RequestBody Asset asset, BindingResult result)
     {
         handleRequestParamError(result.getFieldErrors());
@@ -34,16 +35,34 @@ public class AssetController
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+    @RequestMapping(value = "/addAsset", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity addAsset(@RequestBody final String assetNumber,
+                                   @RequestBody final String assetType,
+                                   BindingResult result)
+    {
+        handleRequestParamError(result.getFieldErrors());
+
+        assetService.addAsset(new AssetBuilder()
+                            .withAssetNumber(assetNumber)
+                            .withAssetType(assetType)
+                            .build());
+
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
+
     private void handleRequestParamError(List<FieldError> errors)
     {
         for (FieldError error : errors) {
             if (error.getField().equals("assetNumber")) {
                 throw new BadRequestException(
-                        ErrorCode.INVALID_ASSET_NUMBER, error.getDefaultMessage());
+                        ErrorCode.INVALID_ASSET_NUMBER, error.getDefaultMessage()
+                );
             }
             if (error.getField().equals("assetType")) {
                 throw new BadRequestException(
-                        ErrorCode.INVALID_ASSET_TYPE, error.getDefaultMessage());
+                        ErrorCode.INVALID_ASSET_TYPE, error.getDefaultMessage()
+                );
             }
         }
     }
