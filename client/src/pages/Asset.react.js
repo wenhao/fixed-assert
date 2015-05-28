@@ -79,6 +79,9 @@ var Asset = React.createClass({
             </ul>
         )
     },
+    _onClick() {
+        location.href = "https://github.com/wenhao/fixed-asset";
+    },
     _renderAssets(showOthers) {
         var assetsList = this.state.assets.map(function (result, i) {
                 var ownerItem;
@@ -86,7 +89,7 @@ var Asset = React.createClass({
                     ownerItem = <li key={0} className="asset-attribute">{result.account}</li>;
                 }
                 return (
-                    <li key={i} className="asset-item">
+                    <li key={i} className="asset-item" onClick={this._onClick}>
                         <ul>
                             {ownerItem}
                             <li key={1} className="asset-attribute">{result.assetName}</li>
@@ -101,7 +104,7 @@ var Asset = React.createClass({
                         </ul>
                     </li>
                 )
-            });
+            }.bind(this));
         return (<ul className="asset-list">
             {assetsList}
             </ul>)
