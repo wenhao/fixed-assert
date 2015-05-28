@@ -7,7 +7,7 @@ var request = require('request-promised'),
 
 describe("User Assets API tests", function () {
 
-    it("should get others users assets", function (done) {
+    xit("should get others users assets", function (done) {
         request.get(config.host + "/users/lwzhang/others/assets", {json: true}).
             then(function (res) {
                 expect(res.statusCode).toBe(httpStatus.OK);

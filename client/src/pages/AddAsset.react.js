@@ -25,7 +25,7 @@ var AddAsset = React.createClass({
     _addAsset() {
         var number = this.refs.number.getValue();
         var type = this.state.type;
-        assetApi.addAsset({"number": number,"type":type});
+        assetApi.addAsset({"assetNumber": number,"assetType":type}).then(this.onAdd, this.onAddFail);
     },
     onAdd(msg){
         this.context.router.transitionTo('asset');

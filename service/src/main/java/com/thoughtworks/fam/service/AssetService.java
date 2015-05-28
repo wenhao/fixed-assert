@@ -92,7 +92,7 @@ public class AssetService
 
     public void addAsset(Asset asset)
     {
-        if (this.assetRepository.findByAccount(asset.getAssetNumber()).isEmpty()) {
+        if (this.assetRepository.findByAssetNumber(asset.getAssetNumber()) == null) {
             this.assetRepository.save(asset);
         }
     }

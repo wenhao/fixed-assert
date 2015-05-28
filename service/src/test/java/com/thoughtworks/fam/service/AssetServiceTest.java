@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -126,17 +127,31 @@ public class AssetServiceTest
     }
 
     @Test
-    public void should_save_asset_given_available_number()
+    public void should_not_save_asset_given_an_existing_asset()
     {
         //given
         Asset asset = mock(Asset.class);
-        ArrayList<Asset> list = Lists.newArrayList();
-        given(assetRepository.findByAccount(anyString())).willReturn(list);
+        given(assetRepository.findByAssetNumber(anyString())).willReturn(asset);
+
+        //when
+        assetService.addAsset(asset);
+
+        //then
+        verify(assetRepository, never()).save(asset);
+    }
+
+    @Test
+    public void should_save_asset_given_an_non_existing_asset()
+    {
+        //given
+        Asset asset = mock(Asset.class);
+        given(assetRepository.findByAssetNumber(anyString())).willReturn(null);
 
         //when
         assetService.addAsset(asset);
 
         //then
         verify(assetRepository).save(asset);
+
     }
 }

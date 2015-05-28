@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thoughtworks.fam.builder.AssetBuilder;
 import com.thoughtworks.fam.domain.Asset;
 import com.thoughtworks.fam.exception.BadRequestException;
 import com.thoughtworks.fam.exception.ErrorCode;
@@ -37,16 +36,12 @@ public class AssetController
 
     @RequestMapping(value = "/addAsset", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity addAsset(@RequestBody final String assetNumber,
-                                   @RequestBody final String assetType,
+    public ResponseEntity addAsset(@RequestBody final Asset asset,
                                    BindingResult result)
     {
         handleRequestParamError(result.getFieldErrors());
 
-        assetService.addAsset(new AssetBuilder()
-                            .withAssetNumber(assetNumber)
-                            .withAssetType(assetType)
-                            .build());
+        assetService.addAsset(asset);
 
         return new ResponseEntity(HttpStatus.CREATED);
     }
@@ -67,3 +62,4 @@ public class AssetController
         }
     }
 }
+

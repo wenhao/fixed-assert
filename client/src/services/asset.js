@@ -10,16 +10,17 @@ let endpoint = 'http://localhost:8080';
 const assetApis = {
     getUserAssets: {
         method: 'get',
-        url: '/users/uid/assets' // TODO: use path param to replace sqlin
+        url: '/users/admin/assets' // TODO: use path param to replace sqlin
     },
 
     addAsset:{
+        dataType: 'json',
         method: 'post',
         url: '/addAsset'
     },
     getOthersAssets: {
         method: 'get',
-        url: '/users/assets/'
+        url: '/users/admin/others/assets'
     }
 };
 
