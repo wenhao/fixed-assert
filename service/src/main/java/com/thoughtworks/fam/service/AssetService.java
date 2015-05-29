@@ -92,7 +92,10 @@ public class AssetService
 
     public void addAsset(Asset asset)
     {
-        if (this.assetRepository.findByAssetNumber(asset.getAssetNumber()) == null) {
+        if (this.assetRepository.findByAssetNumber(asset.getAssetNumber()) != null) {
+            throw new ConflictException(ErrorCode.ASSET_NUMBER_EXISTED,
+                    "The name already exist, please use another one.");
+        } else {
             this.assetRepository.save(asset);
         }
     }

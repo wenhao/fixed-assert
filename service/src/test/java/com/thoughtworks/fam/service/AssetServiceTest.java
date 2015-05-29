@@ -126,7 +126,7 @@ public class AssetServiceTest
         assertThat(assets.size()).isZero();
     }
 
-    @Test
+    @Test(expected = ConflictException.class)
     public void should_not_save_asset_given_an_existing_asset()
     {
         //given
@@ -135,9 +135,6 @@ public class AssetServiceTest
 
         //when
         assetService.addAsset(asset);
-
-        //then
-        verify(assetRepository, never()).save(asset);
     }
 
     @Test

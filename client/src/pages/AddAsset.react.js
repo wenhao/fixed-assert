@@ -31,7 +31,7 @@ var AddAsset = React.createClass({
         this.context.router.transitionTo('asset');
     },
     onAddFail(err){
-        this.setState({errorMsg: err.response.body.errorMessage})
+        this.setState({errorMsg: err.response.body.errorMessage});
     },
 
     _handleType(e, selectedIndex, menuItem) {
@@ -43,7 +43,6 @@ var AddAsset = React.createClass({
         if(number.length !=8 )
         {
             this.setState({isDisable: true});
-            this.setState({errorMsg: 'The length of number must be 8!'});
         }else{
             this.setState({isDisable: false});
         }
@@ -70,6 +69,7 @@ var AddAsset = React.createClass({
                 <DropDownMenu ref="type" menuItems={menuItems} onChange={this._handleType}/>
                 <TextField ref="number" floatingLabelText="Number" onInput={this._handleNumber}/>
                 <RaisedButton label="Add" onClick={this._addAsset} disabled={this.state.isDisable} />
+                <h5 className="error-label">{this.state.errorMsg}</h5>
             </Paper>
         )
     }
