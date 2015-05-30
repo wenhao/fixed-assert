@@ -84,3 +84,25 @@
 2. Add E2E tests
 3. Create TECH card
 
+
+## 2015-05-30:
+#### Well:
+1. 年前，概念。
+2. 年后系统的实践。
+3. workshop scrum 效果好。
+4. pair方式效果好。
+
+#### Less Well:
+1. 毕业季。
+2. 知识比较浅，掌握不完善。
+
+#### Suggestion:
+1. 类似游戏帮助理解。
+2. code review。
+3. 时间少。
+4. 继续做完项目。
+
+#### Feedback:
+1. 技术太多，一开始理解不了。
+2. 安排较为松散.没有checkpoint。
+
